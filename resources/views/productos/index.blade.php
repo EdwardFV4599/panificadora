@@ -1,50 +1,5 @@
 @extends('layouts.appp')
 @section('titulo', 'Productos')
-{{-- @section('contenido')
-<div class="container">
-    <h1>Lista de Productos</h1>
-    <a href="{{ route('productos.create') }}" class="btn btn-primary">Crear Producto</a>
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            {{ $message }}
-        </div>
-    @endif
-
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($productos as $producto)
-                <tr>
-                    <td>{{ $producto->nombre }}</td>
-                    <td>{{ $producto->precio }}</td>
-                    <td>{{ $producto->descripcion }}</td>
-                    <td>{{ $producto->stock }}</td>
-                    <td>
-                        <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-primary">Editar</a>
-                        <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-@endsection --}}
-
-
-
 @section('contenido')
 <div class="card mb-4">
     <div class="card-header">
@@ -53,7 +8,8 @@
                 <div class="row w-100 align-items-center">
                     {{-- Registrar --}}
                     <div class="col-7">
-                        <a href="{{ route('productos.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a>
+                        <a href="" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a>
+                        {{-- <a href="{{ route('productos.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a> --}}
                     </div>
                 </div>
             </div>

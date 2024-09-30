@@ -12,13 +12,17 @@
     <title> @yield('titulo') </title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    {{-- Tablas --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 
 </head>
 
@@ -38,6 +42,8 @@
                 <div class="sidebar-brand-text mx-3">CORONEL</div>
             </a>
 
+
+            @role('administrador')
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -60,6 +66,8 @@
                     </div>
                 </div>
             </li>
+            @endrole
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -68,55 +76,73 @@
             <div class="sidebar-heading">
                 Mantenedores
             </div>
-            
+
+            @can('gestionar-materias-primas')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('materia_primas.index') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Materias primas</span></a>
             </li>
+            @endcan
 
+            @can('gestionar-productos')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('productos.index') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Productos</span></a>
             </li>
+            @endcan
 
+
+            @can('gestionar-proveedores')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Proveedores</span></a>
             </li>
+            @endcan
 
+            @can('gestionar-ventas')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Ventas</span></a>
             </li>
+            @endcan
 
+
+            @can('gestionar-compras')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Compras</span></a>
             </li>
+            @endcan
 
+
+            @can('generar-graficos')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Gráficos</span></a>
             </li>
+            @endcan
 
+
+            @can('generar-reportes')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Reportes</span></a>
             </li>
+            @endcan
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -380,15 +406,28 @@
     </a>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
+
+    {{-- Tablas --}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#mi-tabla').DataTable({
+                "lengthMenu": [5, 10, 20], // Configura las opciones de número de entradas a mostrar
+                "pageLength": 5 // Establece el número predeterminado de entradas por página
+            });
+        });
+    </script>
 </body>
 
 </html>

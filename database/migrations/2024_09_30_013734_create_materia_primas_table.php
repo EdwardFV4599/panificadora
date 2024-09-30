@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('unidad'); // Unidad de medida (kg, litros, etc.)
             $table->decimal('precio', 10, 2); // Precio por unidad
             $table->text('descripcion')->nullable(); // Descripción opcional
+            $table->integer('eliminado')->nullable(); // Descripción opcional
             $table->timestamps(); // Para created_at y updated_at
         });
     }

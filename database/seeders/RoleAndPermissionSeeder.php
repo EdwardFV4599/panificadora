@@ -43,7 +43,7 @@ class RoleAndPermissionSeeder extends Seeder
         // Asignar permisos a roles
         $administradorRole->givePermissionTo($permissions); // Asignar todos los permisos al admin
 
-        $gerenteRole->givePermissionTo('ver-home','gestionar-proveedores'); // Asignar 'ver-home' y 'gestionar-proveedores'
+        $gerenteRole->givePermissionTo('ver-home','gestionar-materias-primas','gestionar-productos','gestionar-proveedores','gestionar-compras','gestionar-ventas','controlar-stock','controlar-cierre-de-caja','generar-reportes','generar-gráficos');
         $almacenistaRole->givePermissionTo('ver-home','gestionar-materias-primas','gestionar-productos');
         $vendedorRole->givePermissionTo('ver-home','gestionar-ventas');
     }

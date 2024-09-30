@@ -32,7 +32,12 @@ Route::middleware([
     'verified',
     'can:gestionar-materias-primas', // Verifica que el usuario tenga el permiso
 ])->group(function () {
-    Route::resource('materia_primas', MateriaPrimaController::class);
+    Route::get('/materia_primas', [MateriaPrimaController::class, 'index'])->name('materia_primas.index');
+    Route::get('/materia_primas_crear', [MateriaPrimaController::class, 'create'])->name('materia_primas.create');
+    Route::post('/materia_primas_guardar', [MateriaPrimaController::class, 'store'])->name('materia_primas.store');
+    Route::get('/materia_primas_editar/{id}', [MateriaPrimaController::class, 'edit'])->name('materia_primas.edit');
+    Route::post('/materia_primas_actualizar/{id}', [MateriaPrimaController::class, 'update'])->name('materia_primas.update');
+    Route::post('/materia_primas_eliminar/{id}', [MateriaPrimaController::class, 'destroy'])->name('materia_primas.destroy');
 });
 
 Route::middleware([
@@ -82,19 +87,6 @@ Route::middleware([
 
 
 // No se usa por ahora
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-    'can:gestionar-usuarios', // Verifica que el usuario tenga el permiso
-])->group(function () {
-    Route::get('/gestionar-usuarios', function () {
-        return view('gestionar-usuarios');
-    })->name('gestionar-usuarios');
-});
-
-
 Route::middleware([
     'auth:sanctum', 
     config('jetstream.auth_session'),

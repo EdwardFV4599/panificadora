@@ -22,8 +22,6 @@ class UserSeeder extends Seeder
         ]);
         // Asignar rol
         $user->assignRole('administrador');
-        // Asignar permisos
-        $user->givePermissionTo(['ver-home','gestionar-usuarios']);
         // ------------------------------------------------------------------------------
 
         // Crear un usuario
@@ -34,8 +32,6 @@ class UserSeeder extends Seeder
         ]);
         // Asignar rol
         $user->assignRole('almacenista');
-        // Asignar permisos
-        $user->givePermissionTo(['ver-home','gestionar-materias-primas','gestionar-productos']);
         // ------------------------------------------------------------------------------
         
         // Crear un usuario
@@ -46,8 +42,6 @@ class UserSeeder extends Seeder
         ]);
         // Asignar rol
         $user->assignRole('gerente');
-        // Asignar permisos
-        $user->givePermissionTo(['ver-home','gestionar-proveedores']);
         // ------------------------------------------------------------------------------
 
         // Crear un usuario
@@ -58,8 +52,6 @@ class UserSeeder extends Seeder
         ]);
         // Asignar rol
         $user->assignRole('vendedor');
-        // Asignar permisos
-        $user->givePermissionTo(['ver-home','gestionar-ventas']);
         // ------------------------------------------------------------------------------
 
         // Crear un usuario sin rol ni permisos
@@ -68,6 +60,10 @@ class UserSeeder extends Seeder
             'email' => 'prueba@example.com',
             'password' => bcrypt('prueba4599159'),
         ]);
+        // Asignar rol
+        // $user->assignRole('administrador');
+        // Asignar permisos
+        // $user->givePermissionTo(['ver-home','gestionar-usuarios']);
         // ------------------------------------------------------------------------------
     }
 }

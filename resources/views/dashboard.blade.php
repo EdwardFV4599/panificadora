@@ -1,8 +1,7 @@
 @extends('layouts.appp')
 @section('titulo', 'Home')
-@section('subtitulo', 'Bienvenido')
 @section('contenido')
     <div class="row">
-
+        <h1> Bienvenido {{ auth()->user()->name }} </h1>
     </div>
 @endsection

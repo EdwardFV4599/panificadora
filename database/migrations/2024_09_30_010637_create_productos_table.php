@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nombre');
+            $table->decimal('precio', 8, 2); // Ejemplo para precios con 2 decimales
+            $table->text('descripcion')->nullable();
+            $table->integer('stock'); // Cantidad en stock
+            $table->timestamps(); // Para created_at y updated_at
         });
     }
 

@@ -16,8 +16,18 @@ class RoleAndPermissionSeeder extends Seeder
     {
         // Crear permisos
         $permissions = [
-            'manage-users',
-            'view-dashboard',
+            'gestionar-usuarios',
+            'gestionar-roles-permisos',
+            'ver-home',
+            'gestionar-materias-primas',
+            'gestionar-productos',
+            'gestionar-proveedores',
+            'gestionar-compras',
+            'gestionar-ventas',
+            'controlar-stock',
+            'controlar-cierre-de-caja',
+            'generar-reportes',
+            'generar-gráficos',
         ];
 
         foreach ($permissions as $permission) {
@@ -25,11 +35,16 @@ class RoleAndPermissionSeeder extends Seeder
         }
 
         // Crear roles
-        $adminRole = Role::create(['name' => 'admin']);
-        $userRole = Role::create(['name' => 'user']);
+        $administradorRole = Role::create(['name' => 'administrador']);
+        $gerenteRole = Role::create(['name' => 'gerente']);
+        $almacenistaRole = Role::create(['name' => 'almacenista']);
+        $vendedorRole = Role::create(['name' => 'vendedor']);
 
         // Asignar permisos a roles
-        $adminRole->givePermissionTo($permissions); // Asignar todos los permisos al admin
-        $userRole->givePermissionTo('view-dashboard'); // Solo asignar 'view-dashboard' al usuario
+        $administradorRole->givePermissionTo($permissions); // Asignar todos los permisos al admin
+
+        $gerenteRole->givePermissionTo('ver-home','gestionar-proveedores'); // Asignar 'ver-home' y 'gestionar-proveedores'
+        $almacenistaRole->givePermissionTo('ver-home','gestionar-materias-primas','gestionar-productos');
+        $vendedorRole->givePermissionTo('ver-home','gestionar-ventas');
     }
 }

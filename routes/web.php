@@ -2,23 +2,27 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Nuevo
+// Controladores
 use App\Http\Controllers\RolePermissionController;
+use App\Http\Controllers\MateriaPrimaController;
+use App\Http\Controllers\ProductoController;
 
 
+// Rutas
 Route::get('/', function () {
     return view('/auth/login');
 });
+
 
 // Middleware
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'can:view-dashboard', // Verifica que el usuario tenga el permiso 'view-dashboard'
+    'can:ver-home', // Verifica que el usuario tenga el permiso
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('/modulos/dashboard');
+        return view('/dashboard');
     })->name('dashboard');
 });
 
@@ -26,18 +30,76 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'can:view-dashboard', // Verifica que el usuario tenga el permiso 'view-dashboard'
+    'can:gestionar-materias-primas', // Verifica que el usuario tenga el permiso
+])->group(function () {
+    Route::resource('materia_primas', MateriaPrimaController::class);
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'can:gestionar-productos', // Verifica que el usuario tenga el permiso
+])->group(function () {
+    Route::resource('productos', ProductoController::class);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// No se usa por ahora
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'can:gestionar-usuarios', // Verifica que el usuario tenga el permiso
 ])->group(function () {
     Route::get('/gestionar-usuarios', function () {
         return view('gestionar-usuarios');
     })->name('gestionar-usuarios');
 });
 
+
 Route::middleware([
     'auth:sanctum', 
     config('jetstream.auth_session'),
     'verified',
-    'can:manage-users', // Verifica que el usuario tenga el permiso 'manage-users'
+    'can:manage-users', 
 ])->group(function () {
     Route::get('/gestionar-usuarios', [RolePermissionController::class, 'index'])->name('gestionar-usuarios');
     Route::post('/gestionar-usuarios/assign-role/{user}', [RolePermissionController::class, 'assignRole'])->name('assign.role');

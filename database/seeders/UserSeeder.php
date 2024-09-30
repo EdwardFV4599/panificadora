@@ -16,38 +16,50 @@ class UserSeeder extends Seeder
     {
         // Crear un usuario
         $user = User::create([
-            'name' => 'Admin General',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('admin4599159'),
+            'name' => 'Administrador',
+            'email' => 'administrador@example.com',
+            'password' => bcrypt('administrador4599'),
         ]);
         // Asignar rol
-        $user->assignRole('admin');
+        $user->assignRole('administrador');
         // Asignar permisos
-        $user->givePermissionTo(['manage-users', 'view-dashboard']);
+        $user->givePermissionTo(['ver-home','gestionar-usuarios']);
         // ------------------------------------------------------------------------------
 
         // Crear un usuario
         $user = User::create([
-            'name' => 'Moises',
-            'email' => 'moises@example.com',
-            'password' => bcrypt('password123'),
+            'name' => 'Almacenista',
+            'email' => 'almacenista@example.com',
+            'password' => bcrypt('almacenista4599'),
         ]);
         // Asignar rol
-        $user->assignRole('user');
+        $user->assignRole('almacenista');
         // Asignar permisos
-        $user->givePermissionTo(['view-dashboard']);
+        $user->givePermissionTo(['ver-home','gestionar-materias-primas','gestionar-productos']);
         // ------------------------------------------------------------------------------
         
         // Crear un usuario
         $user = User::create([
-            'name' => 'Edward',
-            'email' => 'edward@example.com',
-            'password' => bcrypt('edward4599159'),
+            'name' => 'Gerente',
+            'email' => 'gerente@example.com',
+            'password' => bcrypt('gerente4599'),
         ]);
         // Asignar rol
-        $user->assignRole('user');
+        $user->assignRole('gerente');
         // Asignar permisos
-        $user->givePermissionTo(['view-dashboard']);
+        $user->givePermissionTo(['ver-home','gestionar-proveedores']);
+        // ------------------------------------------------------------------------------
+
+        // Crear un usuario
+        $user = User::create([
+            'name' => 'Vendedor',
+            'email' => 'vendedor@example.com',
+            'password' => bcrypt('vendedor4599'),
+        ]);
+        // Asignar rol
+        $user->assignRole('vendedor');
+        // Asignar permisos
+        $user->givePermissionTo(['ver-home','gestionar-ventas']);
         // ------------------------------------------------------------------------------
 
         // Crear un usuario sin rol ni permisos

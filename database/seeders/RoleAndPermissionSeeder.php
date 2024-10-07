@@ -19,15 +19,17 @@ class RoleAndPermissionSeeder extends Seeder
             'gestionar-usuarios',
             'gestionar-roles-permisos',
             'ver-home',
-            'gestionar-materias-primas',
-            'gestionar-productos',
-            'gestionar-proveedores',
-            'gestionar-compras',
-            'gestionar-ventas',
-            'controlar-stock',
+            'mantener-categorias',
+            'mantener-materias-primas',
+            'mantener-productos',
+            'mantener-proveedores',
+            'controlar-entrada-materias-primas',
+            'controlar-elaboracion-productos',
+            'controlar-salida-productos',
             'controlar-cierre-de-caja',
             'generar-reportes',
-            'generar-gráficos',
+            'generar-graficos',
+            'generar-facturas'
         ];
 
         foreach ($permissions as $permission) {
@@ -42,9 +44,32 @@ class RoleAndPermissionSeeder extends Seeder
 
         // Asignar permisos a roles
         $administradorRole->givePermissionTo($permissions); // Asignar todos los permisos al admin
-
-        $gerenteRole->givePermissionTo('ver-home','gestionar-materias-primas','gestionar-productos','gestionar-proveedores','gestionar-compras','gestionar-ventas','controlar-stock','controlar-cierre-de-caja','generar-reportes','generar-gráficos');
-        $almacenistaRole->givePermissionTo('ver-home','gestionar-materias-primas','gestionar-productos');
-        $vendedorRole->givePermissionTo('ver-home','gestionar-ventas');
+        $gerenteRole->givePermissionTo(
+            'ver-home',
+            'mantener-categorias',
+            'mantener-materias-primas',
+            'mantener-productos',
+            'mantener-proveedores',
+            'controlar-entrada-materias-primas',
+            'controlar-elaboracion-productos',
+            'controlar-salida-productos',
+            'controlar-cierre-de-caja',
+            'generar-reportes',
+            'generar-graficos',
+            'generar-facturas'
+        );
+        $almacenistaRole->givePermissionTo(
+            'ver-home',
+            'mantener-categorias',
+            'mantener-materias-primas',
+            'mantener-productos',
+            'mantener-proveedores',
+            'controlar-entrada-materias-primas'
+        );
+        $vendedorRole->givePermissionTo(
+            'ver-home',
+            'controlar-salida-productos',
+            'controlar-cierre-de-caja'
+        );
     }
 }

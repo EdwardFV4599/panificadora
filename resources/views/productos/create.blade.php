@@ -1,8 +1,8 @@
 @extends('layouts.appp')
-
+@section('titulo', 'Productos')
 @section('contenido')
 <div class="container">
-    <h1>Crear Producto</h1>
+    <h3>Crear producto</h3>
     <form action="{{ route('productos.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -10,18 +10,32 @@
             <input type="text" class="form-control" name="nombre" id="nombre" required>
         </div>
         <div class="form-group">
+            <label for="cantidad">Cantidad</label>
+            <input type="number" class="form-control" name="cantidad" id="cantidad" step="1.00" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="categoria" class="form-label">Categoria</label>
+            <select class="form-control" name="categoria" id="categoria" required>
+                @foreach ($categorias as $item)
+                <option value="{{ $item->id}}">{{ $item->nombre }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             <label for="precio">Precio</label>
-            <input type="number" class="form-control" name="precio" id="precio" step="0.01" required>
+            <input type="number" class="form-control" name="precio" id="precio" step="1.00" min="1" required>
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción</label>
             <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
         </div>
         <div class="form-group">
-            <label for="stock">Stock</label>
-            <input type="number" class="form-control" name="stock" id="stock" required>
+            <input type="text" class="form-control" name="eliminado" id="eliminado" value="0" required hidden>
         </div>
-        <button type="submit" class="btn btn-success">Crear Producto</button>
+
+        <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('productos.index') }}'">Atrás</button>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        {{-- <input type="submit" class="btn btn-primary" value="Guardar"> --}}
     </form>
 </div>
 @endsection

@@ -2,7 +2,7 @@
 @section('titulo', 'Materias primas')
 @section('contenido')
 <div class="container">
-    <h1>Editar materia prima</h1>
+    <h3>Editar materia prima</h3>
     <form action="{{ route('materia_primas.update', $id) }}" method="POST">
         @csrf
         <div class="form-group">

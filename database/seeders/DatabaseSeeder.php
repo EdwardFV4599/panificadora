@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
             RoleAndPermissionSeeder::class,
             UserSeeder::class,
             MateriaPrimaSeeder::class,
+            CategoriaSeeder::class,
+            ProductoSeeder::class,
+            ProveedorSeeder::class,
+
             // Agrega aquí más seeders que quieras ejecutar
         ]);
     }

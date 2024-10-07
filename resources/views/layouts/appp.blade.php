@@ -49,11 +49,30 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Administrador
+                Gestionar
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            @can('mantener-materias-primas')
+            <!-- Nav Item -->
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('materia_primas.index') }}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Usuarios</span></a>
+            </li>
+            @endcan
+
+            @can('mantener-materias-primas')
+            <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('materia_primas.index') }}">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Roles y permisos</span></a>
+            </li>
+            @endcan
+            @endrole
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -65,19 +84,17 @@
                         <a class="collapse-item" href="">Roles y permisos</a>
                     </div>
                 </div>
-            </li>
-            @endrole
-
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Mantenedores
+                Mantener
             </div>
 
-            @can('gestionar-materias-primas')
+            @can('mantener-materias-primas')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('materia_primas.index') }}">
@@ -86,7 +103,16 @@
             </li>
             @endcan
 
-            @can('gestionar-productos')
+            @can('mantener-categorias')
+            <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('categorias.index') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Categorias</span></a>
+            </li>
+            @endcan
+
+            @can('mantener-productos')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('productos.index') }}">
@@ -95,35 +121,67 @@
             </li>
             @endcan
 
-
-            @can('gestionar-proveedores')
+            @can('mantener-proveedores')
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('proveedores.index') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Proveedores</span></a>
             </li>
             @endcan
 
-            @can('gestionar-ventas')
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Controlar
+            </div>
+
+            @can('controlar-entrada-materias-primas')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Ventas</span></a>
+                    <span>Entrada de materias primas</span></a>
             </li>
             @endcan
 
-
-            @can('gestionar-compras')
+            @can('controlar-elaboracion-productos')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Compras</span></a>
+                    <span>Elaboracion de productos</span></a>
             </li>
             @endcan
 
+            @can('controlar-salida-productos')
+            <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Salida de productos</span></a>
+            </li>
+            @endcan
+
+            @can('controlar-cierre-de-caja')
+            <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Cierre de caja</span></a>
+            </li>
+            @endcan
+
+            @can('generar-reportes')
+            <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Reportes</span></a>
+            </li>
+            @endcan
 
             @can('generar-graficos')
             <!-- Nav Item -->
@@ -134,13 +192,12 @@
             </li>
             @endcan
 
-
-            @can('generar-reportes')
+            @can('generar-facturas')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Reportes</span></a>
+                    <span>Facturas</span></a>
             </li>
             @endcan
 

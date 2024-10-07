@@ -1,7 +1,7 @@
 @extends('layouts.appp')
-@section('titulo', 'Productos')
+@section('titulo', 'Proveedores')
 @section('contenido')
-    <h3>Lista de productos</h3>
+    <h3>Lista de proveedores</h3>
     <div class="card mb-4">
         <div class="card-header">
             <form class="form-inline my-2" method="get">
@@ -9,7 +9,7 @@
                     <div class="row w-100 align-items-center">
                         {{-- Registrar --}}
                         <div class="col-7">
-                            <a href="{{ route('productos.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a>
+                            <a href="{{ route('proveedores.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a>
                         </div>
                     </div>
                 </div>
@@ -23,37 +23,35 @@
                     <tr>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>#</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Nombre</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Cantidad</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Categoria</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Precio</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>RUC</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Correo</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Telefono</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Direccion</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Descripción</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Acciones</h6></th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @if ($productos->count() == 0)
+                    @if ($proveedores->count() == 0)
                         <tr>
                             <td colspan="3">No hay registros</td>
                         </tr>
                     @endif
 
-                    @foreach ($productos as $item)
+                    @foreach ($proveedores as $item)
                         <tr>
                             <td class="text-xxs mb-0 text-center">{{$item->id}}</td>
                             <td class="text-xxs mb-0 text-center">{{$item->nombre}}</td>
-                            <td class="text-xxs mb-0 text-center">{{$item->cantidad}}</td>            
-                            @foreach ($categorias as $categoria)
-                                @if ($categoria->id == $item->categoria)
-                                    <td class="text-xxs mb-0 text-center">{{$categoria->nombre}}</td>
-                                @endif
-                            @endforeach
-                            <td class="text-xxs mb-0 text-center">{{$item->precio}}</td>
+                            <td class="text-xxs mb-0 text-center">{{$item->ruc}}</td>
+                            <td class="text-xxs mb-0 text-center">{{$item->correo}}</td>
+                            <td class="text-xxs mb-0 text-center">{{$item->telefono}}</td>
+                            <td class="text-xxs mb-0 text-center">{{$item->direccion}}</td>
                             <td class="text-xxs mb-0 text-center">{{$item->descripcion}}</td>
                             <td class="text-xxs mb-0 text-center">
-                                <a href="{{ route('productos.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                <a href="{{ route('proveedores.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                 &nbsp;
-                                <form action="{{ route('productos.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                                <form action="{{ route('proveedores.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     <button type="submit" class="btn btn-danger btn-sm" >
                                         <i class="fas fa-trash"></i> Eliminar

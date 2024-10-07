@@ -2,62 +2,73 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Models\Producto;
+use App\Models\Categoria;
 
 class ProductoController extends Controller
 {
-    // Mostrar todos los productos
-    public function index()
+    // Mostrar la lista
+    public function index(Request $request)
     {
-        $productos = Producto::all();
-        return view('productos.index', compact('productos'));
+        $productos = Producto::where('eliminado', 0)->get();
+        $categorias = Categoria::all();
+        return view('productos.index', compact('productos','categorias'));
     }
 
-    // Mostrar formulario de creación
+    // Mostrar el formulario para crear
     public function create()
     {
-        return view('productos.create');
+        $productos = Producto::all();
+        $categorias = Categoria::all();
+        return view('productos.create', compact('productos','categorias'));
     }
 
-    // Guardar un nuevo producto
+    // Guardar en la base de datos
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required',
+            'cantidad' => 'required|numeric',
+            'categoria' => 'required',
             'precio' => 'required|numeric',
-            'descripcion' => 'nullable',
-            'stock' => 'required|integer'
+            'descripcion' => 'nullable'
         ]);
 
         Producto::create($request->all());
         return redirect()->route('productos.index')->with('success', 'Producto creado correctamente.');
     }
 
-    // Mostrar formulario de edición
-    public function edit(Producto $producto)
+    // Mostrar el formulario para editar
+    public function edit(Request $request,string $id)
     {
-        return view('productos.edit', compact('producto'));
+        $producto = Producto::find($id);
+        $categorias = Categoria::all();
+        return view('productos.edit', compact('producto', 'id', 'categorias'));
     }
 
-    // Actualizar un producto existente
-    public function update(Request $request, Producto $producto)
+    // Actualizar en la base de datos
+    public function update(Request $request, string $id)
     {
         $request->validate([
             'nombre' => 'required',
+            'cantidad' => 'required|numeric',
+            'categoria' => 'required',
             'precio' => 'required|numeric',
-            'descripcion' => 'nullable',
-            'stock' => 'required|integer'
+            'descripcion' => 'nullable'
         ]);
 
+        $producto = Producto::find($id);
         $producto->update($request->all());
         return redirect()->route('productos.index')->with('success', 'Producto actualizado correctamente.');
     }
 
-    // Eliminar un producto
-    public function destroy(Producto $producto)
+    // Eliminar
+    public function destroy($id)
     {
-        $producto->delete();
+        $producto = Producto::find($id);
+        $producto->eliminado = 1;
+        $producto->save();
         return redirect()->route('productos.index')->with('success', 'Producto eliminado correctamente.');
     }
 }

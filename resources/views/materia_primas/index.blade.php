@@ -23,7 +23,7 @@
                     <tr>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>#</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Nombre</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Cantidad</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Existencia actual</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Unidad</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Precio</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Descripción</h6></th>
@@ -42,7 +42,7 @@
                         <tr>
                             <td class="text-xxs mb-0 text-center">{{$item->id}}</td>
                             <td class="text-xxs mb-0 text-center">{{$item->nombre}}</td>
-                            <td class="text-xxs mb-0 text-center">{{$item->cantidad}}</td>
+                            <td class="text-xxs mb-0 text-center">{{$item->existencia_actual}}</td>
                             <td class="text-xxs mb-0 text-center">{{$item->unidad}}</td>
                             <td class="text-xxs mb-0 text-center">{{$item->precio}}</td>
                             <td class="text-xxs mb-0 text-center">{{$item->descripcion}}</td>

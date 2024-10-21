@@ -6,15 +6,15 @@
     <form action="{{ route('materia_primas.update', $id) }}" method="POST">
         @csrf
         <div class="form-group">
-            <input type="text" class="form-control" name="id" id="id" value="{{$materiaPrima->id}}" required hidden>
+            <input type="text" class="form-control" name="id" id="id" value="{{$materiaPrima->id}}" required readonly>
         </div>
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" name="nombre" id="nombre" value="{{$materiaPrima->nombre}}" required>
         </div>
         <div class="form-group">
-            <label for="cantidad">Cantidad</label>
-            <input type="number" class="form-control" name="cantidad" id="cantidad" value="{{$materiaPrima->cantidad}}" step="1.00" min="1" required>
+            <label for="existencia_actual">Existencia actual</label>
+            <input type="number" class="form-control" name="existencia_actual" id="existencia_actual" value="{{$materiaPrima->existencia_actual}}" step="0.1" min="0" required readonly>
         </div>
         <div class="form-group">
             <label for="unidad">Unidad</label>
@@ -22,12 +22,13 @@
         </div>
         <div class="form-group">
             <label for="precio">Precio</label>
-            <input type="number" class="form-control" name="precio" id="precio" value="{{$materiaPrima->precio}}" step="1.00" min="1" required>
+            <input type="number" class="form-control" name="precio" id="precio" value="{{$materiaPrima->precio}}" step="0.1" min="0" required>
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción</label>
             <textarea class="form-control" name="descripcion" id="descripcion">{{$materiaPrima->descripcion}}</textarea>
         </div>
+        {{-- Hidden --}}
         <div class="form-group">
             <input type="text" class="form-control" name="eliminado" id="eliminado" value="{{$materiaPrima->eliminado}}" required hidden>
         </div>

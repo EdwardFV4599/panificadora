@@ -26,7 +26,6 @@ class MateriaPrimaController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'cantidad' => 'required|numeric',
             'unidad' => 'required',
             'precio' => 'required|numeric',
             'descripcion' => 'nullable'
@@ -48,7 +47,6 @@ class MateriaPrimaController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'cantidad' => 'required|numeric',
             'unidad' => 'required',
             'precio' => 'required|numeric',
             'descripcion' => 'nullable'

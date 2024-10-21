@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('materia_primas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->decimal('cantidad', 8, 2);
+            $table->decimal('existencia_actual', 10, 2);
             $table->string('unidad');
             $table->decimal('precio', 10, 2);
             $table->text('descripcion')->nullable();

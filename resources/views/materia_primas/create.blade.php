@@ -10,20 +10,21 @@
             <input type="text" class="form-control" name="nombre" id="nombre" required>
         </div>
         <div class="form-group">
-            <label for="cantidad">Cantidad</label>
-            <input type="number" class="form-control" name="cantidad" id="cantidad" step="1.00" min="1" required>
-        </div>
-        <div class="form-group">
             <label for="unidad">Unidad</label>
             <input type="text" class="form-control" name="unidad" id="unidad" required>
         </div>
+
         <div class="form-group">
             <label for="precio">Precio</label>
-            <input type="number" class="form-control" name="precio" id="precio" step="1.00" min="1" required>
+            <input type="number" class="form-control" name="precio" id="precio" step="0.1" min="0" required>
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción</label>
             <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
+        </div>
+        {{-- Hidden --}}
+        <div class="form-group">
+            <input type="text" class="form-control" name="existencia_actual" id="existencia_actual" value="0" required hidden>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" name="eliminado" id="eliminado" value="0" required hidden>

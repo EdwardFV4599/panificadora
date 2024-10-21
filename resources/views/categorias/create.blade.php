@@ -9,6 +9,7 @@
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" name="nombre" id="nombre" required>
         </div>
+        {{-- Hidden --}}
         <div class="form-group">
             <input type="text" class="form-control" name="eliminado" id="eliminado" value="0" required hidden>
         </div>

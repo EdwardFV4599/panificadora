@@ -6,12 +6,13 @@
     <form action="{{ route('categorias.update', $id) }}" method="POST">
         @csrf
         <div class="form-group">
-            <input type="text" class="form-control" name="id" id="id" value="{{$categoria->id}}" required hidden>
+            <input type="text" class="form-control" name="id" id="id" value="{{$categoria->id}}" required readonly>
         </div>
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" name="nombre" id="nombre" value="{{$categoria->nombre}}" required>
         </div>
+        {{-- Hidden --}}
         <div class="form-group">
             <input type="text" class="form-control" name="eliminado" id="eliminado" value="{{$categoria->eliminado}}" required hidden>
         </div>

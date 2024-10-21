@@ -64,7 +64,8 @@ class RoleAndPermissionSeeder extends Seeder
             'mantener-materias-primas',
             'mantener-productos',
             'mantener-proveedores',
-            'controlar-entrada-materias-primas'
+            'controlar-entrada-materias-primas',
+            'controlar-elaboracion-productos',
         );
         $vendedorRole->givePermissionTo(
             'ver-home',

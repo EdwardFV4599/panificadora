@@ -29,7 +29,6 @@ class ProductoController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'cantidad' => 'required|numeric',
             'categoria' => 'required',
             'precio' => 'required|numeric',
             'descripcion' => 'nullable'
@@ -52,7 +51,6 @@ class ProductoController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'cantidad' => 'required|numeric',
             'categoria' => 'required',
             'precio' => 'required|numeric',
             'descripcion' => 'nullable'

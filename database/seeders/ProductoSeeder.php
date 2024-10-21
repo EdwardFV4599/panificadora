@@ -23,7 +23,7 @@ class ProductoSeeder extends Seeder
         // Crear productos para la categoría Panadería
         Producto::create([
             'nombre' => 'Pan Francés',
-            'cantidad' => 150,
+            'existencia_actual' => 150,
             'categoria' => $panaderia,
             'precio' => 0.50,
             'descripcion' => 'Pan crujiente ideal para el desayuno.',
@@ -32,7 +32,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Pan Integral',
-            'cantidad' => 100,
+            'existencia_actual' => 100,
             'categoria' => $panaderia,
             'precio' => 0.80,
             'descripcion' => 'Pan saludable hecho con harina integral.',
@@ -41,7 +41,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Baguette',
-            'cantidad' => 60,
+            'existencia_actual' => 60,
             'categoria' => $panaderia,
             'precio' => 1.20,
             'descripcion' => 'Pan largo y delgado de estilo francés.',
@@ -51,7 +51,7 @@ class ProductoSeeder extends Seeder
         // Crear productos para la categoría Repostería
         Producto::create([
             'nombre' => 'Tarta de Manzana',
-            'cantidad' => 25,
+            'existencia_actual' => 25,
             'categoria' => $reposteria,
             'precio' => 12.50,
             'descripcion' => 'Tarta dulce con manzanas frescas.',
@@ -60,7 +60,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Brownie de Chocolate',
-            'cantidad' => 50,
+            'existencia_actual' => 50,
             'categoria' => $reposteria,
             'precio' => 1.50,
             'descripcion' => 'Brownie esponjoso con chocolate amargo.',
@@ -69,7 +69,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Tarta de Fresa',
-            'cantidad' => 20,
+            'existencia_actual' => 20,
             'categoria' => $reposteria,
             'precio' => 14.00,
             'descripcion' => 'Tarta fresca con fresas naturales.',
@@ -79,7 +79,7 @@ class ProductoSeeder extends Seeder
         // Crear productos para la categoría Bollería
         Producto::create([
             'nombre' => 'Croissant',
-            'cantidad' => 100,
+            'existencia_actual' => 100,
             'categoria' => $bolleria,
             'precio' => 1.20,
             'descripcion' => 'Croissant de mantequilla.',
@@ -88,7 +88,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Pan de Chocolate',
-            'cantidad' => 80,
+            'existencia_actual' => 80,
             'categoria' => $bolleria,
             'precio' => 1.50,
             'descripcion' => 'Pan relleno con chocolate fundido.',
@@ -97,7 +97,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Ensaimada',
-            'cantidad' => 40,
+            'existencia_actual' => 40,
             'categoria' => $bolleria,
             'precio' => 2.00,
             'descripcion' => 'Dulce típico en forma de espiral.',
@@ -107,7 +107,7 @@ class ProductoSeeder extends Seeder
         // Crear productos para la categoría Galletas
         Producto::create([
             'nombre' => 'Galletas de Chocolate',
-            'cantidad' => 200,
+            'existencia_actual' => 200,
             'categoria' => $galletas,
             'precio' => 0.75,
             'descripcion' => 'Galletas crujientes con chispas de chocolate.',
@@ -116,7 +116,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Galletas de Avena',
-            'cantidad' => 150,
+            'existencia_actual' => 150,
             'categoria' => $galletas,
             'precio' => 0.80,
             'descripcion' => 'Galletas saludables hechas con avena.',
@@ -125,7 +125,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Galletas de Jengibre',
-            'cantidad' => 100,
+            'existencia_actual' => 100,
             'categoria' => $galletas,
             'precio' => 0.90,
             'descripcion' => 'Galletas navideñas de jengibre.',
@@ -135,7 +135,7 @@ class ProductoSeeder extends Seeder
         // Crear productos para la categoría Pastelería
         Producto::create([
             'nombre' => 'Pastel de Tres Leches',
-            'cantidad' => 10,
+            'existencia_actual' => 10,
             'categoria' => $pasteleria,
             'precio' => 25.00,
             'descripcion' => 'Pastel empapado en tres tipos de leche.',
@@ -144,7 +144,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Pastel de Chocolate',
-            'cantidad' => 15,
+            'existencia_actual' => 15,
             'categoria' => $pasteleria,
             'precio' => 30.00,
             'descripcion' => 'Pastel de chocolate con cobertura de crema.',
@@ -153,7 +153,7 @@ class ProductoSeeder extends Seeder
 
         Producto::create([
             'nombre' => 'Cheesecake',
-            'cantidad' => 12,
+            'existencia_actual' => 12,
             'categoria' => $pasteleria,
             'precio' => 22.00,
             'descripcion' => 'Pastel de queso con base de galleta.',

@@ -32,6 +32,7 @@
             <label for="descripcion">Descripción</label>
             <textarea class="form-control" name="descripcion" id="descripcion">{{$proveedor->descripcion}}</textarea>
         </div>
+        {{-- Hidden --}}
         <div class="form-group">
             <input type="text" class="form-control" name="eliminado" id="eliminado" value="{{$proveedor->eliminado}}" required hidden>
         </div>

@@ -87,7 +87,7 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'can:controlar-entrada-materias-primas', // Verifica que el usuario tenga el permiso
+    'can:controlar-entradas-materias-primas', // Verifica que el usuario tenga el permiso
 ])->group(function () {
     Route::get('/entradas', [EntradaController::class, 'index'])->name('entradas.index');
     Route::get('/entradas_crear', [EntradaController::class, 'create'])->name('entradas.create');

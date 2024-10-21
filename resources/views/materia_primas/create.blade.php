@@ -2,7 +2,7 @@
 @section('titulo', 'Materias primas')
 @section('contenido')
 <div class="container">
-    <h3>Crear materia prima</h3>
+    <h3>Registrar materia prima</h3>
     <form action="{{ route('materia_primas.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -13,7 +13,6 @@
             <label for="unidad">Unidad</label>
             <input type="text" class="form-control" name="unidad" id="unidad" required>
         </div>
-
         <div class="form-group">
             <label for="precio">Precio</label>
             <input type="number" class="form-control" name="precio" id="precio" step="0.1" min="0" required>

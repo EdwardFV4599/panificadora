@@ -10,6 +10,6 @@ class Entrada extends Model
     use HasFactory;
 
     protected $primaryKey='id';
-    protected $fillable = ['producto', 'proveedor', 'existencia_inicial', 'existencia_actual', 'precio', 'encargado', 'fecha', 'descripcion','eliminado'];
+    protected $fillable = ['materia_prima', 'proveedor', 'existencia_agregada', 'precio', 'encargado', 'fecha', 'descripcion','eliminado'];
     public $timestamps = true;
 }

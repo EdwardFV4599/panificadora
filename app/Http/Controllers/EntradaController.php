@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Entrada;
+use App\Models\MateriaPrima;
+use App\Models\Proveedor;
 
 class EntradaController extends Controller
 {
@@ -11,30 +13,36 @@ class EntradaController extends Controller
     public function index(Request $request)
     {
         $entradas = Entrada::where('eliminado', 0)->get();
-        return view('entradas.index', compact('entradas'));
+        $materiasPrimas = MateriaPrima::all();
+        $proveedores = Proveedor::all();
+        return view('entradas.index', compact('entradas', 'materiasPrimas', 'proveedores'));
     }
 
     // Mostrar el formulario para crear
     public function create()
     {
         $entradas = Entrada::all();
-        return view('entradas.create', compact('entradas'));
+        $materiasPrimas = MateriaPrima::all();
+        $proveedores = Proveedor::all();
+        return view('entradas.create', compact('entradas', 'materiasPrimas', 'proveedores'));
     }
 
     // Guardar en la base de datos
     public function store(Request $request)
     {
         $request->validate([
-            'producto' => 'required',
-            'proveedor' => 'required',
-            'existencia_inicial' => 'required',
+            'existencia_agregada' => 'required',
             'precio' => 'required|numeric',
-            'encargado' => 'required',
             'fecha' => 'required',
             'descripcion' => 'nullable'
         ]);
 
         Entrada::create($request->all());
+
+        $id = $request->materia_prima;
+        $materiaPrima = MateriaPrima::find($id);
+        $materiaPrima->existencia_actual = $materiaPrima->existencia_actual + $request->existencia_agregada;
+        $materiaPrima->save();
         return redirect()->route('entradas.index')->with('success', 'Entrada creada correctamente.');
     }
 
@@ -42,18 +50,17 @@ class EntradaController extends Controller
     public function edit(Request $request,string $id)
     {
         $entrada = Entrada::find($id);
-        return view('entradas.edit', compact('entrada', 'id'));
+        $materiasPrimas = MateriaPrima::all();
+        $proveedores = Proveedor::all();
+        return view('entradas.edit', compact('entrada', 'id', 'materiasPrimas', 'proveedores'));
     }
 
     // Actualizar en la base de datos
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'producto' => 'required',
-            'proveedor' => 'required',
-            'existencia_inicial' => 'required',
+            'existencia_agregada' => 'required',
             'precio' => 'required|numeric',
-            'encargado' => 'required',
             'fecha' => 'required',
             'descripcion' => 'nullable'
         ]);
@@ -69,6 +76,11 @@ class EntradaController extends Controller
         $entrada = Entrada::find($id);
         $entrada->eliminado = 1;
         $entrada->save();
+
+        $id = $entrada->materia_prima;
+        $materiaPrima = MateriaPrima::find($id);
+        $materiaPrima->existencia_actual = $materiaPrima->existencia_actual - $entrada->existencia_agregada;
+        $materiaPrima->save();
         return redirect()->route('entradas.index')->with('success', 'Entrada eliminada correctamente.');
     }
 }

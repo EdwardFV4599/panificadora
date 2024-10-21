@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('entradas', function (Blueprint $table) {
             $table->id();
-            $table->string('producto');
+            $table->string('materia_prima');
             $table->string('proveedor');
-            $table->decimal('existencia_inicial', 10, 2);
-            $table->decimal('existencia_actual', 10, 2);
+            $table->decimal('existencia_agregada', 10, 2);
             $table->decimal('precio', 10, 2);
             $table->string('encargado');
             $table->date('fecha');

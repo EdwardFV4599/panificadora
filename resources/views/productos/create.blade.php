@@ -2,7 +2,7 @@
 @section('titulo', 'Productos')
 @section('contenido')
 <div class="container">
-    <h3>Crear producto</h3>
+    <h3>Registrar producto</h3>
     <form action="{{ route('productos.store') }}" method="POST">
         @csrf
         <div class="form-group">

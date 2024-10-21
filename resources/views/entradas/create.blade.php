@@ -1,29 +1,37 @@
 @extends('layouts.appp')
-@section('titulo', 'Materias primas')
+@section('titulo', 'Entradas')
 @section('contenido')
 <div class="container">
-    <h3>Crear proveedor</h3>
-    <form action="{{ route('proveedores.store') }}" method="POST">
+    <h3>Registrar entrada de materia prima</h3>
+    <form action="{{ route('entradas.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" id="nombre" required>
+            <label for="materia_prima" class="form-label">Materia prima</label>
+            <select class="form-control" name="materia_prima" id="materia_prima" required>
+                @foreach ($materiasPrimas as $item)
+                <option value="{{ $item->id}}">{{ $item->nombre }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
-            <label for="ruc">RUC</label>
-            <input type="text" class="form-control" name="ruc" id="ruc" required maxlength="11">
+            <label for="proveedor" class="form-label">Proveedor</label>
+            <select class="form-control" name="proveedor" id="proveedor" required>
+                @foreach ($proveedores as $item)
+                <option value="{{ $item->id}}">{{ $item->nombre }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
-            <label for="correo">Correo</label>
-            <input type="text" class="form-control" name="correo" id="correo" required>
+            <label for="existencia_agregada">Existencia agregada</label>
+            <input type="number" class="form-control" name="existencia_agregada" id="existencia_agregada" step="0.1" min="0" required>
         </div>
         <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input type="text" class="form-control" name="telefono" id="telefono" required maxlength="9">
+            <label for="precio">Precio por unidad</label>
+            <input type="number" class="form-control" name="precio" id="precio" step="0.1" min="0" required>
         </div>
         <div class="form-group">
-            <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" name="direccion" id="direccion" required>
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" name="fecha" id="fecha" required>
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción</label>
@@ -31,10 +39,13 @@
         </div>
         {{-- Hidden --}}
         <div class="form-group">
+            <input type="text" class="form-control" name="encargado" id="encargado" value="{{ auth()->user()->name }}" required hidden>
+        </div>
+        <div class="form-group">
             <input type="text" class="form-control" name="eliminado" id="eliminado" value="0" required hidden>
         </div>
 
-        <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('proveedores.index') }}'">Atrás</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('entradas.index') }}'">Atrás</button>
         <button type="submit" class="btn btn-success">Guardar</button>
         {{-- <input type="submit" class="btn btn-primary" value="Guardar"> --}}
     </form>

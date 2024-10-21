@@ -1,7 +1,7 @@
 @extends('layouts.appp')
-@section('titulo', 'entradas')
+@section('titulo', 'Entradas')
 @section('contenido')
-    <h3>Lista de entradas</h3>
+    <h3>Lista de entradas de materia prima</h3>
     <div class="card mb-4">
         <div class="card-header">
             <form class="form-inline my-2" method="get">
@@ -22,11 +22,13 @@
                 <thead class="table-dark">
                     <tr>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>#</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Nombre</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>RUC</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Correo</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Telefono</h6></th>
-                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Direccion</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Materia prima</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Proveedor</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Existencia agregada</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Existencia actual</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Precio</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Encargado</h6></th>
+                        <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Fecha</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Descripción</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Acciones</h6></th>
                     </tr>
@@ -42,11 +44,25 @@
                     @foreach ($entradas as $item)
                         <tr>
                             <td class="text-xxs mb-0 text-center">{{$item->id}}</td>
-                            <td class="text-xxs mb-0 text-center">{{$item->nombre}}</td>
-                            <td class="text-xxs mb-0 text-center">{{$item->ruc}}</td>
-                            <td class="text-xxs mb-0 text-center">{{$item->correo}}</td>
-                            <td class="text-xxs mb-0 text-center">{{$item->telefono}}</td>
-                            <td class="text-xxs mb-0 text-center">{{$item->direccion}}</td>
+                            @foreach ($materiasPrimas as $materiaPrima)
+                                @if ($materiaPrima->id == $item->materia_prima)
+                                    <td class="text-xxs mb-0 text-center">{{$materiaPrima->nombre}}</td>
+                                @endif
+                            @endforeach
+                            @foreach ($proveedores as $proveedor)
+                                @if ($proveedor->id == $item->proveedor)
+                                    <td class="text-xxs mb-0 text-center">{{$proveedor->nombre}}</td>
+                                @endif
+                            @endforeach
+                            <td class="text-xxs mb-0 text-center">{{$item->existencia_agregada}}</td>
+                            @foreach ($materiasPrimas as $materiaPrima)
+                                @if ($materiaPrima->id == $item->materia_prima)
+                                    <td class="text-xxs mb-0 text-center">{{$materiaPrima->existencia_actual}}</td>
+                                @endif
+                            @endforeach
+                            <td class="text-xxs mb-0 text-center">{{$item->precio}}</td>
+                            <td class="text-xxs mb-0 text-center">{{$item->encargado}}</td>
+                            <td class="text-xxs mb-0 text-center">{{$item->fecha}}</td>
                             <td class="text-xxs mb-0 text-center">{{$item->descripcion}}</td>
                             <td class="text-xxs mb-0 text-center">
                                 <a href="{{ route('entradas.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>

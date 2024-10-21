@@ -25,7 +25,6 @@
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Nombre</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Categoria</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Existencia actual</h6></th>
-
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Precio</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Descripción</h6></th>
                         <th class="text-uppercase text-xxs mb-0 text-center" scope="col"><h6>Acciones</h6></th>

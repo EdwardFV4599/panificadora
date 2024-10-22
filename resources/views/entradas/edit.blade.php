@@ -37,6 +37,7 @@
             <input type="number" class="form-control" name="precio" id="precio" value="{{$entrada->precio}}" step="0.1" min="0" required>
         </div>
         <div class="form-group">
+            <label for="precio">Encargado</label>
             <input type="text" class="form-control" name="encargado" id="encargado" value="{{$entrada->encargado}}" required readonly>
         </div>
         <div class="form-group">

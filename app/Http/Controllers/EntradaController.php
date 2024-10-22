@@ -66,7 +66,16 @@ class EntradaController extends Controller
         ]);
 
         $entrada = Entrada::find($id);
+            $id = $entrada->materia_prima;
+            $materiaPrima = MateriaPrima::find($id);
+            $materiaPrima->existencia_actual = $materiaPrima->existencia_actual - $entrada->existencia_agregada;
+            $materiaPrima->save();
         $entrada->update($request->all());
+
+        $idNueva = $request->materia_prima;
+        $materiaPrimaNueva = MateriaPrima::find($idNueva);
+        $materiaPrimaNueva->existencia_actual = $materiaPrimaNueva->existencia_actual + $request->existencia_agregada;
+        $materiaPrimaNueva->save();
         return redirect()->route('entradas.index')->with('success', 'Entrada actualizada correctamente.');
     }
 

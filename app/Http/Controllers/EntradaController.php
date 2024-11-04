@@ -12,7 +12,7 @@ class EntradaController extends Controller
     // Mostrar la lista
     public function index(Request $request)
     {
-        $entradas = Entrada::where('eliminado', 0)->get();
+        $entradas = Entrada::where('estado', 1)->get();
         $materiasPrimas = MateriaPrima::all();
         $proveedores = Proveedor::all();
         return view('entradas.index', compact('entradas', 'materiasPrimas', 'proveedores'));
@@ -31,13 +31,22 @@ class EntradaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'existencia_agregada' => 'required',
+            'existencia_agregada' => 'required|numeric',
             'precio' => 'required|numeric',
             'fecha' => 'required',
             'descripcion' => 'nullable'
         ]);
 
-        Entrada::create($request->all());
+        $entrada = new Entrada();
+        $entrada->materia_prima = $request->materia_prima;
+        $entrada->proveedor = $request->proveedor;
+        $entrada->existencia_agregada = $request->existencia_agregada;
+        $entrada->precio = $request->precio;
+        $entrada->encargado = $request->encargado;
+        $entrada->fecha = $request->fecha;
+        $entrada->descripcion = $request->descripcion;
+        $entrada->estado = 1;
+        $entrada->save();
 
         $id = $request->materia_prima;
         $materiaPrima = MateriaPrima::find($id);
@@ -59,18 +68,27 @@ class EntradaController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'existencia_agregada' => 'required',
+            'existencia_agregada' => 'required|numeric',
             'precio' => 'required|numeric',
             'fecha' => 'required',
             'descripcion' => 'nullable'
         ]);
 
         $entrada = Entrada::find($id);
+        {
             $id = $entrada->materia_prima;
             $materiaPrima = MateriaPrima::find($id);
             $materiaPrima->existencia_actual = $materiaPrima->existencia_actual - $entrada->existencia_agregada;
             $materiaPrima->save();
-        $entrada->update($request->all());
+        }
+        $entrada->materia_prima = $request->materia_prima;
+        $entrada->proveedor = $request->proveedor;
+        $entrada->existencia_agregada = $request->existencia_agregada;
+        $entrada->precio = $request->precio;
+        $entrada->encargado = $request->encargado;
+        $entrada->fecha = $request->fecha;
+        $entrada->descripcion = $request->descripcion;
+        $entrada->save();
 
         $idNueva = $request->materia_prima;
         $materiaPrimaNueva = MateriaPrima::find($idNueva);
@@ -83,7 +101,7 @@ class EntradaController extends Controller
     public function destroy($id)
     {
         $entrada = Entrada::find($id);
-        $entrada->eliminado = 1;
+        $entrada->estado = 0;
         $entrada->save();
 
         $id = $entrada->materia_prima;

@@ -19,7 +19,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 60.00,
             'descripcion' => 'Harina refinada para la elaboración de panes',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -28,7 +28,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 75.00,
             'descripcion' => 'Harina integral para panes de grano entero',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -37,7 +37,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 45.00,
             'descripcion' => 'Azúcar blanca granulada',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -46,7 +46,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 12.00,
             'descripcion' => 'Sal refinada para la preparación de masas',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -55,7 +55,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'litros',
             'precio' => 80.00,
             'descripcion' => 'Aceite vegetal para preparar masa y freír',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -64,7 +64,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 120.00,
             'descripcion' => 'Mantequilla para la preparación de productos de repostería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -73,7 +73,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 95.00,
             'descripcion' => 'Levadura fresca para fermentación de masas',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -82,7 +82,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 85.00,
             'descripcion' => 'Leche en polvo para enriquecer la masa',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -91,7 +91,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'unidades',
             'precio' => 300.00,
             'descripcion' => 'Huevos frescos para la preparación de masas y repostería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -100,7 +100,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 25.00,
             'descripcion' => 'Canela molida para saborizar productos de panadería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -109,7 +109,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 150.00,
             'descripcion' => 'Chocolate en trozos para panes dulces y repostería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -118,7 +118,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 40.00,
             'descripcion' => 'Pasas para agregar en panes dulces',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -127,7 +127,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'kg',
             'precio' => 30.00,
             'descripcion' => 'Semillas de sésamo para decorar panes y bollos',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         MateriaPrima::create([
@@ -136,7 +136,7 @@ class MateriaPrimaSeeder extends Seeder
             'unidad' => 'litros',
             'precio' => 70.00,
             'descripcion' => 'Jarabe de maíz para endulzar productos de panadería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
     }
 }

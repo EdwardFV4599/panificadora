@@ -20,7 +20,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '987654321',
             'direccion' => 'Av. Los Industriales 456, Lima, Perú',
             'descripcion' => 'Proveedor de harina refinada e integral.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -30,7 +30,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '912345678',
             'direccion' => 'Calle Los Dulces 789, Lima, Perú',
             'descripcion' => 'Especialistas en azúcar blanca, rubia y edulcorantes.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -40,7 +40,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '923456789',
             'direccion' => 'Jr. Condimentos 123, Arequipa, Perú',
             'descripcion' => 'Distribuidor de sal marina y diversas especias.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -50,7 +50,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '934567890',
             'direccion' => 'Av. Los Olivos 234, Trujillo, Perú',
             'descripcion' => 'Proveedor de aceites vegetales y margarinas.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -60,7 +60,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '945678901',
             'direccion' => 'Carretera Central Km 12, Cusco, Perú',
             'descripcion' => 'Distribuidor de leche y derivados lácteos.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -70,7 +70,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '956789012',
             'direccion' => 'Pasaje Panaderos 456, Lima, Perú',
             'descripcion' => 'Proveedores de ingredientes para la industria panadera.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -80,7 +80,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '967890123',
             'direccion' => 'Av. Innovación 789, Chiclayo, Perú',
             'descripcion' => 'Proveedor de empaques sostenibles.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -90,7 +90,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '978901234',
             'direccion' => 'Calle Natural 321, Piura, Perú',
             'descripcion' => 'Proveedores de levaduras y fermentos.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -100,7 +100,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '989012345',
             'direccion' => 'Av. Fragancias 987, Lima, Perú',
             'descripcion' => 'Especialistas en aromas y emulsiones para panadería.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -110,7 +110,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '990123456',
             'direccion' => 'Calle Gallinas 567, Huancayo, Perú',
             'descripcion' => 'Proveedor de huevos frescos de campo.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -120,7 +120,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '901234567',
             'direccion' => 'Av. Frutales 654, Lima, Perú',
             'descripcion' => 'Proveedor de frutas secas y nueces.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -130,7 +130,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '912345678',
             'direccion' => 'Jr. Cacaoteros 987, Cusco, Perú',
             'descripcion' => 'Distribuidor de chocolate y cacao.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -140,7 +140,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '923456789',
             'direccion' => 'Av. Surco 345, Lima, Perú',
             'descripcion' => 'Proveedor de grasas vegetales.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -150,7 +150,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '934567890',
             'direccion' => 'Calle Colores 654, Arequipa, Perú',
             'descripcion' => 'Distribuidor de colorantes y saborizantes.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -160,7 +160,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '945678901',
             'direccion' => 'Av. Norte 123, Piura, Perú',
             'descripcion' => 'Proveedor de harina de trigo y centeno.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -170,7 +170,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '956789012',
             'direccion' => 'Jr. Dulce 456, Cusco, Perú',
             'descripcion' => 'Distribuidor de miel natural y jarabes.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -180,7 +180,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '967890123',
             'direccion' => 'Calle Lactosa 321, Huancavelica, Perú',
             'descripcion' => 'Proveedor de leche en polvo y condensada.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -190,7 +190,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '978901234',
             'direccion' => 'Av. Panadería 987, Lima, Perú',
             'descripcion' => 'Proveedor de premezclas y masas.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -200,7 +200,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '989012345',
             'direccion' => 'Jr. Cremoso 654, Lima, Perú',
             'descripcion' => 'Proveedores de cremas y salsas para la industria.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
 
         Proveedor::create([
@@ -210,7 +210,7 @@ class ProveedorSeeder extends Seeder
             'telefono' => '990123456',
             'direccion' => 'Av. Innovación 345, Trujillo, Perú',
             'descripcion' => 'Distribuidor de maquinaria para panaderías.',
-            'eliminado' => 0,
+            'estado' => 1,
         ]);
     }
 }

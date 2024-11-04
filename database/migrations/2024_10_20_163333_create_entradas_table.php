@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('encargado');
             $table->date('fecha');
             $table->text('descripcion')->nullable();
-            $table->integer('eliminado');
+            $table->integer('estado');
             $table->timestamps();
         });
     }

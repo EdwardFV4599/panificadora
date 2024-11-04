@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('unidad');
             $table->decimal('precio', 10, 2);
             $table->text('descripcion')->nullable();
-            $table->integer('eliminado');
+            $table->integer('estado');
             $table->timestamps();
         });
     }

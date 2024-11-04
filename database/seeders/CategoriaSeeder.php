@@ -15,27 +15,27 @@ class CategoriaSeeder extends Seeder
     {
         Categoria::create([
             'nombre' => 'Panadería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         Categoria::create([
             'nombre' => 'Repostería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         Categoria::create([
             'nombre' => 'Bollería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         Categoria::create([
             'nombre' => 'Galletas',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
 
         Categoria::create([
             'nombre' => 'Pastelería',
-            'eliminado' => '0',
+            'estado' => 1,
         ]);
     }
 }

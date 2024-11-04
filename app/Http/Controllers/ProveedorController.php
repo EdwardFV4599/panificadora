@@ -10,7 +10,7 @@ class ProveedorController extends Controller
     // Mostrar la lista
     public function index(Request $request)
     {
-        $proveedores = Proveedor::where('eliminado', 0)->get();
+        $proveedores = Proveedor::where('estado', 1)->get();
         return view('proveedores.index', compact('proveedores'));
     }
 
@@ -26,14 +26,22 @@ class ProveedorController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'ruc' => 'required',
+            'ruc' => 'required|numeric',
             'correo' => 'required',
             'telefono' => 'required|numeric',
             'direccion' => 'required',
             'descripcion' => 'nullable'
         ]);
 
-        Proveedor::create($request->all());
+        $proveedor = new Proveedor();
+        $proveedor->nombre = $request->nombre;
+        $proveedor->ruc = $request->ruc;
+        $proveedor->correo = $request->correo;
+        $proveedor->telefono = $request->telefono;
+        $proveedor->direccion = $request->direccion;
+        $proveedor->descripcion = $request->descripcion;
+        $proveedor->estado = 1;
+        $proveedor->save();
         return redirect()->route('proveedores.index')->with('success', 'Proveedor creado correctamente.');
     }
 
@@ -57,7 +65,13 @@ class ProveedorController extends Controller
         ]);
 
         $proveedor = Proveedor::find($id);
-        $proveedor->update($request->all());
+        $proveedor->nombre = $request->nombre;
+        $proveedor->ruc = $request->ruc;
+        $proveedor->correo = $request->correo;
+        $proveedor->telefono = $request->telefono;
+        $proveedor->direccion = $request->direccion;
+        $proveedor->descripcion = $request->descripcion;
+        $proveedor->save();
         return redirect()->route('proveedores.index')->with('success', 'Proveedor actualizado correctamente.');
     }
 
@@ -65,7 +79,7 @@ class ProveedorController extends Controller
     public function destroy($id)
     {
         $proveedor = Proveedor::find($id);
-        $proveedor->eliminado = 1;
+        $proveedor->estado = 0;
         $proveedor->save();
         return redirect()->route('proveedores.index')->with('success', 'Proveedor eliminado correctamente.');
     }

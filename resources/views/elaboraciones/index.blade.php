@@ -1,8 +1,8 @@
 @extends('layouts.appp')
-@section('titulo', 'Entradas')
+@section('titulo', 'Elaboración')
 @section('contenido')
     <div class="container-fluid">
-        <h3><strong>Lista de entradas de materia prima</strong></h3>
+        <h3><strong>Lista de elaboracion de productos</strong></h3>
         <div class="card mb-4">
             <div class="card-header">
                 <form class="form-inline my-2" method="get">
@@ -10,7 +10,7 @@
                         <div class="row w-100 align-items-center">
                             {{-- Registrar --}}
                             <div class="col-8">
-                                <a href="{{ route('entradas.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a>
+                                <a href="{{ route('elaboraciones.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a>
                             </div>
                         </div>
                     </div>
@@ -23,11 +23,9 @@
                     <thead class="table-dark">
                         <tr>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>#</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Materia prima</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Proveedor</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Existencia agregada</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Producto</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Cantidad elaborada</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Existencia actual</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Precio</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Encargado</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Fecha</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th>
@@ -36,7 +34,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($entradas as $item)
+                        @foreach ($elaboraciones as $item)
                             <tr>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->id}}</td>
                                 @foreach ($materiasPrimas as $materiaPrima)
@@ -60,9 +58,9 @@
                                 <td class="text-xxs mb-0 text-center align-middle text-nowrap">{{$item->fecha}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">
-                                    <a href="{{ route('entradas.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                    <a href="{{ route('elaboraciones.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                     &nbsp;
-                                    <form action="{{ route('entradas.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                                    <form action="{{ route('elaboraciones.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >
                                             <i class="fas fa-trash"></i> Eliminar

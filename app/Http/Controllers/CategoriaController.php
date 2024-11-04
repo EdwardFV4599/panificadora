@@ -10,7 +10,7 @@ class CategoriaController extends Controller
     // Mostrar la lista
     public function index(Request $request)
     {
-        $categorias = Categoria::where('eliminado', 0)->get();
+        $categorias = Categoria::where('estado', 1)->get();
         return view('categorias.index', compact('categorias'));
     }
 
@@ -28,7 +28,10 @@ class CategoriaController extends Controller
             'nombre' => 'required',
         ]);
 
-        Categoria::create($request->all());
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->estado = 1;
+        $categoria->save();
         return redirect()->route('categorias.index')->with('success', 'Categoria creada correctamente.');
     }
 
@@ -47,7 +50,8 @@ class CategoriaController extends Controller
         ]);
 
         $categoria = Categoria::find($id);
-        $categoria->update($request->all());
+        $categoria->nombre = $request->nombre;
+        $categoria->save();
         return redirect()->route('categorias.index')->with('success', 'Categoria actualizada correctamente.');
     }
 
@@ -55,7 +59,7 @@ class CategoriaController extends Controller
     public function destroy($id)
     {
         $categoria = Categoria::find($id);
-        $categoria->eliminado = 1;
+        $categoria->estado = 0;
         $categoria->save();
         return redirect()->route('categorias.index')->with('success', 'Categoria eliminada correctamente.');
     }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->text('descripcion')->nullable();
-            $table->integer('eliminado');
+            $table->integer('estado');
             $table->timestamps();
         });
     }

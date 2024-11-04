@@ -10,7 +10,7 @@ class MateriaPrimaController extends Controller
     // Mostrar la lista
     public function index(Request $request)
     {
-        $materiasPrimas = MateriaPrima::where('eliminado', 0)->get();
+        $materiasPrimas = MateriaPrima::where('estado', 1)->get();
         return view('materia_primas.index', compact('materiasPrimas'));
     }
 
@@ -31,7 +31,14 @@ class MateriaPrimaController extends Controller
             'descripcion' => 'nullable'
         ]);
 
-        MateriaPrima::create($request->all());
+        $materiaPrima = new MateriaPrima();
+        $materiaPrima->nombre = $request->nombre;
+        $materiaPrima->existencia_actual = 0;
+        $materiaPrima->unidad = $request->unidad;
+        $materiaPrima->precio = $request->precio;
+        $materiaPrima->descripcion = $request->descripcion;
+        $materiaPrima->estado = 1;
+        $materiaPrima->save();
         return redirect()->route('materia_primas.index')->with('success', 'Materia prima creada correctamente.');
     }
 
@@ -53,7 +60,12 @@ class MateriaPrimaController extends Controller
         ]);
 
         $materiaPrima = MateriaPrima::find($id);
-        $materiaPrima->update($request->all());
+        $materiaPrima->nombre = $request->nombre;
+        $materiaPrima->existencia_actual = $request->existencia_actual;
+        $materiaPrima->unidad = $request->unidad;
+        $materiaPrima->precio = $request->precio;
+        $materiaPrima->descripcion = $request->descripcion;
+        $materiaPrima->save();
         return redirect()->route('materia_primas.index')->with('success', 'Materia prima actualizada correctamente.');
     }
 
@@ -61,7 +73,7 @@ class MateriaPrimaController extends Controller
     public function destroy($id)
     {
         $materiaPrima = MateriaPrima::find($id);
-        $materiaPrima->eliminado = 1;
+        $materiaPrima->estado = 0;
         $materiaPrima->save();
         return redirect()->route('materia_primas.index')->with('success', 'Materia prima eliminada correctamente.');
     }

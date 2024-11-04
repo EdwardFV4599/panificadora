@@ -33,7 +33,7 @@
                 <input type="number" class="form-control" name="existencia_agregada" id="existencia_agregada" value="{{$entrada->existencia_agregada}}" step="0.1" min="0" required>
             </div>
             <div class="form-group">
-                <label for="precio">Precio</label>
+                <label for="precio">Precio por unidad</label>
                 <input type="number" class="form-control" name="precio" id="precio" value="{{$entrada->precio}}" step="0.1" min="0" required>
             </div>
             <div class="form-group">

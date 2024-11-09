@@ -6,9 +6,6 @@
         <form action="{{ route('entradas.update', $id) }}" method="POST">
             @csrf
             <div class="form-group">
-                <input type="text" class="form-control" name="id" id="id" value="{{$entrada->id}}" required readonly>
-            </div>
-            <div class="form-group">
                 <label for="materia_prima" class="form-label">Materia prima</label>
                 <select class="form-control" name="materia_prima" id="materia_prima" required>
                     @foreach ($materiasPrimas as $materiaPrima)

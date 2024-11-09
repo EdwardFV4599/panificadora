@@ -27,7 +27,6 @@ class MateriaPrimaController extends Controller
         $request->validate([
             'nombre' => 'required',
             'unidad' => 'required',
-            'precio' => 'required|numeric',
             'descripcion' => 'nullable'
         ]);
 
@@ -35,7 +34,6 @@ class MateriaPrimaController extends Controller
         $materiaPrima->nombre = $request->nombre;
         $materiaPrima->existencia_actual = 0;
         $materiaPrima->unidad = $request->unidad;
-        $materiaPrima->precio = $request->precio;
         $materiaPrima->descripcion = $request->descripcion;
         $materiaPrima->estado = 1;
         $materiaPrima->save();
@@ -55,7 +53,6 @@ class MateriaPrimaController extends Controller
         $request->validate([
             'nombre' => 'required',
             'unidad' => 'required',
-            'precio' => 'required|numeric',
             'descripcion' => 'nullable'
         ]);
 
@@ -63,7 +60,6 @@ class MateriaPrimaController extends Controller
         $materiaPrima->nombre = $request->nombre;
         $materiaPrima->existencia_actual = $request->existencia_actual;
         $materiaPrima->unidad = $request->unidad;
-        $materiaPrima->precio = $request->precio;
         $materiaPrima->descripcion = $request->descripcion;
         $materiaPrima->save();
         return redirect()->route('materia_primas.index')->with('success', 'Materia prima actualizada correctamente.');

@@ -10,6 +10,6 @@ class MateriaPrima extends Model
     use HasFactory;
 
     protected $primaryKey='id';
-    protected $fillable = ['nombre', 'existencia_actual', 'unidad', 'precio', 'descripcion', 'estado'];
+    protected $fillable = ['nombre','existencia_actual','unidad','descripcion','estado'];
     public $timestamps = true;
 }

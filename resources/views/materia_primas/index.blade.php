@@ -26,9 +26,9 @@
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Nombre</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Existencia actual</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Unidad</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Precio</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Acciones</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Editar</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Eliminar</h6></th>
                         </tr>
                     </thead>
 
@@ -39,15 +39,15 @@
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->nombre}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->existencia_actual}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->unidad}}</td>
-                                <td class="text-xxs mb-0 text-center align-middle">{{$item->precio}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">
-                                    <a href="{{ route('materia_primas.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                                    &nbsp;
+                                    <a href="{{ route('materia_primas.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                                </td>
+                                <td class="text-xxs mb-0 text-center align-middle">
                                     <form action="{{ route('materia_primas.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >
-                                            <i class="fas fa-trash"></i> Eliminar
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                                 </td>

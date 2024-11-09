@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Elaboracion extends Model
+class ElaboraProducto extends Model
 {
     use HasFactory;
 
     protected $primaryKey='id';
-    protected $fillable = ['nombre', 'existencia_actual', 'unidad', 'precio', 'descripcion', 'estado'];
+    protected $fillable = ['producto','cantidad_agregada','existencia_actual','unidad','precio','fecha','descripcion','estado'];
     public $timestamps = true;
 }

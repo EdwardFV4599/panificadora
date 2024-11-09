@@ -9,7 +9,7 @@ use App\Http\Controllers\MateriaPrimaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\EntradaController;
-use App\Http\Controllers\ElaboracionController;
+use App\Http\Controllers\ElaboraProductoController;
 
 
 // Rutas
@@ -104,13 +104,14 @@ Route::middleware([
     'verified',
     'can:controlar-elaboracion-productos', // Verifica que el usuario tenga el permiso
 ])->group(function () {
-    Route::get('/elaboraciones', [ElaboracionController::class, 'index'])->name('elaboraciones.index');
-    Route::get('/elaboraciones_crear', [ElaboracionController::class, 'create'])->name('elaboraciones.create');
-    Route::post('/elaboraciones_guardar', [ElaboracionController::class, 'store'])->name('elaboraciones.store');
-    Route::get('/elaboraciones_editar/{id}', [ElaboracionController::class, 'edit'])->name('elaboraciones.edit');
-    Route::post('/elaboraciones_actualizar/{id}', [ElaboracionController::class, 'update'])->name('elaboraciones.update');
-    Route::post('/elaboraciones_eliminar/{id}', [ElaboracionController::class, 'destroy'])->name('elaboraciones.destroy');
+    Route::get('/elaboraproductos', [ElaboraProductoController::class, 'index'])->name('elaboraproductos.index');
+    Route::get('/elaboraproductos/crear', [ElaboraProductoController::class, 'create'])->name('elaboraproductos.create');
+    Route::post('/elaboraproductos/guardar', [ElaboraProductoController::class, 'store'])->name('elaboraproductos.store');
+    Route::get('/elaboraproductos/editar/{id}', [ElaboraProductoController::class, 'edit'])->name('elaboraproductos.edit');
+    Route::post('/elaboraproductos/actualizar/{id}', [ElaboraProductoController::class, 'update'])->name('elaboraproductos.update');
+    Route::post('/elaboraproductos/eliminar/{id}', [ElaboraProductoController::class, 'destroy'])->name('elaboraproductos.destroy');
 });
+
 
 
 

@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Elaboracion;
+use App\Models\ElaboraProducto;
 use App\Models\Categoria;
 use App\Models\Producto;
 
-class ElaboracionController extends Controller
+class ElaboraProductoController extends Controller
 {
     // Mostrar la lista
     public function index(Request $request)
     {
-        $productos = Elaboracion::where('estado', 1)->get();
+        $elaboraproductos = ElaboraProducto::where('estado', 1)->get();
         $categorias = Categoria::all();
         $productos = Producto::all();
-        return view('productos.index', compact('productos','categorias'));
+        return view('elaboraproductos.index', compact('elaboraproductos','categorias', 'productos'));
     }
 
     // Mostrar el formulario para crear
     public function create()
     {
-        $productos = Elaboracion::all();
+        $elaboraproductos = ElaboraProducto::all();
         $categorias = Categoria::all();
-        return view('productos.create', compact('productos','categorias'));
+        return view('elaboraproductos.create', compact('elaboraproductos','categorias'));
     }
 
     // Guardar en la base de datos
@@ -36,7 +36,7 @@ class ElaboracionController extends Controller
             'descripcion' => 'nullable'
         ]);
 
-        $producto = new Elaboracion();
+        $producto = new ElaboraProducto();
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
         $producto->existencia_actual = 0;
@@ -44,15 +44,15 @@ class ElaboracionController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->estado = 1;
         $producto->save();
-        return redirect()->route('productos.index')->with('success', 'Elaboracion creado correctamente.');
+        return redirect()->route('elaboraproductos.index')->with('success', 'ElaboraProducto creado correctamente.');
     }
 
     // Mostrar el formulario para editar
     public function edit(Request $request,string $id)
     {
-        $producto = Elaboracion::find($id);
+        $producto = ElaboraProducto::find($id);
         $categorias = Categoria::all();
-        return view('productos.edit', compact('producto', 'id', 'categorias'));
+        return view('elaboraproductos.edit', compact('producto', 'id', 'categorias'));
     }
 
     // Actualizar en la base de datos
@@ -65,22 +65,22 @@ class ElaboracionController extends Controller
             'descripcion' => 'nullable'
         ]);
 
-        $producto = Elaboracion::find($id);
+        $producto = ElaboraProducto::find($id);
         $producto->nombre = $request->nombre;
         $producto->categoria = $request->categoria;
         $producto->existencia_actual = 0;
         $producto->precio = $request->precio;
         $producto->descripcion = $request->descripcion;
         $producto->save();
-        return redirect()->route('productos.index')->with('success', 'Elaboracion actualizado correctamente.');
+        return redirect()->route('elaboraproductos.index')->with('success', 'ElaboraProducto actualizado correctamente.');
     }
 
     // Eliminar
     public function destroy($id)
     {
-        $producto = Elaboracion::find($id);
+        $producto = ElaboraProducto::find($id);
         $producto->estado = 0;
         $producto->save();
-        return redirect()->route('productos.index')->with('success', 'Elaboracion eliminado correctamente.');
+        return redirect()->route('elaboraproductos.index')->with('success', 'ElaboraProducto eliminado correctamente.');
     }
 }

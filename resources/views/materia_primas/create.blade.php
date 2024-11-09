@@ -14,10 +14,6 @@
                 <input type="text" class="form-control" name="unidad" id="unidad" required>
             </div>
             <div class="form-group">
-                <label for="precio">Precio</label>
-                <input type="number" class="form-control" name="precio" id="precio" step="0.1" min="0" required>
-            </div>
-            <div class="form-group">
                 <label for="descripcion">Descripción</label>
                 <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
             </div>

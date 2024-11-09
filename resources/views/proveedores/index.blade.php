@@ -17,8 +17,8 @@
                 </form>
             </div>
 
-            <div class="card-body">
-            {{-- Tabla --}}
+            <div class="card-body table-responsive">
+                {{-- Tabla --}}
                 <table id="mi-tabla" class="table">
                     <thead class="table-dark">
                         <tr>
@@ -29,7 +29,8 @@
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Telefono</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Direccion</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Acciones</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Editar</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Eliminar</h6></th>
                         </tr>
                     </thead>
 
@@ -44,12 +45,13 @@
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->direccion}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">
-                                    <a href="{{ route('proveedores.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                                    &nbsp;
+                                    <a href="{{ route('proveedores.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                                </td>
+                                <td class="text-xxs mb-0 text-center align-middle">
                                     <form action="{{ route('proveedores.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >
-                                            <i class="fas fa-trash"></i> Eliminar
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                                 </td>

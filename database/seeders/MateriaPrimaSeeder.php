@@ -17,7 +17,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Harina de Trigo',
             'existencia_actual' => 500,
             'unidad' => 'kg',
-            'precio' => 60.00,
             'descripcion' => 'Harina refinada para la elaboración de panes',
             'estado' => 1,
         ]);
@@ -26,7 +25,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Harina Integral',
             'existencia_actual' => 300,
             'unidad' => 'kg',
-            'precio' => 75.00,
             'descripcion' => 'Harina integral para panes de grano entero',
             'estado' => 1,
         ]);
@@ -35,7 +33,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Azúcar',
             'existencia_actual' => 200,
             'unidad' => 'kg',
-            'precio' => 45.00,
             'descripcion' => 'Azúcar blanca granulada',
             'estado' => 1,
         ]);
@@ -44,7 +41,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Sal',
             'existencia_actual' => 100,
             'unidad' => 'kg',
-            'precio' => 12.00,
             'descripcion' => 'Sal refinada para la preparación de masas',
             'estado' => 1,
         ]);
@@ -53,7 +49,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Aceite Vegetal',
             'existencia_actual' => 50,
             'unidad' => 'litros',
-            'precio' => 80.00,
             'descripcion' => 'Aceite vegetal para preparar masa y freír',
             'estado' => 1,
         ]);
@@ -62,7 +57,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Mantequilla',
             'existencia_actual' => 80,
             'unidad' => 'kg',
-            'precio' => 120.00,
             'descripcion' => 'Mantequilla para la preparación de productos de repostería',
             'estado' => 1,
         ]);
@@ -71,7 +65,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Levadura Fresca',
             'existencia_actual' => 40,
             'unidad' => 'kg',
-            'precio' => 95.00,
             'descripcion' => 'Levadura fresca para fermentación de masas',
             'estado' => 1,
         ]);
@@ -80,7 +73,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Leche en Polvo',
             'existencia_actual' => 60,
             'unidad' => 'kg',
-            'precio' => 85.00,
             'descripcion' => 'Leche en polvo para enriquecer la masa',
             'estado' => 1,
         ]);
@@ -89,7 +81,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Huevos',
             'existencia_actual' => 500,
             'unidad' => 'unidades',
-            'precio' => 300.00,
             'descripcion' => 'Huevos frescos para la preparación de masas y repostería',
             'estado' => 1,
         ]);
@@ -98,7 +89,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Canela',
             'existencia_actual' => 20,
             'unidad' => 'kg',
-            'precio' => 25.00,
             'descripcion' => 'Canela molida para saborizar productos de panadería',
             'estado' => 1,
         ]);
@@ -107,7 +97,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Chocolate en Trozos',
             'existencia_actual' => 30,
             'unidad' => 'kg',
-            'precio' => 150.00,
             'descripcion' => 'Chocolate en trozos para panes dulces y repostería',
             'estado' => 1,
         ]);
@@ -116,7 +105,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Pasas',
             'existencia_actual' => 20,
             'unidad' => 'kg',
-            'precio' => 40.00,
             'descripcion' => 'Pasas para agregar en panes dulces',
             'estado' => 1,
         ]);
@@ -125,7 +113,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Semillas de Sésamo',
             'existencia_actual' => 15,
             'unidad' => 'kg',
-            'precio' => 30.00,
             'descripcion' => 'Semillas de sésamo para decorar panes y bollos',
             'estado' => 1,
         ]);
@@ -134,7 +121,6 @@ class MateriaPrimaSeeder extends Seeder
             'nombre' => 'Jarabe de Maíz',
             'existencia_actual' => 50,
             'unidad' => 'litros',
-            'precio' => 70.00,
             'descripcion' => 'Jarabe de maíz para endulzar productos de panadería',
             'estado' => 1,
         ]);

@@ -1,5 +1,5 @@
 @extends('layouts.appp')
-@section('titulo', 'Materias primas')
+@section('titulo', 'Proveedores')
 @section('contenido')
     <div class="container-fluid">
         <h3><strong>Registrar proveedor</strong></h3>

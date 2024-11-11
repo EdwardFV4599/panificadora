@@ -1,14 +1,14 @@
 @extends('layouts.appp')
-@section('titulo', 'Entradas')
+@section('titulo', 'Compras de insumos')
 @section('contenido')
     <div class="container-fluid">
-        <h3><strong>Registrar entrada de materia prima</strong></h3>
-        <form action="{{ route('entradas.store') }}" method="POST">
+        <h3><strong>Registrar compra de insumo</strong></h3>
+        <form action="{{ route('comprasinsumos.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="materia_prima" class="form-label">Materia prima</label>
-                <select class="form-control" name="materia_prima" id="materia_prima" required>
-                    @foreach ($materiasPrimas as $item)
+                <label for="insumo" class="form-label">Insumo</label>
+                <select class="form-control" name="insumo" id="insumo" required>
+                    @foreach ($insumos as $item)
                     <option value="{{ $item->id}}">{{ $item->nombre }}</option>
                     @endforeach
                 </select>
@@ -22,8 +22,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="existencia_agregada">Existencia agregada</label>
-                <input type="number" class="form-control" name="existencia_agregada" id="existencia_agregada" step="0.1" min="0" required>
+                <label for="stock_agregado">Stock agregado</label>
+                <input type="number" class="form-control" name="stock_agregado" id="stock_agregado" step="0.1" min="0" required>
             </div>
             <div class="form-group">
                 <label for="precio">Precio</label>
@@ -42,7 +42,7 @@
                 <input type="text" class="form-control" name="encargado" id="encargado" value="{{ auth()->user()->name }}" required hidden>
             </div>
 
-            <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('entradas.index') }}'">Atrás</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('comprasinsumos.index') }}'">Atrás</button>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>

@@ -1,8 +1,8 @@
 @extends('layouts.appp')
-@section('titulo', 'Entradas')
+@section('titulo', 'Compras de insumos')
 @section('contenido')
     <div class="container-fluid">
-        <h3><strong>Lista de compras de insumos</strong></h3>
+        <h3><strong>Tabla de compras de insumos</strong></h3>
         <div class="card mb-4">
             <div class="card-header">
                 <form class="form-inline my-2" method="get">
@@ -10,7 +10,7 @@
                         <div class="row w-100 align-items-center">
                             {{-- Registrar --}}
                             <div class="col-8">
-                                <a href="{{ route('entradas.create') }}" class="btn btn-primary">Agregar nueva compra</a>
+                                <a href="{{ route('comprasinsumos.create') }}" class="btn btn-primary">Agregar nueva compra</a>
                             </div>
                         </div>
                     </div>
@@ -37,12 +37,12 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($entradas as $item)
+                        @foreach ($comprasinsumos as $item)
                             <tr>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->id}}</td>
-                                @foreach ($materiasPrimas as $materiaPrima)
-                                    @if ($materiaPrima->id == $item->materia_prima)
-                                        <td class="text-xxs mb-0 text-center align-middle">{{$materiaPrima->nombre}}</td>
+                                @foreach ($insumos as $insumo)
+                                    @if ($insumo->id == $item->insumo)
+                                        <td class="text-xxs mb-0 text-center align-middle">{{$insumo->nombre}}</td>
                                     @endif
                                 @endforeach
                                 @foreach ($proveedores as $proveedor)
@@ -50,10 +50,10 @@
                                         <td class="text-xxs mb-0 text-center align-middle">{{$proveedor->nombre}}</td>
                                     @endif
                                 @endforeach
-                                <td class="text-xxs mb-0 text-center align-middle">{{$item->existencia_agregada}}</td>
-                                @foreach ($materiasPrimas as $materiaPrima)
-                                    @if ($materiaPrima->id == $item->materia_prima)
-                                        <td class="text-xxs mb-0 text-center align-middle">{{$materiaPrima->existencia_actual}}</td>
+                                <td class="text-xxs mb-0 text-center align-middle">{{$item->stock_agregado}}</td>
+                                @foreach ($insumos as $insumo)
+                                    @if ($insumo->id == $item->insumo)
+                                        <td class="text-xxs mb-0 text-center align-middle">{{$insumo->stock_actual}}</td>
                                     @endif
                                 @endforeach
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->precio}}</td>
@@ -61,10 +61,10 @@
                                 <td class="text-xxs mb-0 text-center align-middle text-nowrap">{{$item->fecha}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">
-                                    <a href="{{ route('entradas.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                    <a href="{{ route('comprasinsumos.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                 </td>
                                 <td class="text-xxs mb-0 text-center align-middle">
-                                    <form action="{{ route('entradas.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                                    <form action="{{ route('comprasinsumos.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >
                                             <i class="fas fa-trash"></i> Eliminar

@@ -1,9 +1,9 @@
 @extends('layouts.appp')
-@section('titulo', 'Materias primas')
+@section('titulo', 'Insumos')
 @section('contenido')
     <div class="container-fluid">
-        <h3><strong>Registrar materia prima</strong></h3>
-        <form action="{{ route('materia_primas.store') }}" method="POST">
+        <h3><strong>Registrar insumo</strong></h3>
+        <form action="{{ route('insumos.store') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="nombre">Nombre</label>
@@ -18,7 +18,7 @@
                 <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
             </div>
 
-            <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('materia_primas.index') }}'">Atrás</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('insumos.index') }}'">Atrás</button>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
     </div>

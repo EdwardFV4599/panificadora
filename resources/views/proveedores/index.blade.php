@@ -2,7 +2,7 @@
 @section('titulo', 'Proveedores')
 @section('contenido')
     <div class="container-fluid">
-        <h3><strong>Lista de proveedores</strong></h3>
+        <h3><strong>Tabla de proveedores</strong></h3>
         <div class="card mb-4">
             <div class="card-header">
                 <form class="form-inline my-2" method="get">

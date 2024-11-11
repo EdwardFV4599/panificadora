@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('elabora_productos', function (Blueprint $table) {
+        Schema::create('elaboracionproductos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->decimal('existencia_actual', 10, 2);
-            $table->string('unidad');
-            $table->decimal('precio', 10, 2);
+            $table->string('producto');
+            $table->decimal('cantidad_elaborada', 10, 0);
             $table->date('fecha');
             $table->text('descripcion')->nullable();
             $table->integer('estado');
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('elabora_productos');
+        Schema::dropIfExists('elaboracionproductos');
     }
 };

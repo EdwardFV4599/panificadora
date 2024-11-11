@@ -7,11 +7,11 @@
             @csrf
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" value="{{$producto->nombre}}" required>
+                <input type="text" class="form-control" name="nombre" id="nombre" value="{{$producto->nombre}}" required readonly>
             </div>
             <div class="form-group">
-                <label for="existencia_actual">Existencia actual</label>
-                <input type="number" class="form-control" name="existencia_actual" id="existencia_actual" value="{{$producto->existencia_actual}}" step="0.1" min="0" required readonly>
+                <label for="stock_actual">Stock actual</label>
+                <input type="number" class="form-control" name="stock_actual" id="stock_actual" value="{{$producto->stock_actual}}" step="0.1" min="0" required readonly>
             </div>
             <div class="form-group">
                 <label for="categoria" class="form-label">Categoria</label>

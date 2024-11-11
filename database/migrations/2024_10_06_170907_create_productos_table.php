@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('categoria'); 
-            $table->decimal('existencia_actual', 10, 2);
+            $table->decimal('stock_actual', 10, 2);
             $table->decimal('precio', 10, 2);
             $table->text('descripcion')->nullable(); 
             $table->integer('estado');

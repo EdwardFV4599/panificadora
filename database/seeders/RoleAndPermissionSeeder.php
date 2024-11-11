@@ -20,12 +20,12 @@ class RoleAndPermissionSeeder extends Seeder
             'gestionar-roles-permisos',
             'ver-home',
             'mantener-categorias',
-            'mantener-materias-primas',
+            'mantener-insumos',
             'mantener-productos',
             'mantener-proveedores',
-            'controlar-entradas-materias-primas',
+            'controlar-compras-insumos',
             'controlar-elaboracion-productos',
-            'controlar-salidas-productos',
+            'controlar-ventas-productos',
             'controlar-cierre-de-caja',
             'generar-reportes',
             'generar-graficos',
@@ -47,12 +47,12 @@ class RoleAndPermissionSeeder extends Seeder
         $gerenteRole->givePermissionTo(
             'ver-home',
             'mantener-categorias',
-            'mantener-materias-primas',
+            'mantener-insumos',
             'mantener-productos',
             'mantener-proveedores',
-            'controlar-entradas-materias-primas',
+            'controlar-compras-insumos',
             'controlar-elaboracion-productos',
-            'controlar-salidas-productos',
+            'controlar-ventas-productos',
             'controlar-cierre-de-caja',
             'generar-reportes',
             'generar-graficos',
@@ -61,15 +61,15 @@ class RoleAndPermissionSeeder extends Seeder
         $almacenistaRole->givePermissionTo(
             'ver-home',
             'mantener-categorias',
-            'mantener-materias-primas',
+            'mantener-insumos',
             'mantener-productos',
             'mantener-proveedores',
-            'controlar-entradas-materias-primas',
+            'controlar-compras-insumos',
             'controlar-elaboracion-productos',
         );
         $vendedorRole->givePermissionTo(
             'ver-home',
-            'controlar-salidas-productos',
+            'controlar-ventas-productos',
             'controlar-cierre-de-caja'
         );
     }

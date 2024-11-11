@@ -24,11 +24,6 @@ class CategoriaSeeder extends Seeder
         ]);
 
         Categoria::create([
-            'nombre' => 'Bollería',
-            'estado' => 1,
-        ]);
-
-        Categoria::create([
             'nombre' => 'Galletas',
             'estado' => 1,
         ]);

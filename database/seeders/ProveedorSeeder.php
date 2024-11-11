@@ -13,203 +13,129 @@ class ProveedorSeeder extends Seeder
      */
     public function run(): void
     {
+        // Proveedores para Harina de Trigo
         Proveedor::create([
-            'nombre' => 'Harinas del Valle S.A.',
-            'ruc' => '20123456789',
-            'correo' => 'contacto@harinasdelvalle.com',
-            'telefono' => '987654321',
-            'direccion' => 'Av. Los Industriales 456, Lima, Perú',
-            'descripcion' => 'Proveedor de harina refinada e integral.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Azúcares y Derivados S.R.L.',
-            'ruc' => '20134567890',
-            'correo' => 'ventas@azucaresderivados.com',
-            'telefono' => '912345678',
-            'direccion' => 'Calle Los Dulces 789, Lima, Perú',
-            'descripcion' => 'Especialistas en azúcar blanca, rubia y edulcorantes.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Sal y Especias Perú S.A.C.',
-            'ruc' => '20145678901',
-            'correo' => 'info@salyespeciasperu.com',
-            'telefono' => '923456789',
-            'direccion' => 'Jr. Condimentos 123, Arequipa, Perú',
-            'descripcion' => 'Distribuidor de sal marina y diversas especias.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Aceites Finos E.I.R.L.',
-            'ruc' => '20156789012',
-            'correo' => 'contacto@aceitesfinos.com',
-            'telefono' => '934567890',
-            'direccion' => 'Av. Los Olivos 234, Trujillo, Perú',
-            'descripcion' => 'Proveedor de aceites vegetales y margarinas.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Lácteos Andinos S.A.C.',
-            'ruc' => '20167890123',
-            'correo' => 'ventas@lacteosandinos.com',
-            'telefono' => '945678901',
-            'direccion' => 'Carretera Central Km 12, Cusco, Perú',
-            'descripcion' => 'Distribuidor de leche y derivados lácteos.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Insumos Panaderos S.A.C.',
-            'ruc' => '20178901234',
-            'correo' => 'info@insumospanaderos.com',
-            'telefono' => '956789012',
-            'direccion' => 'Pasaje Panaderos 456, Lima, Perú',
-            'descripcion' => 'Proveedores de ingredientes para la industria panadera.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Packaging Innovador E.I.R.L.',
-            'ruc' => '20189012345',
-            'correo' => 'ventas@packaginginnovador.com',
-            'telefono' => '967890123',
-            'direccion' => 'Av. Innovación 789, Chiclayo, Perú',
-            'descripcion' => 'Proveedor de empaques sostenibles.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Fermentos Naturales S.R.L.',
-            'ruc' => '20190123456',
-            'correo' => 'ventas@fermentosnaturales.com',
-            'telefono' => '978901234',
-            'direccion' => 'Calle Natural 321, Piura, Perú',
-            'descripcion' => 'Proveedores de levaduras y fermentos.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Emulsiones y Aromas S.A.',
-            'ruc' => '20201234567',
-            'correo' => 'contacto@emulsionesyaromas.com',
-            'telefono' => '989012345',
-            'direccion' => 'Av. Fragancias 987, Lima, Perú',
-            'descripcion' => 'Especialistas en aromas y emulsiones para panadería.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Huevos del Campo E.I.R.L.',
+            'nombre' => 'Proveedor de Harinas S.A.',
             'ruc' => '20212345678',
-            'correo' => 'ventas@huevosdelcampo.com',
-            'telefono' => '990123456',
-            'direccion' => 'Calle Gallinas 567, Huancayo, Perú',
-            'descripcion' => 'Proveedor de huevos frescos de campo.',
+            'correo' => 'contacto@harinas.com',
+            'telefono' => '012345678',
+            'direccion' => 'Av. Principal 123, Lima',
+            'descripcion' => 'Proveedor de harinas para panadería y repostería',
             'estado' => 1,
         ]);
 
         Proveedor::create([
-            'nombre' => 'Frutas Secas Import S.A.',
-            'ruc' => '20223456789',
-            'correo' => 'info@frutassecasimport.com',
-            'telefono' => '901234567',
-            'direccion' => 'Av. Frutales 654, Lima, Perú',
-            'descripcion' => 'Proveedor de frutas secas y nueces.',
+            'nombre' => 'Distribuidora Molino',
+            'ruc' => '20345678901',
+            'correo' => 'ventas@molino.com',
+            'telefono' => '014567891',
+            'direccion' => 'Av. Las Molinas 456, Lima',
+            'descripcion' => 'Harinas y productos de molienda',
+            'estado' => 1,
+        ]);
+
+        // Proveedores para Azúcar
+        Proveedor::create([
+            'nombre' => 'Azúcar del Norte',
+            'ruc' => '20398765432',
+            'correo' => 'info@azucarnorte.com',
+            'telefono' => '019876543',
+            'direccion' => 'Calle Dulce 101, Trujillo',
+            'descripcion' => 'Proveedor de azúcar granulada y refinada',
             'estado' => 1,
         ]);
 
         Proveedor::create([
-            'nombre' => 'Chocolates y Cacao S.A.C.',
-            'ruc' => '20234567890',
-            'correo' => 'ventas@chocolatesycacao.com',
-            'telefono' => '912345678',
-            'direccion' => 'Jr. Cacaoteros 987, Cusco, Perú',
-            'descripcion' => 'Distribuidor de chocolate y cacao.',
+            'nombre' => 'Cacao y Azúcar Perú',
+            'ruc' => '20456789101',
+            'correo' => 'info@cacaoyazucar.com',
+            'telefono' => '015678910',
+            'direccion' => 'Calle Comercio 789, Cusco',
+            'descripcion' => 'Especializados en cacao y azúcar para repostería',
+            'estado' => 1,
+        ]);
+
+        // Proveedores para Chocolate
+        Proveedor::create([
+            'nombre' => 'Cacao Fino S.A.',
+            'ruc' => '20567891234',
+            'correo' => 'ventas@cacaofino.com',
+            'telefono' => '017891234',
+            'direccion' => 'Av. Cacao 123, Lima',
+            'descripcion' => 'Distribuidor de cacao y chocolate para repostería',
             'estado' => 1,
         ]);
 
         Proveedor::create([
-            'nombre' => 'Grasas y Margarinas del Sur S.A.',
-            'ruc' => '20245678901',
-            'correo' => 'contacto@grasasydelicias.com',
-            'telefono' => '923456789',
-            'direccion' => 'Av. Surco 345, Lima, Perú',
-            'descripcion' => 'Proveedor de grasas vegetales.',
+            'nombre' => 'Chocolates del Sur',
+            'ruc' => '20678912345',
+            'correo' => 'chocolates@delsur.com',
+            'telefono' => '018912345',
+            'direccion' => 'Jr. Cacao 987, Arequipa',
+            'descripcion' => 'Proveedor de chocolate y productos derivados',
+            'estado' => 1,
+        ]);
+
+        // Proveedores para Leche y Derivados
+        Proveedor::create([
+            'nombre' => 'Lácteos del Sur S.A.C.',
+            'ruc' => '20789123456',
+            'correo' => 'contacto@lacteos.com',
+            'telefono' => '0123456789',
+            'direccion' => 'Jr. Secundario 456, Arequipa',
+            'descripcion' => 'Proveedor de leche, mantequilla y crema de leche',
             'estado' => 1,
         ]);
 
         Proveedor::create([
-            'nombre' => 'Colorantes y Sabores S.A.C.',
-            'ruc' => '20256789012',
-            'correo' => 'ventas@colorantesysabores.com',
-            'telefono' => '934567890',
-            'direccion' => 'Calle Colores 654, Arequipa, Perú',
-            'descripcion' => 'Distribuidor de colorantes y saborizantes.',
+            'nombre' => 'Distribuidora Láctea',
+            'ruc' => '20891234567',
+            'correo' => 'ventas@lactea.com',
+            'telefono' => '0112345678',
+            'direccion' => 'Av. Láctea 321, Cusco',
+            'descripcion' => 'Proveedor de productos lácteos para repostería',
+            'estado' => 1,
+        ]);
+
+        // Proveedores para Frutas y Verduras
+        Proveedor::create([
+            'nombre' => 'Distribuidora Frutas y Verduras',
+            'ruc' => '20912345678',
+            'correo' => 'contacto@frutasyverduras.com',
+            'telefono' => '016789123',
+            'direccion' => 'Av. Los Frutales 321, Lima',
+            'descripcion' => 'Distribuidor de frutas frescas',
             'estado' => 1,
         ]);
 
         Proveedor::create([
-            'nombre' => 'Harinas del Norte E.I.R.L.',
-            'ruc' => '20267890123',
-            'correo' => 'info@harinasdelnorte.com',
-            'telefono' => '945678901',
-            'direccion' => 'Av. Norte 123, Piura, Perú',
-            'descripcion' => 'Proveedor de harina de trigo y centeno.',
+            'nombre' => 'Frutas del Campo',
+            'ruc' => '21023456789',
+            'correo' => 'frutas@delcampo.com',
+            'telefono' => '013456789',
+            'direccion' => 'Jr. Del Campo 654, Piura',
+            'descripcion' => 'Proveedor de frutas y verduras para repostería',
+            'estado' => 1,
+        ]);
+
+        // Proveedores adicionales para otros insumos
+        Proveedor::create([
+            'nombre' => 'Insumos Reposteros S.A.',
+            'ruc' => '21134567890',
+            'correo' => 'ventas@reposteros.com',
+            'telefono' => '018765432',
+            'direccion' => 'Av. Insumos 555, Lima',
+            'descripcion' => 'Proveedores de insumos varios para repostería',
             'estado' => 1,
         ]);
 
         Proveedor::create([
-            'nombre' => 'Mieles y Jarabes S.A.C.',
-            'ruc' => '20278901234',
-            'correo' => 'ventas@mielesyjarabes.com',
-            'telefono' => '956789012',
-            'direccion' => 'Jr. Dulce 456, Cusco, Perú',
-            'descripcion' => 'Distribuidor de miel natural y jarabes.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Sabor a Leche S.A.',
-            'ruc' => '20289012345',
-            'correo' => 'info@saboraleche.com',
-            'telefono' => '967890123',
-            'direccion' => 'Calle Lactosa 321, Huancavelica, Perú',
-            'descripcion' => 'Proveedor de leche en polvo y condensada.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Panes y Masas S.A.C.',
-            'ruc' => '20290123456',
-            'correo' => 'contacto@panesymasas.com',
-            'telefono' => '978901234',
-            'direccion' => 'Av. Panadería 987, Lima, Perú',
-            'descripcion' => 'Proveedor de premezclas y masas.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Cremas y Salsas E.I.R.L.',
-            'ruc' => '20301234567',
-            'correo' => 'info@cremasysalsas.com',
-            'telefono' => '989012345',
-            'direccion' => 'Jr. Cremoso 654, Lima, Perú',
-            'descripcion' => 'Proveedores de cremas y salsas para la industria.',
-            'estado' => 1,
-        ]);
-
-        Proveedor::create([
-            'nombre' => 'Tecnologías Panaderas S.A.C.',
-            'ruc' => '20312345678',
-            'correo' => 'ventas@tecnologiaspanaderas.com',
-            'telefono' => '990123456',
-            'direccion' => 'Av. Innovación 345, Trujillo, Perú',
-            'descripcion' => 'Distribuidor de maquinaria para panaderías.',
+            'nombre' => 'Ingredientes Perú',
+            'ruc' => '21245678901',
+            'correo' => 'contacto@ingredientesperu.com',
+            'telefono' => '015678910',
+            'direccion' => 'Calle Principal 789, Cusco',
+            'descripcion' => 'Proveedor de ingredientes diversos',
             'estado' => 1,
         ]);
     }

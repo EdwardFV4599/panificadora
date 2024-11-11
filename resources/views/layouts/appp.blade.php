@@ -137,13 +137,13 @@
             @can('controlar-ventas-productos')
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('ventasproductos.index') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Ventas de productos</span></a>
             </li>
             @endcan
 
-            @can('controlar-cierre-de-caja')
+            {{-- @can('controlar-cierre-de-caja')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
@@ -177,7 +177,7 @@
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Facturas</span></a>
             </li>
-            @endcan
+            @endcan --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -280,10 +280,6 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
                                 <div class="dropdown-divider"></div>
                                 {{-- Logout --}}
                                 <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -311,7 +307,6 @@
                 </div>
                 <!-- /.container-fluid -->
 
-
                 
             </div>
             <!-- End of Main Content -->
@@ -336,6 +331,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
 
 
 
@@ -384,5 +380,7 @@
         });
     </script>
 
+    @yield('scripts')
+    
 </body>
 </html>

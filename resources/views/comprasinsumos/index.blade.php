@@ -61,13 +61,13 @@
                                 <td class="text-xxs mb-0 text-center align-middle text-nowrap">{{$item->fecha}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">
-                                    <a href="{{ route('comprasinsumos.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                    <a href="{{ route('comprasinsumos.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                                 </td>
                                 <td class="text-xxs mb-0 text-center align-middle">
                                     <form action="{{ route('comprasinsumos.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >
-                                            <i class="fas fa-trash"></i> Eliminar
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                                 </td>

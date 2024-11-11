@@ -28,7 +28,7 @@
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Stock actual</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Editar</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Eliminar</h6></th>
+                            {{-- <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Eliminar</h6></th> --}}
                         </tr>
                     </thead>
 
@@ -43,14 +43,14 @@
                                 <td class="text-xxs mb-0 text-center align-middle">
                                     <a href="{{ route('insumos.edit', [$item->id]) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
                                 </td>
-                                <td class="text-xxs mb-0 text-center align-middle">
+                                {{-- <td class="text-xxs mb-0 text-center align-middle">
                                     <form action="{{ route('insumos.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>

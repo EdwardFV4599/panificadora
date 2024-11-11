@@ -12,4 +12,9 @@ class Producto extends Model
     protected $primaryKey='id';
     protected $fillable = ['nombre','categoria','stock_actual','precio','descripcion','estado'];
     public $timestamps = true;
+
+    public function ventasDetalles()
+    {
+        return $this->hasMany(Ventasproductodetalle::class);
+    }
 }

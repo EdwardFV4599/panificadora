@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ComprasinsumoController;
 use App\Http\Controllers\ElaboracionproductoController;
+use App\Http\Controllers\VentasproductoController;
 
 
 // Rutas
@@ -111,8 +112,24 @@ Route::middleware([
     Route::post('/elaboracionproductos/eliminar/{id}', [ElaboracionproductoController::class, 'destroy'])->name('elaboracionproductos.destroy');
 });
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'can:controlar-ventas-productos', // Verifica que el usuario tenga el permiso
+])->group(function () {
+    Route::get('/ventasproductos', [VentasproductoController::class, 'index'])->name('ventasproductos.index');
+    Route::get('/ventasproductos/crear', [VentasproductoController::class, 'create'])->name('ventasproductos.create');
+    Route::post('/ventasproductos/guardar', [VentasproductoController::class, 'store'])->name('ventasproductos.store');
+    Route::get('/ventasproductos/editar/{id}', [VentasproductoController::class, 'edit'])->name('ventasproductos.edit');
+    Route::post('/ventasproductos/actualizar/{id}', [VentasproductoController::class, 'update'])->name('ventasproductos.update');
+    Route::post('/ventasproductos/eliminar/{id}', [VentasproductoController::class, 'destroy'])->name('ventasproductos.destroy');
+});
 
 
 
+Route::get('obtener-datos-ventas', [VentasproductoController::class, 'obtenerDatosVentas']);
+
+Route::get('exportar-ventas', [VentasproductoController::class, 'exportarVentasCsv'])->name('exportarCSV');
 
 

@@ -7,6 +7,7 @@ use App\Models\Ventasproducto;
 use App\Models\Producto;
 use App\Models\Ventasproductodetalle;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class VentasproductoController extends Controller
 {
@@ -23,6 +24,7 @@ class VentasproductoController extends Controller
         $productos = Producto::where('estado', 1)->get();  // Solo productos activos
         return view('ventasproductos.create', compact('productos'));
     }
+
 
     // Guardar una nueva venta
     public function store(Request $request)
@@ -73,6 +75,7 @@ class VentasproductoController extends Controller
 
         return redirect()->route('ventasproductos.index')->with('success', '');
     }
+
 
     // Mostrar el formulario para editar una venta
     public function edit(Request $request, $id)
@@ -154,7 +157,6 @@ class VentasproductoController extends Controller
     }
 
 
-
     public function exportarVentasCsv()
     {
         // Obtener los datos de ventas, incluyendo los detalles y los productos relacionados
@@ -194,7 +196,6 @@ class VentasproductoController extends Controller
         return response()->download(storage_path($csvFileName))->deleteFileAfterSend(true);
     }
     
-    
     // Método para obtener las ventas desde la base de datos
     public function obtenerDatosVentas(Request $request)
     {
@@ -220,5 +221,38 @@ class VentasproductoController extends Controller
         // Retornar los resultados en formato JSON
         return response()->json($resultados);
     }
-    
+
+    // Generar reporte pdf
+    public function generarReportePdf()
+    {
+        // Datos de prueba (en lugar de obtener datos de la base de datos)
+        $ventas = collect(Ventasproducto::with('detalles.producto')->where('estado', 1)->get());
+
+
+        // Generar el PDF con la vista 'ventasproductos.reporte'
+        $pdf = Pdf::loadView('ventasproductos.reporte', compact('ventas'))->setPaper('a4', 'landscape');
+
+        // Descargar el archivo PDF
+        return $pdf->download('reporte_ventas.pdf');
+    } 
+
+    // Método para mostrar la vista con el gráfico
+    public function showVentasChart()
+    {
+        // Obtener las ventas del último año
+        $ventas = Ventasproducto::whereYear('fecha', Carbon::now()->year)
+            ->get();
+
+        // Inicializar un arreglo para almacenar las ventas mensuales
+        $ventasMensuales = array_fill(0, 12, 0); // Crear un array con 12 elementos, todos en 0
+
+        // Organizar las ventas por mes
+        foreach ($ventas as $venta) {
+            $mes = Carbon::parse($venta->fecha)->month - 1; // Obtener el mes (0-11)
+            $ventasMensuales[$mes] += $venta->total; // Sumar las ventas del mes correspondiente
+        }
+
+        // Pasar los datos a la vista
+        return view('ventasproductos.chart', compact('ventasMensuales'));
+    }
 }

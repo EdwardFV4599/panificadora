@@ -380,7 +380,11 @@
         });
     </script>
 
+    {{-- Gráficas --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     @yield('scripts')
-    
+
+
 </body>
 </html>

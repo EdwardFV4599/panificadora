@@ -127,9 +127,9 @@ Route::middleware([
 });
 
 
-
 Route::get('obtener-datos-ventas', [VentasproductoController::class, 'obtenerDatosVentas']);
-
 Route::get('exportar-ventas', [VentasproductoController::class, 'exportarVentasCsv'])->name('exportarCSV');
+Route::get('ventas/reporte-pdf', [VentasproductoController::class, 'generarReportePdf'])->name('ventas.reportePdf');
+Route::get('/ventas-chart', [VentasproductoController::class, 'showVentasChart'])->name('vergrafica');
 
 

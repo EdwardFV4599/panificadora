@@ -9,9 +9,19 @@
                     <div class="container-fluid h-100">
                         <div class="row w-100 align-items-center">
                             {{-- Registrar --}}
-                            <div class="col-8">
+                            <div class="col-6">
                                 <a href="{{ route('ventasproductos.create') }}" class="btn btn-primary">Agregar nueva venta</a>
                             </div>
+                            <div class="col-2">
+                                <a href="{{ route('exportarCSV') }}" _target="blank" class="btn btn-primary">Generar CSV</a>
+                            </div>
+                            <div class="col-2">
+                                <a href="{{ route('ventas.reportePdf') }}" class="btn btn-primary" target="_blank">Generar Reporte PDF</a>
+                            </div>
+                            <div class="col-2">
+                                <a href="{{ route('vergrafica') }}" class="btn btn-primary" target="_blank">Ver gráfica</a>
+                            </div>
+
                         </div>
                     </div>
                 </form>

@@ -75,7 +75,7 @@ class ProveedorController extends Controller
         return redirect()->route('proveedores.index')->with('success', 'Proveedor actualizado correctamente.');
     }
 
-    // Eliminar
+    // Eliminar (soft delete)
     public function destroy($id)
     {
         $proveedor = Proveedor::find($id);

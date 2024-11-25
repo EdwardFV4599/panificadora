@@ -9,7 +9,7 @@
                     <div class="container-fluid h-100">
                         <div class="row w-100 align-items-center">
                             {{-- Registrar --}}
-                            <div class="col-6">
+                            <div class="col-4">
                                 <a href="{{ route('ventasproductos.create') }}" class="btn btn-primary">Agregar nueva venta</a>
                             </div>
                             <div class="col-2">
@@ -21,7 +21,9 @@
                             <div class="col-2">
                                 <a href="{{ route('vergrafica') }}" class="btn btn-primary" target="_blank">Ver gráfica</a>
                             </div>
-
+                            <div class="col-2">
+                                <a href="{{ route('ventas.predecir') }}" class="btn btn-primary" target="_blank">Ver prediccion</a>
+                            </div>
                         </div>
                     </div>
                 </form>

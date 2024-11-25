@@ -55,7 +55,7 @@ class CategoriaController extends Controller
         return redirect()->route('categorias.index')->with('success', 'Categoria actualizada correctamente.');
     }
 
-    // Eliminar
+    // Eliminar (soft delete)
     public function destroy($id)
     {
         $categoria = Categoria::find($id);

@@ -74,7 +74,7 @@ class ElaboracionproductoController extends Controller
         return redirect()->route('elaboracionproductos.index')->with('success', '');
     }
 
-    // Eliminar
+    // Eliminar (soft delete)
     public function destroy($id)
     {
         $producto = Elaboracionproducto::find($id);

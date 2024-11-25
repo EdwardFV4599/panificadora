@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class VentasproductoSeeder extends Seeder
 {
@@ -16,19 +17,41 @@ class VentasproductoSeeder extends Seeder
     {
         // Generar 200 ventas
         for ($i = 0; $i < 200; $i++) {
-            // Generar una fecha aleatoria entre Enero y Diciembre de 2024
-            $fecha = Carbon::create(2024, rand(1, 12), rand(1, 28));
+            $fecha = fake()->dateTimeBetween('2024-01-01', '2024-11-30');
+            $total = fake()->randomFloat(2, 50, 500); // Total entre 50 y 500
+            $cliente = fake()->name();
+            $descripcion = fake()->optional()->sentence();
+            $estado = 1; // 0: inactivo, 1: activo
 
-            // Crear una venta con un total aleatorio y un cliente aleatorio
-            DB::table('ventasproductos')->insert([
+            // Insertar la venta
+            $ventaId = DB::table('ventasproductos')->insertGetId([
                 'fecha' => $fecha,
-                'total' => rand(1000, 5000) / 100, // Total aleatorio entre 10 y 50
-                'cliente' => 'Cliente ' . rand(1, 100), // Cliente aleatorio
-                'descripcion' => 'Descripción de la venta ' . rand(1, 10), // Descripción aleatoria
-                'estado' => 1, // Estado 1 (activo)
+                'total' => $total,
+                'cliente' => $cliente,
+                'descripcion' => $descripcion,
+                'estado' => $estado,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+
+            // Generar detalles para cada venta (entre 1 y 5 productos por venta)
+            $productosPorVenta = fake()->numberBetween(1, 5);
+            for ($j = 0; $j < $productosPorVenta; $j++) {
+                $productoId = fake()->numberBetween(1, 9); // Asume 9 productos registrados
+                $cantidad = fake()->numberBetween(1, 10);   // Cantidad entre 1 y 10
+                $precio = fake()->randomFloat(2, 10, 100); // Precio unitario entre 10 y 100
+                $estado = 1;
+
+                DB::table('ventasproductodetalles')->insert([
+                    'ventasproducto_id' => $ventaId,
+                    'producto_id' => $productoId,
+                    'cantidad' => $cantidad,
+                    'precio' => $precio,
+                    'estado' => $estado,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
     }
 }

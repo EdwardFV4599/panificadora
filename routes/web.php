@@ -10,6 +10,11 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\ComprasinsumoController;
 use App\Http\Controllers\ElaboracionproductoController;
 use App\Http\Controllers\VentasproductoController;
+use App\Http\Controllers\VentasproductoaccionesController;
+use App\Http\Controllers\GraficaController;
+use App\Http\Controllers\ReporteController;
+
+
 
 
 // Rutas
@@ -126,10 +131,21 @@ Route::middleware([
     Route::post('/ventasproductos/eliminar/{id}', [VentasproductoController::class, 'destroy'])->name('ventasproductos.destroy');
 });
 
+Route::get('obtener-datos-ventas', [VentasproductoaccionesController::class, 'obtenerDatosVentas']);
+Route::get('exportar-ventas', [VentasproductoaccionesController::class, 'exportarVentasCsv'])->name('exportarCSV');
+Route::get('ventas/reporte-pdf', [VentasproductoaccionesController::class, 'generarReportePdf'])->name('ventas.reportePdf');
+Route::get('/ventas-chart', [VentasproductoaccionesController::class, 'showVentasChart'])->name('vergrafica');
+Route::get('/ventas-prediccion', [VentasproductoaccionesController::class, 'predecirVentas'])->name('prediccion');
+Route::get('/predecir-ventas', [VentasproductoaccionesController::class, 'predecirVentas'])->name('ventas.predecir');
 
-Route::get('obtener-datos-ventas', [VentasproductoController::class, 'obtenerDatosVentas']);
-Route::get('exportar-ventas', [VentasproductoController::class, 'exportarVentasCsv'])->name('exportarCSV');
-Route::get('ventas/reporte-pdf', [VentasproductoController::class, 'generarReportePdf'])->name('ventas.reportePdf');
-Route::get('/ventas-chart', [VentasproductoController::class, 'showVentasChart'])->name('vergrafica');
+Route::get('/graficas/ventas-mensuales', [GraficaController::class, 'ventasMensualesPorProducto']);
+Route::get('/ventas/graficas', [GraficaController::class, 'mostrarGraficas'])->name('graficas.index');
 
+// Formulario para seleccionar productos
+Route::get('/reportes', function () {
+    $productos = \App\Models\Producto::all();
+    return view('reportes.formulario', compact('productos'));
+})->name('reportes.index');
 
+// Generar reporte
+Route::post('/reportes/generar', [ReporteController::class, 'generarReporte']);

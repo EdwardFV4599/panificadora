@@ -97,7 +97,7 @@ class ComprasinsumoController extends Controller
         return redirect()->route('comprasinsumos.index')->with('success', '');
     }
 
-    // Eliminar
+    // Eliminar (soft delete)
     public function destroy($id)
     {
         $comprasinsumo = Comprasinsumo::find($id);

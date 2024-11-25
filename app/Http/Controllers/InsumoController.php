@@ -65,7 +65,7 @@ class InsumoController extends Controller
         return redirect()->route('insumos.index')->with('success', '');
     }
 
-    // Eliminar
+    // Eliminar (soft delete)
     public function destroy($id)
     {
         $insumo = Insumo::find($id);

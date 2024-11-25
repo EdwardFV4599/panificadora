@@ -20,6 +20,8 @@
     {{-- Tablas --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+    <title> @yield('head') </title>
 </head>
 
 <body id="page-top">
@@ -143,7 +145,7 @@
             </li>
             @endcan
 
-            {{-- @can('controlar-cierre-de-caja')
+            @can('controlar-cierre-de-caja')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
@@ -155,7 +157,7 @@
             @can('generar-reportes')
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('reportes.index') }}">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Reportes</span></a>
             </li>
@@ -164,7 +166,7 @@
             @can('generar-graficos')
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('graficas.index') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Gráficos</span></a>
             </li>
@@ -177,7 +179,7 @@
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Facturas</span></a>
             </li>
-            @endcan --}}
+            @endcan
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

@@ -23,7 +23,7 @@
                 data: {
                     labels: [
                         'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-                        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+                        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre'
                     ], // Meses
                     datasets: [{
                         label: 'Ventas Mensuales',

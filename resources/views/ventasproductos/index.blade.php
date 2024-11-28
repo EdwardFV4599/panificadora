@@ -35,7 +35,7 @@
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Fecha</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Total</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Cliente</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th>
+                            {{-- <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th> --}}
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Ver factura</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Cancelar</h6></th>
                         </tr>
@@ -48,10 +48,10 @@
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->fecha}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->total}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->cliente}}</td>
-                                <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td>
+                                {{-- <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td> --}}
                                 <td class="text-xxs mb-0 text-center align-middle">
                                     <a href="{{ route('factura.mostrar', $item->id) }}" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-eye"></i> Factura
+                                        <i class="fas fa-eye"></i>
                                     </a>
                                 </td>
                                 <td class="text-xxs mb-0 text-center align-middle">

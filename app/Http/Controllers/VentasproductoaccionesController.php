@@ -181,7 +181,7 @@ class VentasproductoaccionesController extends Controller
         ];
 
         // Generar el PDF
-        $pdf = PDF::loadView('ventasproductos.factura', $data);
+        $pdf = PDF::loadView('facturas.ventas', $data);
 
         // Descargar el archivo PDF
         return $pdf->download("factura_venta_{$venta->id}.pdf");
@@ -195,7 +195,7 @@ class VentasproductoaccionesController extends Controller
         $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos
         $detalles = $venta->detalles;    // Obtén los detalles de la venta
 
-        return view('ventasproductos.factura_index', compact('venta', 'detalles'));
+        return view('facturas.index', compact('venta', 'detalles'));
     }
 
     // Generar y descargar el PDF de la factura
@@ -204,7 +204,7 @@ class VentasproductoaccionesController extends Controller
         $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos
         $detalles = $venta->detalles;    // Obtén los detalles de la venta
 
-        $pdf = PDF::loadView('ventasproductos.factura', compact('venta', 'detalles'));
+        $pdf = PDF::loadView('facturas.ventas', compact('venta', 'detalles'));
         return $pdf->download('factura_'.$venta->id.'.pdf');
     }
 }

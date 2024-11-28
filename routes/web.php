@@ -137,7 +137,7 @@ Route::get('exportar-ventas', [VentasproductoaccionesController::class, 'exporta
 Route::get('/ventas-chart', [VentasproductoaccionesController::class, 'showVentasChart'])->name('vergrafica');
 Route::get('/ventas-prediccion', [VentasproductoaccionesController::class, 'predecirVentas'])->name('prediccion');
 Route::get('/predecir-ventas', [VentasproductoaccionesController::class, 'predecirVentas'])->name('ventas.predecir');
-Route::get('/ventasproductos/{id}/factura', [VentasproductoaccionesController::class, 'generarFactura'])->name('ventasproductos.factura');
+Route::get('/ventasproductos/{id}/factura', [VentasproductoaccionesController::class, 'generarFactura'])->name('facturas.ventas');
 Route::get('/factura/{ventaId}', [VentasproductoaccionesController::class, 'mostrarFactura'])->name('factura.mostrar');
 Route::get('/factura/descargar/{ventaId}', [VentasproductoaccionesController::class, 'descargarFactura'])->name('factura.descargar');
 

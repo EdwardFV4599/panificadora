@@ -11,8 +11,13 @@ class Ventasproducto extends Model
 
     protected $fillable = ['fecha', 'total', 'cliente', 'descripcion', 'estado'];
 
+    // public function detalles()
+    // {
+    //     return $this->hasMany(Ventasproductodetalle::class);
+    // }
+
     public function detalles()
     {
-        return $this->hasMany(Ventasproductodetalle::class);
+        return $this->hasMany(VentasProductoDetalle::class, 'ventasproducto_id');
     }
 }

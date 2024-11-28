@@ -3,9 +3,9 @@
 @section('contenido')
     <div class="container-fluid">
         <h1>Gráficas de ventas por producto</h1>
-        <div id="graficas">
+        <div id="graficas" class="row">
             @foreach(range(1, 9) as $index)
-                <div style="width: 600px; margin: 20px auto;">
+                <div class="col-6" style="width: 600px; margin: 20px auto;">
                     <canvas id="grafica-producto-{{ $index }}"></canvas>
                 </div>
             @endforeach
@@ -25,7 +25,7 @@
                 new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre'],
                         datasets: [{
                             label: producto,
                             data: Object.values(data[producto]),

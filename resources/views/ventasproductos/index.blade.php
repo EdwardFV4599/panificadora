@@ -9,21 +9,18 @@
                     <div class="container-fluid h-100">
                         <div class="row w-100 align-items-center">
                             {{-- Registrar --}}
-                            <div class="col-4">
+                            <div class="col-10">
                                 <a href="{{ route('ventasproductos.create') }}" class="btn btn-primary">Agregar nueva venta</a>
                             </div>
-                            <div class="col-2">
+                            {{-- <div class="col-2">
                                 <a href="{{ route('exportarCSV') }}" _target="blank" class="btn btn-primary">Generar CSV</a>
-                            </div>
-                            <div class="col-2">
-                                <a href="{{ route('ventas.reportePdf') }}" class="btn btn-primary" target="_blank">Generar Reporte PDF</a>
-                            </div>
+                            </div> --}}
                             <div class="col-2">
                                 <a href="{{ route('vergrafica') }}" class="btn btn-primary" target="_blank">Ver gráfica</a>
                             </div>
-                            <div class="col-2">
+                            {{-- <div class="col-2">
                                 <a href="{{ route('ventas.predecir') }}" class="btn btn-primary" target="_blank">Ver prediccion</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </form>
@@ -39,7 +36,7 @@
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Total</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Cliente</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Ver detalles</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Ver factura</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Cancelar</h6></th>
                         </tr>
                     </thead>
@@ -53,7 +50,9 @@
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->cliente}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">
-                                    <a href="" class="btn btn-warning btn-sm"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('factura.mostrar', $item->id) }}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-eye"></i> Factura
+                                    </a>
                                 </td>
                                 <td class="text-xxs mb-0 text-center align-middle">
                                     <form action="{{ route('ventasproductos.destroy', $item->id) }}" method="POST" style="display:inline-block;">

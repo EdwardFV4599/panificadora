@@ -131,20 +131,25 @@ Route::middleware([
     Route::post('/ventasproductos/eliminar/{id}', [VentasproductoController::class, 'destroy'])->name('ventasproductos.destroy');
 });
 
+
 Route::get('obtener-datos-ventas', [VentasproductoaccionesController::class, 'obtenerDatosVentas']);
 Route::get('exportar-ventas', [VentasproductoaccionesController::class, 'exportarVentasCsv'])->name('exportarCSV');
-Route::get('ventas/reporte-pdf', [VentasproductoaccionesController::class, 'generarReportePdf'])->name('ventas.reportePdf');
 Route::get('/ventas-chart', [VentasproductoaccionesController::class, 'showVentasChart'])->name('vergrafica');
 Route::get('/ventas-prediccion', [VentasproductoaccionesController::class, 'predecirVentas'])->name('prediccion');
 Route::get('/predecir-ventas', [VentasproductoaccionesController::class, 'predecirVentas'])->name('ventas.predecir');
+Route::get('/ventasproductos/{id}/factura', [VentasproductoaccionesController::class, 'generarFactura'])->name('ventasproductos.factura');
+Route::get('/factura/{ventaId}', [VentasproductoaccionesController::class, 'mostrarFactura'])->name('factura.mostrar');
+Route::get('/factura/descargar/{ventaId}', [VentasproductoaccionesController::class, 'descargarFactura'])->name('factura.descargar');
+
 
 Route::get('/graficas/ventas-mensuales', [GraficaController::class, 'ventasMensualesPorProducto']);
 Route::get('/ventas/graficas', [GraficaController::class, 'mostrarGraficas'])->name('graficas.index');
 
-// Formulario para seleccionar productos
+
+// Formulario para seleccionar productos y generar reportes
 Route::get('/reportes', function () {
     $productos = \App\Models\Producto::all();
-    return view('reportes.formulario', compact('productos'));
+    return view('reportes.index', compact('productos'));
 })->name('reportes.index');
 
 // Generar reporte

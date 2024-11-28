@@ -40,7 +40,7 @@
                 <div class="sidebar-brand-text mx-3">CORONEL</div>
             </a>
 
-            @role('administrador')
+            {{-- @role('administrador')
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -64,7 +64,7 @@
                     <span>Roles y permisos</span>
                 </a>
             </li>
-            @endrole
+            @endrole --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -127,14 +127,14 @@
             </li>
             @endcan
 
-            @can('controlar-elaboracion-productos')
+            {{-- @can('controlar-elaboracion-productos')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('elaboracionproductos.index') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Elaboración de productos</span></a>
             </li>
-            @endcan
+            @endcan --}}
 
             @can('controlar-ventas-productos')
             <!-- Nav Item -->
@@ -145,14 +145,14 @@
             </li>
             @endcan
 
-            @can('controlar-cierre-de-caja')
+            {{-- @can('controlar-cierre-de-caja')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Cierre de caja</span></a>
             </li>
-            @endcan
+            @endcan --}}
 
             @can('generar-reportes')
             <!-- Nav Item -->
@@ -172,14 +172,14 @@
             </li>
             @endcan
 
-            @can('generar-facturas')
+            {{-- @can('generar-facturas')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Facturas</span></a>
             </li>
-            @endcan
+            @endcan --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

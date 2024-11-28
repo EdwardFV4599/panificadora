@@ -166,4 +166,45 @@ class VentasproductoaccionesController extends Controller
             return response()->json(['error' => 'Error al ejecutar el script Python: ' . $e->getMessage()], 500);
         }
     }
+
+
+
+    public function generarFactura($id)
+    {
+        // Obtener la venta y sus detalles
+        $venta = VentasProducto::with('detalles.producto')->findOrFail($id);
+
+        // Preparar los datos para la factura
+        $data = [
+            'venta' => $venta,
+            'detalles' => $venta->detalles,
+        ];
+
+        // Generar el PDF
+        $pdf = PDF::loadView('ventasproductos.factura', $data);
+
+        // Descargar el archivo PDF
+        return $pdf->download("factura_venta_{$venta->id}.pdf");
+    }
+
+
+
+
+    public function mostrarFactura($ventaId)
+    {
+        $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos
+        $detalles = $venta->detalles;    // Obtén los detalles de la venta
+
+        return view('ventasproductos.factura_index', compact('venta', 'detalles'));
+    }
+
+    // Generar y descargar el PDF de la factura
+    public function descargarFactura($ventaId)
+    {
+        $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos
+        $detalles = $venta->detalles;    // Obtén los detalles de la venta
+
+        $pdf = PDF::loadView('ventasproductos.factura', compact('venta', 'detalles'));
+        return $pdf->download('factura_'.$venta->id.'.pdf');
+    }
 }

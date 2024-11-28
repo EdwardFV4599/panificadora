@@ -151,4 +151,6 @@ class VentasproductoController extends Controller
 
         return redirect()->route('ventasproductos.index')->with('success', '');
     }
+
+
 }

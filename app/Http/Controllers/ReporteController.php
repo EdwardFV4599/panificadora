@@ -54,18 +54,26 @@ class ReporteController extends Controller
         $productoNombre = $productoId ? Producto::find($productoId)->nombre ?? 'Producto no encontrado' : 'Todos los productos';
 
         // Datos para la gráfica
-        $data = [
+        $dataVentas = [
             'ventasPorMes' => $ventasPorMes,
+            'tipoGrafico' => $tipoGrafico,
+        ];
+
+        $dataCantidad = [
             'cantidadPorMes' => $cantidadPorMes,
             'tipoGrafico' => $tipoGrafico,
         ];
 
-        // Generar el HTML para el gráfico
-        $html = view('reportes.grafico', $data)->render();
+        // Generar el HTML para los gráficos
+        $htmlVentas = view('reportes.grafico_ventas', $dataVentas)->render();
+        $htmlCantidad = view('reportes.grafico_cantidad', $dataCantidad)->render();
 
-        // Guardar la gráfica como imagen
-        $graficoPath = storage_path('app/public/grafico_ventas.png');
-        Browsershot::html($html)->windowSize(800, 600)->save($graficoPath);
+        // Guardar las gráficas como imágenes
+        $graficoVentasPath = storage_path('app/public/grafico_ventas.png');
+        $graficoCantidadPath = storage_path('app/public/grafico_cantidad.png');
+        
+        Browsershot::html($htmlVentas)->windowSize(1200, 800)->save($graficoVentasPath);
+        Browsershot::html($htmlCantidad)->windowSize(1200, 800)->save($graficoCantidadPath);
 
         // Datos para el PDF
         $pdfData = [
@@ -74,10 +82,11 @@ class ReporteController extends Controller
             'fechaFinal' => $fechaFinal,
             'ventasPorMes' => $ventasPorMes,
             'cantidadPorMes' => $cantidadPorMes,
-            'graficoPath' => $graficoPath,
+            'graficoVentasPath' => $graficoVentasPath,
+            'graficoCantidadPath' => $graficoCantidadPath,
         ];
 
-        // Crear el PDF con los datos y el gráfico
+        // Crear el PDF con los datos y los gráficos
         $pdf = PDF::loadView('reportes.reporte_tactico', $pdfData);
 
         return $pdf->download("reporte_tactico_{$productoNombre}.pdf");

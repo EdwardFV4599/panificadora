@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte Táctico</title>
+    <title>Reporte táctico de ventas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,26 +25,39 @@
         }
         .grafico {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 20px; /* Reducir el espacio entre gráficos */
+            margin-bottom: -120px; /* Eliminar espacio debajo de los gráficos */
+        }
+        .grafico img {
+            width: 100%;
+            max-width: 500px; /* Controlar el tamaño de la imagen */
+            height: auto;  /* Mantener proporción */
+            display: block;
+            margin: 0 auto; /* Centrar la imagen */
+        }
+        .grafico h3 {
+            margin-top: 20px; /* Eliminar margen superior en títulos */
+            margin-bottom: 10px; /* Espacio pequeño debajo del título */
         }
     </style>
 </head>
 <body>
     <div class="titulo">
-        <h1>Reporte Táctico de Ventas</h1>
+        <h2>Reporte táctico de ventas</h2>
         <h3>Producto: {{ $productoNombre }}</h3>
-        <h4>Rango de Fechas: 
-            {{ $fechaInicio ? date('d/m/Y', strtotime($fechaInicio)) : 'Sin inicio definido' }} -
+        <h4>Rango de fechas: 
+            {{ $fechaInicio ? date('d/m/Y', strtotime($fechaInicio)) : 'Sin inicio definido' }} - 
             {{ $fechaFinal ? date('d/m/Y', strtotime($fechaFinal)) : 'Sin final definido' }}
         </h4>
     </div>
 
+    <!-- Tabla de ventas por mes -->
     <table>
         <thead>
             <tr>
                 <th>Mes</th>
-                <th>Total Ventas (S/)</th>
-                <th>Cantidad Vendida</th>
+                <th>Total ventas (S/.)</th>
+                <th>Cantidad vendida</th>
             </tr>
         </thead>
         <tbody>
@@ -58,9 +71,16 @@
         </tbody>
     </table>
 
+    <!-- Mostrar el gráfico de ventas -->
     <div class="grafico">
-        <h3>Gráfico de Ventas</h3>
-        <img src="{{ $graficoPath }}" alt="Gráfico de Ventas" style="width: 100%; max-width: 600px;">
+        <h3>Gráfico de ventas (S/.)</h3>
+        <img src="{{ $graficoVentasPath }}" alt="Gráfico de Ventas">
+    </div>
+
+    <!-- Mostrar el gráfico de cantidad vendida -->
+    <div class="grafico">
+        <h3>Gráfico de cantidad vendida</h3>
+        <img src="{{ $graficoCantidadPath }}" alt="Gráfico de Cantidad Vendida">
     </div>
 </body>
 </html>

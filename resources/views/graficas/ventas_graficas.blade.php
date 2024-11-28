@@ -2,7 +2,7 @@
 @section('titulo', 'Graficas ventas')
 @section('contenido')
     <div class="container-fluid">
-        <h1>Gráficas de ventas por producto</h1>
+        <h3><strong>Gráficas de ventas por producto</strong></h3>
         <div id="graficas" class="row">
             @foreach(range(1, 9) as $index)
                 <div class="col-6" style="width: 600px; margin: 20px auto;">

@@ -13,7 +13,7 @@
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .logo {
@@ -62,12 +62,12 @@
         footer {
             margin-top: 30px;
             text-align: center;
-            font-size: 0.8em;
+            font-size: 1.0em;
         }
 
         .footer-info {
             margin-top: 20px;
-            font-size: 0.8em;
+            font-size: 1.0em;
             text-align: center;
         }
 

@@ -2,16 +2,14 @@
 @section('titulo', 'Factura de producto')
 @section('contenido')
     <div class="container-fluid">
-        <!-- Alineación del botón para descargar PDF a la derecha -->
-        <div class="row">
-            <div class="col-12 text-end mb-4">
-                <form action="{{ route('factura.descargar', $venta->id) }}" method="GET">
-                    <button type="submit" class="btn btn-primary">Descargar PDF</button>
-                </form>
-            </div>
+        <h3><strong>Factura electrónica</strong></h3>
+        
+        <!-- Fila para el botón de descarga alineado a la derecha -->
+        <div class="d-flex justify-content-end mb-4">
+            <form action="{{ route('factura.descargar', $venta->id) }}" method="GET">
+                <button type="submit" class="btn btn-primary">Descargar PDF</button>
+            </form>
         </div>
-
-        <h1 class="text-center my-4">Factura Electrónica</h1>
 
         <div class="factura-contenido">
             <table class="table table-sm table-bordered mb-4">

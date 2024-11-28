@@ -63,7 +63,7 @@
         <tbody>
             @foreach($ventasPorMes as $mes => $total)
                 <tr>
-                    <td>{{ \Carbon\Carbon::createFromFormat('m', $mes)->format('F') }}</td>
+                    <td>{{ ucfirst(\Carbon\Carbon::createFromFormat('m', $mes)->locale('es')->monthName) }}</td>
                     <td>S/ {{ number_format($total, 2) }}</td>
                     <td>{{ $cantidadPorMes[$mes] ?? 0 }}</td>
                 </tr>

@@ -12,12 +12,13 @@
 
     <script>
         const ctx = document.getElementById('graficoVentas').getContext('2d');
+    
         new Chart(ctx, {
             type: '{{ $tipoGrafico }}',
             data: {
-                labels: {!! json_encode(array_keys($ventasPorMes)) !!},
+                labels: {!! json_encode($labelsVentas) !!}, // Usar las etiquetas de los meses en español
                 datasets: [{
-                    label: 'Total de Ventas (S/)',
+                    label: 'Total de Ventas (S/.)',
                     data: {!! json_encode(array_values($ventasPorMes)) !!},
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',

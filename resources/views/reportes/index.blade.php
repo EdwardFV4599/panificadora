@@ -30,7 +30,7 @@
             <select name="tipo_grafico" id="tipo_grafico" class="form-control">
                 <option value="bar">Barra</option>
                 <option value="line">Línea</option>
-                {{-- <option value="pie">Pastel</option> --}}
+                <option value="pie">Pastel</option>
             </select>
         </div>
 

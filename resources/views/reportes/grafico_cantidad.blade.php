@@ -12,10 +12,11 @@
 
     <script>
         const ctx = document.getElementById('graficoCantidad').getContext('2d');
+    
         new Chart(ctx, {
             type: '{{ $tipoGrafico }}',
             data: {
-                labels: {!! json_encode(array_keys($cantidadPorMes)) !!},
+                labels: {!! json_encode($labelsCantidad) !!}, // Usar las etiquetas de los meses en español
                 datasets: [{
                     label: 'Cantidad Vendida',
                     data: {!! json_encode(array_values($cantidadPorMes)) !!},
@@ -55,6 +56,6 @@
                 }
             }
         });
-    </script>
+    </script>    
 </body>
 </html>

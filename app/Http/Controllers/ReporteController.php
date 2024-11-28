@@ -22,13 +22,13 @@ class ReporteController extends Controller
         $ventasQuery = VentasProductoDetalle::selectRaw(
             'producto_id, MONTH(vp.fecha) as mes, SUM(cantidad) as total_cantidad, SUM(cantidad * precio) as total_precio'
         )
-            ->join('ventasproductos as vp', 'ventasproductodetalles.ventasproducto_id', '=', 'vp.id')
-            ->whereYear('vp.fecha', 2024);
+        ->join('ventasproductos as vp', 'ventasproductodetalles.ventasproducto_id', '=', 'vp.id')
+        ->whereYear('vp.fecha', 2024);
 
         if ($productoId) {
             $ventasQuery->where('producto_id', $productoId);
         }
-        
+
         if ($fechaInicio) {
             $ventasQuery->where('vp.fecha', '>=', $fechaInicio);
         }
@@ -50,17 +50,34 @@ class ReporteController extends Controller
             $totalGeneral += $venta->total_precio;
         }
 
+        // Convertir los números de mes (1-12) a nombres de meses en español
+        $nombresMeses = [
+            1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril', 5 => 'Mayo', 6 => 'Junio',
+            7 => 'Julio', 8 => 'Agosto', 9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'
+        ];
+
+        // Convertir las claves (números de mes) a nombres de meses
+        $labelsVentas = array_map(function($mes) use ($nombresMeses) {
+            return $nombresMeses[$mes];
+        }, array_keys($ventasPorMes));
+
+        $labelsCantidad = array_map(function($mes) use ($nombresMeses) {
+            return $nombresMeses[$mes];
+        }, array_keys($cantidadPorMes));
+
         // Obtener nombre del producto si es necesario
         $productoNombre = $productoId ? Producto::find($productoId)->nombre ?? 'Producto no encontrado' : 'Todos los productos';
 
         // Datos para la gráfica
         $dataVentas = [
             'ventasPorMes' => $ventasPorMes,
+            'labelsVentas' => $labelsVentas,
             'tipoGrafico' => $tipoGrafico,
         ];
 
         $dataCantidad = [
             'cantidadPorMes' => $cantidadPorMes,
+            'labelsCantidad' => $labelsCantidad,
             'tipoGrafico' => $tipoGrafico,
         ];
 

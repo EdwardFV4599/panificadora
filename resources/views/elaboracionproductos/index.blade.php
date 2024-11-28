@@ -22,7 +22,7 @@
                 <table id="mi-tabla" class="table">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>#</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Codigo</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Producto</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Stock actual</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Ver detalles</h6></th>

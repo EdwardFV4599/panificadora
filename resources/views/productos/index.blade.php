@@ -22,7 +22,7 @@
                 <table id="mi-tabla" class="table">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>#</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Codigo</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Nombre</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Categoria</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Stock actual</h6></th>
@@ -36,7 +36,7 @@
                     <tbody>
                         @foreach ($productos as $item)
                             <tr>
-                                <td class="text-xxs mb-0 text-center align-middle">{{$item->id}}</td>
+                                <td class="text-xxs mb-0 text-center align-middle">COD-0{{$item->id}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->nombre}}</td>
                                 @foreach ($categorias as $categoria)
                                     @if ($categoria->id == $item->categoria)

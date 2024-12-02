@@ -16,7 +16,6 @@ use App\Http\Controllers\ReporteController;
 
 
 
-
 // Rutas
 Route::get('/', function () {
     return view('/auth/login');
@@ -131,7 +130,7 @@ Route::middleware([
     Route::post('/ventasproductos/eliminar/{id}', [VentasproductoController::class, 'destroy'])->name('ventasproductos.destroy');
 });
 
-
+// Acciones de ventas
 Route::get('obtener-datos-ventas', [VentasproductoaccionesController::class, 'obtenerDatosVentas']);
 Route::get('exportar-ventas', [VentasproductoaccionesController::class, 'exportarVentasCsv'])->name('exportarCSV');
 Route::get('/ventas-chart', [VentasproductoaccionesController::class, 'showVentasChart'])->name('vergrafica');
@@ -141,10 +140,8 @@ Route::get('/ventasproductos/{id}/factura', [VentasproductoaccionesController::c
 Route::get('/factura/{ventaId}', [VentasproductoaccionesController::class, 'mostrarFactura'])->name('factura.mostrar');
 Route::get('/factura/descargar/{ventaId}', [VentasproductoaccionesController::class, 'descargarFactura'])->name('factura.descargar');
 
-
 Route::get('/graficas/ventas-mensuales', [GraficaController::class, 'ventasMensualesPorProducto']);
 Route::get('/ventas/graficas', [GraficaController::class, 'mostrarGraficas'])->name('graficas.index');
-
 
 // Formulario para seleccionar productos y generar reportes
 Route::get('/reportes', function () {
@@ -154,3 +151,8 @@ Route::get('/reportes', function () {
 
 // Generar reporte
 Route::post('/reportes/generar', [ReporteController::class, 'generarReporte']);
+
+// Ayuda en linea
+Route::get('/ayuda', function () {
+    return redirect('/ayuda/index.html');
+});

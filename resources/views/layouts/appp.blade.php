@@ -260,7 +260,6 @@
                             </div>
                         </li>
 
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -306,6 +305,7 @@
                     <h1 class="h3 mb-4 text-gray-800"> @yield('subtitulo') </h1>
 
                     @yield('contenido')
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -334,8 +334,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-
-
+    {{-- ------------------------------------------------------------------------------------------------ --}}
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -346,7 +345,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-
 
     {{-- Tablas --}}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -385,8 +383,18 @@
     {{-- Gráficas --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    @yield('scripts')
+    {{-- Capturar tecla F1 --}}
+    <script>
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'F1') {
+                event.preventDefault();
+                window.open('/ayuda', '_blank');
+            }
+        });
+    </script>
 
+    {{-- Nuevos scripts --}}
+    @yield('scripts')
 
 </body>
 </html>

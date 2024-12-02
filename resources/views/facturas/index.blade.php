@@ -7,7 +7,7 @@
         <!-- Fila para el botón de descarga alineado a la derecha -->
         <div class="d-flex justify-content-end mb-4">
             <form action="{{ route('factura.descargar', $venta->id) }}" method="GET">
-                <button type="submit" class="btn btn-primary">Descargar PDF</button>
+                <button type="submit" class="btn btn-primary">Imprimir</button>
             </form>
         </div>
 

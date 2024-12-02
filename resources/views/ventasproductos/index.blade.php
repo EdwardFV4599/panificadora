@@ -15,9 +15,9 @@
                             {{-- <div class="col-2">
                                 <a href="{{ route('exportarCSV') }}" _target="blank" class="btn btn-primary">Generar CSV</a>
                             </div> --}}
-                            <div class="col-2">
+                            {{-- <div class="col-2">
                                 <a href="{{ route('vergrafica') }}" class="btn btn-primary" target="_blank">Ver gráfica</a>
-                            </div>
+                            </div> --}}
                             {{-- <div class="col-2">
                                 <a href="{{ route('ventas.predecir') }}" class="btn btn-primary" target="_blank">Ver prediccion</a>
                             </div> --}}

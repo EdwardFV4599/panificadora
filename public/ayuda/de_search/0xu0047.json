@@ -1,0 +1,14 @@
+[
+	{ "s": "GARANTIZA", "p": [2] },
+	{ "s": "GARANTIZAR", "p": [4, 3] },
+	{ "s": "GB", "p": [4] },
+	{ "s": "GESTIONAR", "p": [2, 3] },
+	{ "s": "GESTIÓN", "p": [3] },
+	{ "s": "GHZ", "p": [4] },
+	{ "s": "GOOGLE", "p": [4] },
+	{ "s": "GRAN", "p": [2] },
+	{ "s": "GRÁFICA", "p": [4] },
+	{ "s": "GUARDAR", "p": [8] },
+	{ "s": "GUARDARAN", "p": [8] },
+	{ "s": "GUÍA", "p": [3, 2] }
+]

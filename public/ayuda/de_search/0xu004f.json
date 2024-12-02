@@ -1,0 +1,19 @@
+[
+	{ "s": "O", "p": [4, 8, 7] },
+	{ "s": "OBJETIVO", "p": [2] },
+	{ "s": "OBJETIVOS", "p": [3] },
+	{ "s": "OBSERVAR", "p": [9, 7] },
+	{ "s": "OFRECE", "p": [2] },
+	{ "s": "OFRECER", "p": [3] },
+	{ "s": "OPCIONAL", "p": [8] },
+	{ "s": "OPCIONES", "p": [5, 7] },
+	{ "s": "OPCIÓN", "p": [6] },
+	{ "s": "OPERACIONES", "p": [2] },
+	{ "s": "OPERATIVA", "p": [3] },
+	{ "s": "OPERATIVO", "p": [4] },
+	{ "s": "OPTIMIZADO", "p": [4] },
+	{ "s": "OPTIMIZAR", "p": [3] },
+	{ "s": "ORGANIZADO", "p": [5] },
+	{ "s": "OTRA", "p": [8] },
+	{ "s": "OTRO", "p": [8, 4] }
+]

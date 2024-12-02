@@ -1,0 +1,11 @@
+{
+	"1": ["Página principal", "index.htm", []],
+	"2": ["1. Introducción", "introduccion.htm", []],
+	"3": ["1.1. Objetivos", "objetivos.htm", [1]],
+	"4": ["1.2. Requerimientos", "requerimientos.htm", [1]],
+	"5": ["2. Opciones del sistema", "opciones_del_sistema.htm", []],
+	"6": ["2.1. Ingresa al módulo de ventas", "ingresa_al_modulo_de_ventas.htm", [2]],
+	"7": ["2.2. Manejo del módulo de ventas", "manejo_del_modulo_de_ventas.htm", [2]],
+	"8": ["2.2.1. Agregar nueva venta", "agregar_nueva_venta.htm", [2,6]],
+	"9": ["2.2.2. Ver factura", "ver_factura.htm", [2,6]]
+}

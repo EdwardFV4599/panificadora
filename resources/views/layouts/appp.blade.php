@@ -388,7 +388,7 @@
         document.addEventListener('keydown', function (event) {
             if (event.key === 'F1') {
                 event.preventDefault();
-                window.open('/ayuda', '_blank');
+                window.open('/ayuda/index.htm', '_blank');
             }
         });
     </script>

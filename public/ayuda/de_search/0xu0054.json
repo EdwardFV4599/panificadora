@@ -1,0 +1,20 @@
+[
+	{ "s": "TABLA", "p": [8] },
+	{ "s": "TAMBIÉN", "p": [7] },
+	{ "s": "TAREAS", "p": [3] },
+	{ "s": "TARJETA", "p": [4] },
+	{ "s": "TE", "p": [2] },
+	{ "s": "TECNOLÓGICA", "p": [2] },
+	{ "s": "TELÉFONOS", "p": [4] },
+	{ "s": "TENEMOS", "p": [7] },
+	{ "s": "TENER", "p": [4] },
+	{ "s": "TEXTO", "p": [4] },
+	{ "s": "TIENE", "p": [2] },
+	{ "s": "TODAS", "p": [2, 3] },
+	{ "s": "TODOS", "p": [8, 7] },
+	{ "s": "TOTAL", "p": [8, 4] },
+	{ "s": "TOTALES", "p": [8] },
+	{ "s": "TRAVÉS", "p": [2] },
+	{ "s": "TUS", "p": [2] },
+	{ "s": "TÉCNICA", "p": [3] }
+]

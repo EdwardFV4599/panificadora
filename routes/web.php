@@ -154,5 +154,5 @@ Route::post('/reportes/generar', [ReporteController::class, 'generarReporte']);
 
 // Ayuda en linea
 Route::get('/ayuda', function () {
-    return redirect('/ayuda/index.html');
+    return redirect('/ayuda/index.htm');
 });

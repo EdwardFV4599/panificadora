@@ -13,6 +13,7 @@ use App\Http\Controllers\VentasproductoController;
 use App\Http\Controllers\VentasproductoaccionesController;
 use App\Http\Controllers\GraficaController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\PrediccionController;
 
 
 
@@ -156,3 +157,5 @@ Route::post('/reportes/generar', [ReporteController::class, 'generarReporte']);
 Route::get('/ayuda', function () {
     return redirect('/ayuda/index.htm');
 });
+
+Route::get('/prediccion', [PrediccionController::class, 'index'])->name('prediccion.index');

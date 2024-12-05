@@ -5,38 +5,64 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\VentasProductoDetalle;
 use App\Models\Producto;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class GraficaController extends Controller
 {
-    public function ventasMensualesPorProducto()
-    {
-        // Obtener los datos de ventas por producto y mes para el año 2024
-        $ventas = VentasProductoDetalle::selectRaw('producto_id, MONTH(vp.fecha) as mes, SUM(cantidad) as total_cantidad')
-            ->join('ventasproductos as vp', 'ventasproductodetalles.ventasproducto_id', '=', 'vp.id')
-            ->whereYear('vp.fecha', 2024)
-            ->groupBy('producto_id', 'mes')
-            ->get();
-
-        // Organizar datos en un formato más fácil para los gráficos
-        $productos = Producto::whereIn('id', $ventas->pluck('producto_id'))->get();
-
-        $datos = [];
-        foreach ($productos as $producto) {
-            $datos[$producto->nombre] = array_fill(1, 12, 0); // Inicializa cada mes en 0
-        }
-
-        foreach ($ventas as $venta) {
-            $producto = $productos->where('id', $venta->producto_id)->first();
-            $datos[$producto->nombre][$venta->mes] = $venta->total_cantidad;
-        }
-
-        return response()->json($datos); // Devolver datos como JSON
-    }
-
     public function mostrarGraficas()
     {
         return view('graficas.ventas_graficas');
     }
 
+    public function obtenerVentas(Request $request)
+    {
+        try {
+            // Obtener parámetros de entrada
+            $fechaInicio = $request->input('fecha_inicio');
+            $fechaFinal = $request->input('fecha_final');
+            $periodo = $request->input('periodo', 'mes');
+
+            // Validar entradas
+            if (!$fechaInicio || !$fechaFinal) {
+                return response()->json(['error' => 'Las fechas son obligatorias'], 400);
+            }
+
+            // Crear consulta dinámica según el período
+            $query = VentasProductoDetalle::with('producto')  // Cargar la relación de producto
+                ->selectRaw('producto_id, SUM(cantidad) as total_cantidad, SUM(cantidad * precio) as total_precio');
+
+            if ($periodo === 'dia') {
+                $query->addSelect(DB::raw('DATE(vp.fecha) as periodo'))
+                    ->groupBy('producto_id', 'periodo');
+            } elseif ($periodo === 'semana') {
+                $query->addSelect(DB::raw('YEARWEEK(vp.fecha, 1) as periodo'))
+                    ->groupBy('producto_id', 'periodo');
+            } else {
+                $query->addSelect(DB::raw('MONTH(vp.fecha) as periodo'))
+                    ->groupBy('producto_id', 'periodo');
+            }
+
+            $query->join('ventasproductos as vp', 'ventasproductodetalles.ventasproducto_id', '=', 'vp.id')
+                ->whereBetween('vp.fecha', [$fechaInicio, $fechaFinal]);
+
+            $ventas = $query->get();
+
+            // Organizar datos por producto y período
+            $data = [];
+            foreach ($ventas as $venta) {
+                $productoId = $venta->producto_id;
+                $productoNombre = $venta->producto->nombre;  // Obtener nombre del producto a través de la relación
+                $periodoKey = $venta->periodo;
+
+                $data[$productoId]['nombre'] = $productoNombre;
+                $data[$productoId]['ventas'][$periodoKey] = $venta->total_precio;
+            }
+
+            return response()->json($data);
+        } catch (\Exception $e) {
+            Log::error("Error en obtenerVentas: {$e->getMessage()}", ['trace' => $e->getTraceAsString()]);
+            return response()->json(['error' => 'Error interno del servidor'], 500);
+        }
+    }
 }

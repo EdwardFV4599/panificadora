@@ -9,7 +9,7 @@
                     <div class="container-fluid h-100">
                         <div class="row w-100 align-items-center">
                             {{-- Registrar --}}
-                            <div class="col-10">
+                            <div class="col-8">
                                 <a href="{{ route('ventasproductos.create') }}" class="btn btn-primary">Agregar nueva venta</a>
                             </div>
                             <div class="col-2">

@@ -143,6 +143,7 @@ Route::get('/factura/descargar/{ventaId}', [VentasproductoaccionesController::cl
 
 Route::get('/graficas/ventas-mensuales', [GraficaController::class, 'ventasMensualesPorProducto']);
 Route::get('/ventas/graficas', [GraficaController::class, 'mostrarGraficas'])->name('graficas.index');
+Route::get('/graficas/ventas', [GraficaController::class, 'obtenerVentas'])->name('graficas.ventas');
 
 // Formulario para seleccionar productos y generar reportes
 Route::get('/reportes', function () {

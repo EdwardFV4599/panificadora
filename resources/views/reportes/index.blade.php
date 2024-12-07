@@ -6,9 +6,9 @@
     <form action="/reportes/generar" method="POST">
         @csrf
         <div class="form-group ">
-            <label for="producto_id" class="mr-2">Seleccionar Producto:</label>
+            <label for="producto_id" class="mr-2">Seleccionar producto:</label>
             <select name="producto_id" id="producto_id" class="form-control">
-                <option value="">Todos los Productos</option>
+                <option value="">Todos los productos</option>
                 @foreach($productos as $producto)
                     <option value="{{ $producto->id }}">{{ $producto->nombre }}</option>
                 @endforeach
@@ -16,17 +16,17 @@
         </div>
 
         <div class="form-group">
-            <label for="fecha_inicio" class="mr-2">Fecha Inicio:</label>
+            <label for="fecha_inicio" class="mr-2">Fecha inicio:</label>
             <input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="fecha_final" class="mr-2">Fecha Final:</label>
+            <label for="fecha_final" class="mr-2">Fecha final:</label>
             <input type="date" name="fecha_final" id="fecha_final" class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="tipo_grafico" class="mr-2">Tipo de Gráfico:</label>
+            <label for="tipo_grafico" class="mr-2">Tipo de gráfico:</label>
             <select name="tipo_grafico" id="tipo_grafico" class="form-control">
                 <option value="bar">Barra</option>
                 <option value="line">Línea</option>

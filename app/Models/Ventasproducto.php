@@ -9,12 +9,7 @@ class Ventasproducto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fecha', 'total', 'cliente', 'descripcion', 'estado'];
-
-    // public function detalles()
-    // {
-    //     return $this->hasMany(Ventasproductodetalle::class);
-    // }
+    protected $fillable = ['fecha', 'total', 'cliente', 'estado'];
 
     public function detalles()
     {

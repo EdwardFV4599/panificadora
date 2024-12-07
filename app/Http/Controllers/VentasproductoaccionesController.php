@@ -9,10 +9,8 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-
 class VentasproductoaccionesController extends Controller
 {
-
     // Exportar ventas -------------------------------------------------------------------
     public function exportarVentasCsv()
     {
@@ -52,7 +50,6 @@ class VentasproductoaccionesController extends Controller
         // Descargar el archivo CSV y eliminarlo después de enviarlo
         return response()->download(storage_path($csvFileName))->deleteFileAfterSend(true);
     }
-    
 
     // Método para obtener las ventas desde la base de datos -------------------------------------------
     public function obtenerDatosVentas(Request $request)
@@ -80,7 +77,6 @@ class VentasproductoaccionesController extends Controller
         return response()->json($resultados);
     }
 
-
     // Generar reporte pdf -----------------------------------------------------------------
     public function generarReportePdf()
     {
@@ -94,101 +90,6 @@ class VentasproductoaccionesController extends Controller
         // Descargar el archivo PDF
         return $pdf->download('reporte_ventas.pdf');
     } 
-
-
-    // Método para mostrar la vista con el gráfico -------------------------------------------------
-    public function showVentasChart()
-    {
-        // Obtener las ventas del último año
-        $ventas = Ventasproducto::whereYear('fecha', Carbon::now()->year)
-            ->get();
-
-        // Inicializar un arreglo para almacenar las ventas mensuales
-        $ventasMensuales = array_fill(0, 12, 0); // Crear un array con 12 elementos, todos en 0
-
-        // Organizar las ventas por mes
-        foreach ($ventas as $venta) {
-            $mes = Carbon::parse($venta->fecha)->month - 1; // Obtener el mes (0-11)
-            $ventasMensuales[$mes] += $venta->total; // Sumar las ventas del mes correspondiente
-        }
-
-        // Pasar los datos a la vista
-        return view('ventasproductos.chart', compact('ventasMensuales'));
-    }
-
-    // Predecir ventas
-    public function predecirVentas(Request $request)
-    {
-        // Obtener las ventas con los detalles y productos relacionados
-        $ventas = Ventasproducto::with('detalles.producto')->get();
-
-        // Preparar los datos para enviar al script Python
-        $data = [];
-        foreach ($ventas as $venta) {
-            foreach ($venta->detalles as $detalle) {
-                // Validar que los datos no sean nulos
-                if ($detalle->producto && $venta->created_at && $detalle->cantidad) {
-                    $data[] = [
-                        'producto_id' => $detalle->producto_id,
-                        'producto_nombre' => $detalle->producto->nombre ?? 'Desconocido',
-                        'cantidad_vendida' => $detalle->cantidad,
-                        'año' => $venta->created_at->year,
-                        'mes' => $venta->created_at->month,
-                    ];
-                }
-            }
-        }
-
-        // Validar si hay datos
-        if (empty($data)) {
-            return response()->json(['error' => 'No hay datos suficientes para realizar la predicción.'], 400);
-        }
-
-        // Convertir los datos a JSON
-        $jsonData = json_encode($data);
-
-        // Ejecutar el script Python
-        $scriptPath = base_path('scripts/prediccion.py'); // Ruta al script Python
-        $process = new Process(['python', $scriptPath, $jsonData]);
-
-        try {
-            $process->mustRun();
-            $output = $process->getOutput();
-            $response = json_decode($output, true);
-
-            // Validar la respuesta del script Python
-            if (isset($response['error'])) {
-                return response()->json(['error' => $response['error']], 500);
-            }
-
-            return response()->json(['prediccion' => $response['prediccion']]);
-        } catch (ProcessFailedException $e) {
-            return response()->json(['error' => 'Error al ejecutar el script Python: ' . $e->getMessage()], 500);
-        }
-    }
-
-
-
-    public function generarFactura($id)
-    {
-        // Obtener la venta y sus detalles
-        $venta = VentasProducto::with('detalles.producto')->findOrFail($id);
-
-        // Preparar los datos para la factura
-        $data = [
-            'venta' => $venta,
-            'detalles' => $venta->detalles,
-        ];
-
-        // Generar el PDF
-        $pdf = PDF::loadView('facturas.ventas', $data);
-
-        // Descargar el archivo PDF
-        return $pdf->download("factura_venta_{$venta->id}.pdf");
-    }
-
-
-
 
     public function mostrarFactura($ventaId)
     {

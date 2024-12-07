@@ -17,91 +17,88 @@ class ProductoSeeder extends Seeder
         $panaderia = Categoria::where('nombre', 'Panadería')->first()->id;
         $reposteria = Categoria::where('nombre', 'Repostería')->first()->id;
         $galletas = Categoria::where('nombre', 'Galletas')->first()->id;
-        $pasteleria = Categoria::where('nombre', 'Pastelería')->first()->id;
 
         // Crear productos para la categoría Panadería
         Producto::create([
-            'nombre' => 'Pan Francés',
-            'stock_actual' => 150,
+            'nombre' => 'Pan francés',
+            'stock_actual' => 100,
             'categoria' => $panaderia,
-            'precio' => 0.50,
+            'precio' => 0.25,
             'descripcion' => 'Pan crujiente ideal para el desayuno.',
             'estado' => 1,
         ]);
 
         Producto::create([
-            'nombre' => 'Pan Integral',
+            'nombre' => 'Pan de yema',
+            'stock_actual' => 120,
+            'categoria' => $panaderia,
+            'precio' => 0.25,
+            'descripcion' => 'Pan de yema ideal para el desayuno y la cena.',
+            'estado' => 1,
+        ]);
+
+        Producto::create([
+            'nombre' => 'Pan integral',
             'stock_actual' => 100,
             'categoria' => $panaderia,
-            'precio' => 0.80,
+            'precio' => 0.25,
             'descripcion' => 'Pan saludable hecho con harina integral.',
             'estado' => 1,
         ]);
 
         // Crear productos para la categoría Repostería
         Producto::create([
-            'nombre' => 'Tarta de Manzana',
+            'nombre' => 'Torta de manzana',
             'stock_actual' => 25,
             'categoria' => $reposteria,
-            'precio' => 12.50,
-            'descripcion' => 'Tarta dulce con manzanas frescas.',
+            'precio' => 40.00,
+            'descripcion' => 'Torta dulce con manzanas frescas.',
             'estado' => 1,
         ]);
 
         Producto::create([
-            'nombre' => 'Brownie de Chocolate',
-            'stock_actual' => 50,
-            'categoria' => $reposteria,
-            'precio' => 1.50,
-            'descripcion' => 'Brownie esponjoso con chocolate amargo.',
-            'estado' => 1,
-        ]);
-
-        Producto::create([
-            'nombre' => 'Tarta de Fresa',
+            'nombre' => 'Torta de fresa',
             'stock_actual' => 20,
             'categoria' => $reposteria,
-            'precio' => 14.00,
-            'descripcion' => 'Tarta fresca con fresas naturales.',
+            'precio' => 40.00,
+            'descripcion' => 'Torta fresca con fresas naturales.',
             'estado' => 1,
         ]);
 
+        Producto::create([
+            'nombre' => 'Torta de tres leches',
+            'stock_actual' => 12,
+            'categoria' => $reposteria,
+            'precio' => 45.00,
+            'descripcion' => 'Torta empapado en tres tipos de leche.',
+            'estado' => 1,
+        ]);
+
+        Producto::create([
+            'nombre' => 'Torta de chocolate',
+            'stock_actual' => 15,
+            'categoria' => $reposteria,
+            'precio' => 45.00,
+            'descripcion' => 'Torta de chocolate con cobertura de crema.',
+            'estado' => 1,
+        ]);
 
         // Crear productos para la categoría Galletas
         Producto::create([
-            'nombre' => 'Galletas de Chocolate',
-            'stock_actual' => 200,
+            'nombre' => 'Galletas de chocolate',
+            'stock_actual' => 100,
             'categoria' => $galletas,
-            'precio' => 0.75,
+            'precio' => 0.50,
             'descripcion' => 'Galletas crujientes con chispas de chocolate.',
             'estado' => 1,
         ]);
 
         Producto::create([
-            'nombre' => 'Galletas de Avena',
-            'stock_actual' => 150,
+            'nombre' => 'Galletas de avena',
+            'stock_actual' => 120,
             'categoria' => $galletas,
-            'precio' => 0.80,
+            'precio' => 0.50,
             'descripcion' => 'Galletas saludables hechas con avena.',
-            'estado' => 1,
-        ]);
-
-        // Crear productos para la categoría Pastelería
-        Producto::create([
-            'nombre' => 'Pastel de Tres Leches',
-            'stock_actual' => 10,
-            'categoria' => $pasteleria,
-            'precio' => 25.00,
-            'descripcion' => 'Pastel empapado en tres tipos de leche.',
-            'estado' => 1,
-        ]);
-
-        Producto::create([
-            'nombre' => 'Pastel de Chocolate',
-            'stock_actual' => 15,
-            'categoria' => $pasteleria,
-            'precio' => 30.00,
-            'descripcion' => 'Pastel de chocolate con cobertura de crema.',
             'estado' => 1,
         ]);
     }

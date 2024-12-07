@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('producto');
             $table->decimal('cantidad_elaborada', 10, 0);
             $table->date('fecha');
-            $table->text('descripcion')->nullable();
             $table->integer('estado');
             $table->timestamps();
         });

@@ -110,10 +110,11 @@ Route::middleware([
     'can:controlar-elaboracion-productos', // Verifica que el usuario tenga el permiso
 ])->group(function () {
     Route::get('/elaboracionproductos', [ElaboracionproductoController::class, 'index'])->name('elaboracionproductos.index');
-    Route::get('/elaboracionproductos/crear', [ElaboracionproductoController::class, 'create'])->name('elaboracionproductos.create');
-    Route::post('/elaboracionproductos/guardar', [ElaboracionproductoController::class, 'store'])->name('elaboracionproductos.store');
-    Route::get('/elaboracionproductos/editar/{id}', [ElaboracionproductoController::class, 'edit'])->name('elaboracionproductos.edit');
-    Route::post('/elaboracionproductos/actualizar/{id}', [ElaboracionproductoController::class, 'update'])->name('elaboracionproductos.update');
+
+    Route::get('elaboracionproductos/{id}', [ElaboracionproductoController::class, 'show'])->name('elaboracionproductos.show');
+    Route::get('/elaboracionproductos/create/{id}', [ElaboracionproductoController::class, 'create'])->name('elaboracionproductos.create');
+    Route::post('/elaboracionproductos/{id}', [ElaboracionproductoController::class, 'store'])->name('elaboracionproductos.store');
+
     Route::post('/elaboracionproductos/eliminar/{id}', [ElaboracionproductoController::class, 'destroy'])->name('elaboracionproductos.destroy');
 });
 
@@ -134,13 +135,10 @@ Route::middleware([
 // Acciones de ventas
 Route::get('obtener-datos-ventas', [VentasproductoaccionesController::class, 'obtenerDatosVentas']);
 Route::get('exportar-ventas', [VentasproductoaccionesController::class, 'exportarVentasCsv'])->name('exportarCSV');
-Route::get('/ventas-chart', [VentasproductoaccionesController::class, 'showVentasChart'])->name('vergrafica');
-Route::get('/ventas-prediccion', [VentasproductoaccionesController::class, 'predecirVentas'])->name('prediccion');
-Route::get('/predecir-ventas', [VentasproductoaccionesController::class, 'predecirVentas'])->name('ventas.predecir');
-Route::get('/ventasproductos/{id}/factura', [VentasproductoaccionesController::class, 'generarFactura'])->name('facturas.ventas');
 Route::get('/factura/{ventaId}', [VentasproductoaccionesController::class, 'mostrarFactura'])->name('factura.mostrar');
 Route::get('/factura/descargar/{ventaId}', [VentasproductoaccionesController::class, 'descargarFactura'])->name('factura.descargar');
 
+// Graficos
 Route::get('/graficas/ventas-mensuales', [GraficaController::class, 'ventasMensualesPorProducto']);
 Route::get('/ventas/graficas', [GraficaController::class, 'mostrarGraficas'])->name('graficas.index');
 Route::get('/graficas/ventas', [GraficaController::class, 'obtenerVentas'])->name('graficas.ventas');
@@ -159,4 +157,5 @@ Route::get('/ayuda', function () {
     return redirect('/ayuda/index.htm');
 });
 
+// Predicción
 Route::get('/prediccion', [PrediccionController::class, 'index'])->name('prediccion.index');

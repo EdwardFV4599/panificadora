@@ -18,11 +18,11 @@
             </div>
 
             <div class="card-body table-responsive">
-            {{-- Tabla --}}
+                {{-- Tabla --}}
                 <table id="mi-tabla" class="table">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Codigo</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Código</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Nombre</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Editar</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Eliminar</h6></th>

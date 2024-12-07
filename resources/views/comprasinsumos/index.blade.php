@@ -18,15 +18,15 @@
             </div>
 
             <div class="card-body table-responsive">
-            {{-- Tabla --}}
+                {{-- Tabla --}}
                 <table id="mi-tabla" class="table">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Codigo</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Código</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Insumo</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Proveedor</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Stock agregado</h6></th>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Stock actual</h6></th>
+                            {{-- <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Stock actual</h6></th> --}}
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Precio</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Encargado</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Fecha</h6></th>
@@ -51,11 +51,11 @@
                                     @endif
                                 @endforeach
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->stock_agregado}}</td>
-                                @foreach ($insumos as $insumo)
+                                {{-- @foreach ($insumos as $insumo)
                                     @if ($insumo->id == $item->insumo)
                                         <td class="text-xxs mb-0 text-center align-middle">{{$insumo->stock_actual}}</td>
                                     @endif
-                                @endforeach
+                                @endforeach --}}
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->precio}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->encargado}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle text-nowrap">{{$item->fecha}}</td>

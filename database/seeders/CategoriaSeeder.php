@@ -27,10 +27,5 @@ class CategoriaSeeder extends Seeder
             'nombre' => 'Galletas',
             'estado' => 1,
         ]);
-
-        Categoria::create([
-            'nombre' => 'Pastelería',
-            'estado' => 1,
-        ]);
     }
 }

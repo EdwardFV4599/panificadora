@@ -16,11 +16,6 @@ class Ventasproductodetalle extends Model
         return $this->belongsTo(Ventasproducto::class);
     }
 
-    // public function producto()
-    // {
-    //     return $this->belongsTo(Producto::class);
-    // }
-
     public function producto()
     {
         return $this->belongsTo(Producto::class, 'producto_id');

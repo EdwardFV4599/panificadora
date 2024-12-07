@@ -16,11 +16,10 @@ class VentasproductoSeeder extends Seeder
     public function run(): void
     {
         // Generar 200 ventas
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 500; $i++) {
             $fecha = fake()->dateTimeBetween('2024-01-01', '2024-11-30');
             $total = fake()->randomFloat(2, 50, 500); // Total entre 50 y 500
             $cliente = fake()->name();
-            $descripcion = fake()->optional()->sentence();
             $estado = 1; // 0: inactivo, 1: activo
 
             // Insertar la venta
@@ -28,7 +27,6 @@ class VentasproductoSeeder extends Seeder
                 'fecha' => $fecha,
                 'total' => $total,
                 'cliente' => $cliente,
-                'descripcion' => $descripcion,
                 'estado' => $estado,
                 'created_at' => now(),
                 'updated_at' => now(),

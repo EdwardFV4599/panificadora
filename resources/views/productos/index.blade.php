@@ -5,16 +5,15 @@
         <h3><strong>Tabla de productos</strong></h3>
         <div class="card mb-4">
             <div class="card-header">
-                {{-- <form class="form-inline my-2" method="get">
+                <form class="form-inline my-2" method="get">
                     <div class="container-fluid h-100">
                         <div class="row w-100 align-items-center">
-                            Registrar
-                            <div class="col-8">
+                            {{-- <div class="col-8">
                                 <a href="{{ route('productos.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Registro</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
-                </form> --}}
+                </form>
             </div>
 
             <div class="card-body table-responsive">
@@ -22,7 +21,7 @@
                 <table id="mi-tabla" class="table">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Codigo</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Código</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Nombre</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Categoria</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Stock actual</h6></th>

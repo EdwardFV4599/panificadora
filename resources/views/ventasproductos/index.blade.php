@@ -9,17 +9,10 @@
                     <div class="container-fluid h-100">
                         <div class="row w-100 align-items-center">
                             {{-- Registrar --}}
-                            <div class="col-8">
+                            <div class="col-12">
                                 <a href="{{ route('ventasproductos.create') }}" class="btn btn-primary">Agregar nueva venta</a>
-                            </div>
-                            <div class="col-2">
                                 <a href="{{ route('exportarCSV') }}" _target="blank" class="btn btn-primary">Generar CSV</a>
-                            </div>
-                            {{-- <div class="col-2">
-                                <a href="{{ route('vergrafica') }}" class="btn btn-primary" target="_blank">Ver gráfica</a>
-                            </div> --}}
-                            <div class="col-2">
-                                <a href="{{ route('prediccion.index') }}" class="btn btn-primary">Ver prediccion</a>
+                                <a href="{{ route('prediccion.index') }}" class="btn btn-primary">Ver predicción</a>
                             </div>
                         </div>
                     </div>
@@ -27,15 +20,14 @@
             </div>
 
             <div class="card-body table-responsive">
-            {{-- Tabla --}}
+                {{-- Tabla --}}
                 <table id="mi-tabla" class="table">
                     <thead class="table-dark">
                         <tr>
-                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Codigo</h6></th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Código</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Fecha</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Total</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Cliente</h6></th>
-                            {{-- <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Descripción</h6></th> --}}
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Ver factura</h6></th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col"><h6>Cancelar</h6></th>
                         </tr>
@@ -48,7 +40,6 @@
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->fecha}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->total}}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{$item->cliente}}</td>
-                                {{-- <td class="text-xxs mb-0 text-center align-middle">{{$item->descripcion}}</td> --}}
                                 <td class="text-xxs mb-0 text-center align-middle">
                                     <a href="{{ route('factura.mostrar', $item->id) }}" class="btn btn-warning btn-sm">
                                         <i class="fas fa-eye"></i>

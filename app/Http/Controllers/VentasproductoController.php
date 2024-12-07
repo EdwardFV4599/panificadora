@@ -47,7 +47,6 @@ class VentasproductoController extends Controller
             'fecha' => $request->fecha,
             'cliente' => $request->cliente,
             'total' => $totalVenta,  // Asignar el total calculado
-            'descripcion' => $request->descripcion ?? null,
             'estado' => 1,
         ]);
 
@@ -108,7 +107,6 @@ class VentasproductoController extends Controller
             'fecha' => $request->fecha,
             'cliente' => $request->cliente,
             'total' => $request->total,
-            'descripcion' => $request->descripcion ?? null,
         ]);
 
         // Eliminar los detalles previos
@@ -151,6 +149,4 @@ class VentasproductoController extends Controller
 
         return redirect()->route('ventasproductos.index')->with('success', '');
     }
-
-
 }

@@ -31,6 +31,11 @@
         <div class="row" id="graficas">
             <!-- Los gráficos se llenarán dinámicamente -->
         </div>
+
+        {{-- Espaciado --}}
+        <div class="mb-3">
+        </div>
+
     </div>
 @endsection
 
@@ -93,7 +98,7 @@
 
                     // Crear gráfico de pastel
                     const pieDiv = document.createElement('div');
-                    pieDiv.style.width = '400px'; // Establecer un tamaño fijo
+                    pieDiv.style.width = '380px'; // Establecer un tamaño fijo
                     pieDiv.style.margin = '0 auto'; // Centrar el gráfico
                     graficasContainer.appendChild(pieDiv);
 

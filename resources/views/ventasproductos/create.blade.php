@@ -13,10 +13,6 @@
                 <label for="cliente" class="form-label">Cliente</label>
                 <input type="text" class="form-control" name="cliente" id="cliente" required>
             </div>
-            <div class="form-group">
-                <label for="descripcion">Descripción</label>
-                <textarea class="form-control" name="descripcion" id="descripcion"></textarea>
-            </div>
 
             <h4>Detalles de la venta</h4>
             <div id="productos-container">
@@ -53,16 +49,14 @@
             <input type="hidden" name="total" id="totalVenta">
 
 
+            
+            <button type="button" class="btn btn-primary" id="add-producto">Agregar Producto</button>
+
             <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('ventasproductos.index') }}'">Atrás</button>
             <button type="submit" class="btn btn-success">Guardar</button>
         </form>
-
-        <button type="button" class="btn btn-primary mt-3" id="add-producto">Agregar Producto</button>
     </div>
 @endsection
-
-
-
 
 @section('scripts')
     <script>

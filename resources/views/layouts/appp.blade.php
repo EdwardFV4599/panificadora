@@ -127,14 +127,14 @@
             </li>
             @endcan
 
-            {{-- @can('controlar-elaboracion-productos')
+            @can('controlar-elaboracion-productos')
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('elaboracionproductos.index') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Elaboración de productos</span></a>
             </li>
-            @endcan --}}
+            @endcan
 
             @can('controlar-ventas-productos')
             <!-- Nav Item -->
@@ -171,15 +171,6 @@
                     <span>Gráficos</span></a>
             </li>
             @endcan
-
-            {{-- @can('generar-facturas')
-            <!-- Nav Item -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Facturas</span></a>
-            </li>
-            @endcan --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -303,13 +294,11 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800"> @yield('subtitulo') </h1>
-
                     @yield('contenido')
 
                 </div>
                 <!-- /.container-fluid -->
 
-                
             </div>
             <!-- End of Main Content -->
 

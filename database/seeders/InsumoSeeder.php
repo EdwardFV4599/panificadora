@@ -15,10 +15,18 @@ class InsumoSeeder extends Seeder
     {
         // Crear insumos para los productos
         Insumo::create([
-            'nombre' => 'Harina de Trigo',
+            'nombre' => 'Harina de trigo',
+            'unidad' => 'kg',
+            'stock_actual' => 150,
+            'descripcion' => 'Harina de trigo para panadería y repostería',
+            'estado' => 1,
+        ]);
+
+        Insumo::create([
+            'nombre' => 'Harina integral',
             'unidad' => 'kg',
             'stock_actual' => 100,
-            'descripcion' => 'Harina de trigo para panadería y repostería',
+            'descripcion' => 'Harina integral para pan integral',
             'estado' => 1,
         ]);
 
@@ -47,6 +55,14 @@ class InsumoSeeder extends Seeder
         ]);
 
         Insumo::create([
+            'nombre' => 'Leche condensada',
+            'unidad' => 'litro',
+            'stock_actual' => 50,
+            'descripcion' => 'Leche condensada para repostería',
+            'estado' => 1,
+        ]);
+
+        Insumo::create([
             'nombre' => 'Mantequilla',
             'unidad' => 'kg',
             'stock_actual' => 50,
@@ -57,7 +73,7 @@ class InsumoSeeder extends Seeder
         Insumo::create([
             'nombre' => 'Huevos',
             'unidad' => 'unidad',
-            'stock_actual' => 120,
+            'stock_actual' => 200,
             'descripcion' => 'Huevos frescos',
             'estado' => 1,
         ]);
@@ -73,7 +89,7 @@ class InsumoSeeder extends Seeder
         Insumo::create([
             'nombre' => 'Fresas',
             'unidad' => 'kg',
-            'stock_actual' => 20,
+            'stock_actual' => 50,
             'descripcion' => 'Fresas frescas',
             'estado' => 1,
         ]);
@@ -81,7 +97,7 @@ class InsumoSeeder extends Seeder
         Insumo::create([
             'nombre' => 'Manzanas',
             'unidad' => 'kg',
-            'stock_actual' => 20,
+            'stock_actual' => 50,
             'descripcion' => 'Manzanas frescas',
             'estado' => 1,
         ]);
@@ -89,7 +105,7 @@ class InsumoSeeder extends Seeder
         Insumo::create([
             'nombre' => 'Crema de leche',
             'unidad' => 'litro',
-            'stock_actual' => 20,
+            'stock_actual' => 50,
             'descripcion' => 'Crema de leche para repostería',
             'estado' => 1,
         ]);
@@ -119,10 +135,26 @@ class InsumoSeeder extends Seeder
         ]);
 
         Insumo::create([
-            'nombre' => 'Leche condensada',
-            'unidad' => 'litro',
+            'nombre' => 'Azúcar moreno',
+            'unidad' => 'kg',
             'stock_actual' => 50,
-            'descripcion' => 'Leche condensada para repostería',
+            'descripcion' => 'Azúcar moreno para tortas y repostería',
+            'estado' => 1,
+        ]);
+
+        Insumo::create([
+            'nombre' => 'Frutos secos',
+            'unidad' => 'kg',
+            'stock_actual' => 20,
+            'descripcion' => 'Frutos secos para tortas y galletas',
+            'estado' => 1,
+        ]);
+
+        Insumo::create([
+            'nombre' => 'Miel',
+            'unidad' => 'kg',
+            'stock_actual' => 20,
+            'descripcion' => 'Miel natural para recetas dulces',
             'estado' => 1,
         ]);
 

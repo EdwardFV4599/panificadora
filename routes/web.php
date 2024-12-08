@@ -110,10 +110,10 @@ Route::middleware([
     'can:controlar-elaboracion-productos', // Verifica que el usuario tenga el permiso
 ])->group(function () {
     Route::get('/elaboracionproductos', [ElaboracionproductoController::class, 'index'])->name('elaboracionproductos.index');
-
-    Route::get('elaboracionproductos/{id}', [ElaboracionproductoController::class, 'show'])->name('elaboracionproductos.show');
+    Route::get('/elaboracionproductos/{id}', [ElaboracionproductoController::class, 'show'])->name('elaboracionproductos.show');
     Route::get('/elaboracionproductos/create/{id}', [ElaboracionproductoController::class, 'create'])->name('elaboracionproductos.create');
     Route::post('/elaboracionproductos/{id}', [ElaboracionproductoController::class, 'store'])->name('elaboracionproductos.store');
+    Route::post('elaboracionproductos/{id}/cancelar', [ElaboracionproductoController::class, 'cancelar'])->name('elaboracionproductos.cancelar');
 
     Route::post('/elaboracionproductos/eliminar/{id}', [ElaboracionproductoController::class, 'destroy'])->name('elaboracionproductos.destroy');
 });

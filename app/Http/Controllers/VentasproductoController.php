@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ventasproducto;
 use App\Models\Producto;
 use App\Models\Ventasproductodetalle;
+use Illuminate\Support\Facades\DB;
 
 class VentasproductoController extends Controller
 {
@@ -36,40 +37,52 @@ class VentasproductoController extends Controller
             'detalles.*.precio' => 'required|numeric',
         ]);
 
-        // Calcular el total de la venta antes de crear el registro
-        $totalVenta = 0;
-        foreach ($request->detalles as $detalle) {
-            $totalVenta += $detalle['cantidad'] * $detalle['precio'];  // Sumar el total de cada producto
+        try {
+            // Ejecutar la operación dentro de una transacción
+            DB::transaction(function () use ($request) {
+                // Calcular el total de la venta
+                $totalVenta = 0;
+                foreach ($request->detalles as $detalle) {
+                    $totalVenta += $detalle['cantidad'] * $detalle['precio'];
+                }
+
+                // Crear la venta
+                $venta = Ventasproducto::create([
+                    'fecha' => $request->fecha,
+                    'cliente' => $request->cliente,
+                    'total' => $totalVenta,
+                    'estado' => 1,
+                ]);
+
+                // Validar stock y guardar los detalles
+                foreach ($request->detalles as $detalle) {
+                    if (empty($detalle['producto_id']) || empty($detalle['cantidad']) || empty($detalle['precio'])) {
+                        return back()->withErrors(['error' => 'Hay campos vacíos en los detalles de la venta']);
+                    }
+                
+                    $producto = Producto::find($detalle['producto_id']);
+                    if ($producto && $producto->stock_actual >= $detalle['cantidad']) {
+                        Ventasproductodetalle::create([
+                            'ventasproducto_id' => $venta->id,
+                            'producto_id' => $detalle['producto_id'],
+                            'cantidad' => $detalle['cantidad'],
+                            'precio' => $detalle['precio'],
+                            'estado' => 1, 
+                        ]);
+                
+                        $producto->decrement('stock_actual', $detalle['cantidad']);
+                    } else {
+                        return back()->withErrors(['error' => 'Stock insuficiente para algunos productos']);
+                    }
+                }
+            });
+
+            // Si todo va bien, redirigir con éxito
+            return redirect()->route('ventasproductos.index')->with('success', 'Venta registrada correctamente.');
+        } catch (\Exception $e) {
+            // Manejo de errores
+            return back()->withErrors(['error' => $e->getMessage()]);
         }
-
-        // Crear la venta
-        $venta = Ventasproducto::create([
-            'fecha' => $request->fecha,
-            'cliente' => $request->cliente,
-            'total' => $totalVenta,  // Asignar el total calculado
-            'estado' => 1,
-        ]);
-
-        // Guardar los detalles de la venta y actualizar stock de los productos
-        foreach ($request->detalles as $detalle) {
-            $producto = Producto::find($detalle['producto_id']);
-            if ($producto && $producto->stock_actual >= $detalle['cantidad']) {
-                Ventasproductodetalle::create([
-                    'ventasproducto_id' => $venta->id,
-                    'producto_id' => $detalle['producto_id'],
-                    'cantidad' => $detalle['cantidad'],
-                    'precio' => $detalle['precio'],
-                    'estado' => 1,  // Asegúrate de establecer el valor de 'estado'
-                ]);                
-        
-                // Actualizar el stock del producto
-                $producto->decrement('stock_actual', $detalle['cantidad']);
-            } else {
-                return back()->withErrors(['error' => 'Stock insuficiente para algunos productos']);
-            }
-        }        
-
-        return redirect()->route('ventasproductos.index')->with('success', '');
     }
 
     // Mostrar el formulario para editar

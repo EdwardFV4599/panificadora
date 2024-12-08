@@ -9,7 +9,7 @@
                     <div class="container-fluid h-100">
                         <div class="row w-100 align-items-center">
                             <div class="col-12">
-                                <a href="{{ route('elaboracionproductos.index') }}" class="btn btn-primary">Regresar</a>
+                                <a href="{{ route('elaboracionproductos.index') }}" class="btn btn-secondary">Regresar</a>
                             </div>
                         </div>
                     </div>
@@ -24,6 +24,7 @@
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col">ID</th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col">Cantidad Elaborada</th>
                             <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col">Fecha</th>
+                            <th class="text-uppercase text-xxs mb-0 text-center align-middle" scope="col">Cancelar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +33,14 @@
                                 <td class="text-xxs mb-0 text-center align-middle">{{ $registro->id }}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{ $registro->cantidad_elaborada }}</td>
                                 <td class="text-xxs mb-0 text-center align-middle">{{ $registro->fecha }}</td>
+                                <td class="text-xxs mb-0 text-center align-middle">
+                                    <form action="{{ route('elaboracionproductos.cancelar', $registro->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('¿Estás seguro de que deseas cancelar esta elaboración?');">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

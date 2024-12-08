@@ -16,15 +16,6 @@
             margin-bottom: 30px;
         }
 
-        .logo {
-            width: 120px; /* Ajusta el tamaño según tu logo */
-            height: auto;
-            background-image: url('../resources/img/logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
         table {
             width: 100%;
             margin: 20px 0;

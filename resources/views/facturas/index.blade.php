@@ -11,9 +11,7 @@
                             {{-- Registrar --}}
                             <div class="col-12">
                                 <a href="{{ route('ventasproductos.index') }}" class="btn btn-secondary">Regresar</a>
-                                <form action="{{ route('factura.descargar', $venta->id) }}" method="GET">
-                                    <button type="submit" class="btn btn-primary">Imprimir</button>
-                                </form>
+                                <a href="{{ route('factura.descargar', $venta->id) }}" class="btn btn-primary">Imprimir</a>
                             </div>
                         </div>
                     </div>

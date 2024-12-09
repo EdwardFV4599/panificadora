@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\VentasProductoDetalle;
+use App\Models\Ventasproductodetalle;
 use App\Models\Producto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -29,7 +29,7 @@ class GraficaController extends Controller
             }
 
             // Crear consulta dinámica según el período
-            $query = VentasProductoDetalle::with('producto')  // Cargar la relación de producto
+            $query = Ventasproductodetalle::with('producto')  // Cargar la relación de producto
                 ->selectRaw('producto_id, SUM(cantidad) as total_cantidad, SUM(cantidad * precio) as total_precio');
 
             if ($periodo === 'dia') {

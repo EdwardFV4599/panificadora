@@ -13,6 +13,6 @@ class Ventasproducto extends Model
 
     public function detalles()
     {
-        return $this->hasMany(VentasProductoDetalle::class, 'ventasproducto_id');
+        return $this->hasMany(Ventasproductodetalle::class, 'ventasproducto_id');
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\VentasProductoDetalle;
+use App\Models\Ventasproductodetalle;
 use App\Models\Producto;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Spatie\Browsershot\Browsershot;
@@ -19,11 +19,11 @@ class ReporteController extends Controller
         $tipoGrafico = $request->input('tipo_grafico');
 
         // Realizar la consulta de ventas según los parámetros
-        $ventasQuery = VentasProductoDetalle::selectRaw(
+        $ventasQuery = Ventasproductodetalle::selectRaw(
             'producto_id, MONTH(vp.fecha) as mes, SUM(cantidad) as total_cantidad, SUM(cantidad * precio) as total_precio'
         )
         ->join('ventasproductos as vp', 'ventasproductodetalles.ventasproducto_id', '=', 'vp.id')
-        ->whereYear('vp.fecha', 2024);
+        ->whereYear('vp.fecha', 2024);  
 
         if ($productoId) {
             $ventasQuery->where('producto_id', $productoId);

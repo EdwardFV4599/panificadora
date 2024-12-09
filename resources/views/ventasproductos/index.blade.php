@@ -11,8 +11,8 @@
                             {{-- Registrar --}}
                             <div class="col-12">
                                 <a href="{{ route('ventasproductos.create') }}" class="btn btn-primary">Agregar nueva venta</a>
-                                <a href="{{ route('exportarCSV') }}" _target="blank" class="btn btn-primary">Generar CSV</a>
-                                <a href="{{ route('prediccion.index') }}" class="btn btn-primary">Ver predicción</a>
+                                <a href="{{ route('exportarCSV') }}" _target="blank" class="btn btn-success">Generar CSV</a>
+                                <a href="https://coronel.streamlit.app/" class="btn btn-danger" target="_blank">Ver predicción</a>
                             </div>
                         </div>
                     </div>

@@ -91,6 +91,7 @@ class VentasproductoaccionesController extends Controller
         return $pdf->download('reporte_ventas.pdf');
     } 
 
+    // FACTURA ------------------------------------------------
     public function mostrarFactura($ventaId)
     {
         $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos

@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ventastiempo extends Model
+class Reportestiempos extends Model
 {
     use HasFactory;
 
     // Nombre de la tabla en la base de datos
-    protected $table = 'ventastiempos';
+    protected $table = 'reportestiempos';
 
     // Los atributos que se pueden asignar de manera masiva
     protected $fillable = [
-        'codigo_venta',
         'fecha',
         'hora_inicial',
         'hora_final',
@@ -29,4 +28,6 @@ class Ventastiempo extends Model
 
     // Opcional: Si quieres personalizar el formato de las fechas
     protected $dateFormat = 'H:i:s';
+
+    public $timestamps = false;
 }

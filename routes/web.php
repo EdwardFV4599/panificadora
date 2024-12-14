@@ -15,6 +15,7 @@ use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\PrediccionController;
 use App\Http\Controllers\AyudaController;
+use App\Http\Controllers\TiemposController;
 
 // Rutas
 Route::get('/', function () {
@@ -147,3 +148,8 @@ Route::get('/ayuda', [AyudaController::class, 'index'])->name('ayuda.index');
 
 // Predicción
 Route::get('/prediccion', [PrediccionController::class, 'index'])->name('prediccion.index');
+
+// Tiempos
+Route::get('/tiempos', [TiemposController::class, 'index'])->name('tiempos.index');
+Route::get('/tiempos/export/excel', [TiemposController::class, 'exportExcel'])->name('tiempos.exportExcel');
+Route::get('/tiempos/export/pdf', [TiemposController::class, 'exportPdf'])->name('tiempos.exportPdf');

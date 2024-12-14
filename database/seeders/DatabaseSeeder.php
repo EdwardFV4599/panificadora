@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             ProveedorSeeder::class,
             ComprasInsumosSeeder::class,
             VentasproductoSeeder::class,
+            VentastiemposSeeder::class,
+            InventariostiemposSeeder::class,
+            ReportestiemposSeeder::class,
 
             // Agrega aquí más seeders que quieras ejecutar
         ]);

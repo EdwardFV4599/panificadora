@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Inventariostiempo extends Model
+class Inventariostiempos extends Model
 {
     use HasFactory;
 
@@ -30,4 +30,6 @@ class Inventariostiempo extends Model
 
     // Opcional: Si quieres personalizar el formato de las fechas
     protected $dateFormat = 'H:i:s';
+
+    public $timestamps = false;
 }

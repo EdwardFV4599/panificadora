@@ -145,15 +145,6 @@
             </li>
             @endcan
 
-            {{-- @can('controlar-cierre-de-caja')
-            <!-- Nav Item -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Cierre de caja</span></a>
-            </li>
-            @endcan --}}
-
             @can('generar-reportes')
             <!-- Nav Item -->
             <li class="nav-item">
@@ -171,6 +162,13 @@
                     <span>Gráficos</span></a>
             </li>
             @endcan
+
+            <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('tiempos.index') }}">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Tiempos</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

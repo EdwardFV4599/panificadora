@@ -139,4 +139,7 @@ class ReporteController extends Controller
         $pdf = PDF::loadView('reportes.reporte_tactico', $pdfData);
         return $pdf->download("reporte_tactico_{$productoNombre}.pdf");
     }
+
+
+    
 }

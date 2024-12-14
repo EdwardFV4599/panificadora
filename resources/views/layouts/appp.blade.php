@@ -166,7 +166,7 @@
             @can('generar-graficos')
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('graficas.index') }}">
+                <a class="nav-link" href="{{ route('graficos.index') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Gráficos</span></a>
             </li>

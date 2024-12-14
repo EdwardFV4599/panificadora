@@ -10,6 +10,12 @@ use Spatie\Browsershot\Browsershot;
 
 class ReporteController extends Controller
 {
+    public function index(Request $request)
+    {
+        $productos = Producto::where('estado', 1)->get();
+        return view('reportes.index', compact('productos'));
+    }
+
     public function generarReporte(Request $request)
     {
         // Recibir los parámetros del formulario

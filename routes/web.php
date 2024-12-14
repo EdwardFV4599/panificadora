@@ -14,8 +14,8 @@ use App\Http\Controllers\VentasproductoaccionesController;
 use App\Http\Controllers\GraficaController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\PrediccionController;
-
-
+use App\Http\Controllers\VentastiempoController;
+use App\Http\Controllers\AyudaController;
 
 // Rutas
 Route::get('/', function () {
@@ -113,9 +113,7 @@ Route::middleware([
     Route::get('/elaboracionproductos/{id}', [ElaboracionproductoController::class, 'show'])->name('elaboracionproductos.show');
     Route::get('/elaboracionproductos/create/{id}', [ElaboracionproductoController::class, 'create'])->name('elaboracionproductos.create');
     Route::post('/elaboracionproductos/{id}', [ElaboracionproductoController::class, 'store'])->name('elaboracionproductos.store');
-    Route::post('elaboracionproductos/{id}/cancelar', [ElaboracionproductoController::class, 'cancelar'])->name('elaboracionproductos.cancelar');
-
-    Route::post('/elaboracionproductos/eliminar/{id}', [ElaboracionproductoController::class, 'destroy'])->name('elaboracionproductos.destroy');
+    Route::post('/elaboracionproductos/cancelar/{id}', [ElaboracionproductoController::class, 'cancelar'])->name('elaboracionproductos.cancelar');
 });
 
 Route::middleware([
@@ -132,30 +130,25 @@ Route::middleware([
     Route::post('/ventasproductos/eliminar/{id}', [VentasproductoController::class, 'destroy'])->name('ventasproductos.destroy');
 });
 
-// Acciones de ventas
-Route::get('obtener-datos-ventas', [VentasproductoaccionesController::class, 'obtenerDatosVentas']);
-Route::get('exportar-ventas', [VentasproductoaccionesController::class, 'exportarVentasCsv'])->name('exportarCSV');
+// Factura
+Route::get('/exportar-ventas', [VentasproductoaccionesController::class, 'exportarVentasCsv'])->name('exportarCSV');
 Route::get('/factura/{ventaId}', [VentasproductoaccionesController::class, 'mostrarFactura'])->name('factura.mostrar');
 Route::get('/factura/descargar/{ventaId}', [VentasproductoaccionesController::class, 'descargarFactura'])->name('factura.descargar');
 
 // Graficos
-Route::get('/graficas/ventas-mensuales', [GraficaController::class, 'ventasMensualesPorProducto']);
-Route::get('/ventas/graficas', [GraficaController::class, 'mostrarGraficas'])->name('graficas.index');
-Route::get('/graficas/ventas', [GraficaController::class, 'obtenerVentas'])->name('graficas.ventas');
+Route::get('/graficos', [GraficaController::class, 'mostrarGraficos'])->name('graficos.index');
+Route::get('/graficas/ventas', [GraficaController::class, 'obtenerVentas'])->name('graficos.ventas');
 
-// Formulario para seleccionar productos y generar reportes
-Route::get('/reportes', function () {
-    $productos = \App\Models\Producto::all();
-    return view('reportes.index', compact('productos'));
-})->name('reportes.index');
+// Reportes
+Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes.index');
+Route::post('/reportes/generar', [ReporteController::class, 'generarReporte'])->name('reportes.generar');
 
-// Generar reporte
-Route::post('/reportes/generar', [ReporteController::class, 'generarReporte']);
-
-// Ayuda en linea
-Route::get('/ayuda', function () {
-    return redirect('/ayuda/index.htm');
-});
+// Ayuda en línea
+Route::get('/ayuda', [AyudaController::class, 'index'])->name('ayuda.index');
 
 // Predicción
 Route::get('/prediccion', [PrediccionController::class, 'index'])->name('prediccion.index');
+
+// Timer
+Route::post('/timer/ventas/iniciar', [VentastiempoController::class, 'iniciarTemporizador'])->name('timer.iniciar');
+Route::post('/timer/ventas/finalizar', [VentastiempoController::class, 'finalizarTemporizador'])->name('timer.finalizar');

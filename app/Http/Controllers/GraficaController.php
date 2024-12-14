@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ventasproductodetalle;
-use App\Models\Producto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class GraficaController extends Controller
 {
-    public function mostrarGraficas()
+    public function mostrarGraficos()
     {
-        return view('graficas.ventas_graficas');
+        return view('graficos.index');
     }
 
     public function obtenerVentas(Request $request)

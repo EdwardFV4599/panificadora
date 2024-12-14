@@ -48,83 +48,115 @@
 
         <input type="hidden" name="total" id="totalVenta">
 
-        <button type="button" class="btn btn-primary" id="add-producto">Agregar Producto</button>
-        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-primary" id="add-producto">Agregar producto</button>
+        <button type="submit" class="btn btn-success" onclick="guardarVenta()">Guardar venta</button>
     </form>
 
-    <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('ventasproductos.index') }}'">Atrás</button>
+    <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('ventasproductos.index') }}'">Volver atrás</button>
 </div>
 @endsection
 
 @section('scripts')
-<script>
-    // Función para calcular el total de cada producto y el total general
-    function calcularTotal() {
-        let totalVenta = 0;
-        let productos = document.querySelectorAll('.producto-item');
-        
-        productos.forEach(function (producto) {
-            let cantidad = parseInt(producto.querySelector('.cantidad').value) || 0;
-            let precio = parseFloat(producto.querySelector('.precio').value) || 0;
-            let totalProducto = cantidad * precio;
+    <script>
+        // Función para calcular el total de cada producto y el total general
+        function calcularTotal() {
+            let totalVenta = 0;
+            let productos = document.querySelectorAll('.producto-item');
+            
+            productos.forEach(function (producto) {
+                let cantidad = parseInt(producto.querySelector('.cantidad').value) || 0;
+                let precio = parseFloat(producto.querySelector('.precio').value) || 0;
+                let totalProducto = cantidad * precio;
 
-            producto.querySelector('.total').value = totalProducto.toFixed(2);
-            totalVenta += totalProducto;
+                producto.querySelector('.total').value = totalProducto.toFixed(2);
+                totalVenta += totalProducto;
+            });
+
+            document.getElementById('totalVenta').value = totalVenta.toFixed(2);
+        }
+
+        // Función para actualizar el precio al seleccionar un producto
+        document.getElementById('productos-container').addEventListener('change', function (event) {
+            if (event.target.classList.contains('producto')) {
+                let productoId = event.target.value;
+                let precioInput = event.target.closest('.producto-item').querySelector('.precio');
+                
+                let selectedOption = event.target.options[event.target.selectedIndex];
+                let precio = selectedOption.text.split(' - ')[1].trim().replace('s/.', '').trim();
+
+                precioInput.value = parseFloat(precio);
+                calcularTotal();
+            }
+
+            if (event.target.classList.contains('cantidad')) {
+                calcularTotal();
+            }
         });
 
-        document.getElementById('totalVenta').value = totalVenta.toFixed(2);
-    }
+        // Función para agregar un nuevo producto al formulario
+        document.getElementById('add-producto').addEventListener('click', function () {
+            let container = document.getElementById('productos-container');
+            let newProducto = document.querySelector('.producto-item').cloneNode(true);
 
-    // Función para actualizar el precio al seleccionar un producto
-    document.getElementById('productos-container').addEventListener('change', function (event) {
-        if (event.target.classList.contains('producto')) {
-            let productoId = event.target.value;
-            let precioInput = event.target.closest('.producto-item').querySelector('.precio');
-            
-            let selectedOption = event.target.options[event.target.selectedIndex];
-            let precio = selectedOption.text.split(' - ')[1].trim().replace('s/.', '').trim();
+            // Limpia campos en la nueva fila
+            newProducto.querySelectorAll('input').forEach(input => input.value = '');
+            newProducto.querySelectorAll('select').forEach(select => select.value = '');
 
-            precioInput.value = parseFloat(precio);
+            let index = container.querySelectorAll('.producto-item').length;
+
+            newProducto.querySelector('.cantidad').setAttribute('name', `detalles[${index}][cantidad]`);
+            newProducto.querySelector('.precio').setAttribute('name', `detalles[${index}][precio]`);
+            newProducto.querySelector('.total').setAttribute('name', `detalles[${index}][total]`);
+            newProducto.querySelector('.producto').setAttribute('name', `detalles[${index}][producto_id]`);
+
+            container.appendChild(newProducto);
+
             calcularTotal();
-        }
+        });
 
-        if (event.target.classList.contains('cantidad')) {
+        // Función para eliminar un producto agregado
+        document.getElementById('productos-container').addEventListener('click', function (event) {
+            if (event.target.classList.contains('remove-producto')) {
+                event.target.closest('.producto-item').remove();
+                calcularTotal();
+            }
+        });
+
+        // Función de inicialización para el cálculo al cargar la página
+        window.onload = function() {
             calcularTotal();
+        };
+    </script>
+    
+    {{-- ----------------------------------------------------------------------------------------------- --}}
+
+    <script>
+        let codigoVenta;
+    
+        window.onload = function() {
+            // Iniciar el temporizador cuando accedas a la vista
+            fetch('/ventasproductos/crear')
+                .then(response => response.json())
+                .then(data => {
+                    codigoVenta = data.codigo_venta;
+                    console.log("Código de Venta:", codigoVenta);
+                });
         }
-    });
-
-    // Función para agregar un nuevo producto al formulario
-    document.getElementById('add-producto').addEventListener('click', function () {
-        let container = document.getElementById('productos-container');
-        let newProducto = document.querySelector('.producto-item').cloneNode(true);
-
-        // Limpia campos en la nueva fila
-        newProducto.querySelectorAll('input').forEach(input => input.value = '');
-        newProducto.querySelectorAll('select').forEach(select => select.value = '');
-
-        let index = container.querySelectorAll('.producto-item').length;
-
-        newProducto.querySelector('.cantidad').setAttribute('name', `detalles[${index}][cantidad]`);
-        newProducto.querySelector('.precio').setAttribute('name', `detalles[${index}][precio]`);
-        newProducto.querySelector('.total').setAttribute('name', `detalles[${index}][total]`);
-        newProducto.querySelector('.producto').setAttribute('name', `detalles[${index}][producto_id]`);
-
-        container.appendChild(newProducto);
-
-        calcularTotal();
-    });
-
-    // Función para eliminar un producto agregado
-    document.getElementById('productos-container').addEventListener('click', function (event) {
-        if (event.target.classList.contains('remove-producto')) {
-            event.target.closest('.producto-item').remove();
-            calcularTotal();
+    
+        function guardarVenta() {
+            // Enviar el código de venta al backend cuando se presione "Guardar"
+            fetch('/ventasproductos/guardar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ codigo_venta: codigoVenta })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
         }
-    });
-
-    // Función de inicialización para el cálculo al cargar la página
-    window.onload = function() {
-        calcularTotal();
-    };
-</script>
+    </script>
 @endsection

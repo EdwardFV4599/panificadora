@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ventasproducto;
-use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class VentasproductoaccionesController extends Controller
 {
@@ -51,32 +48,6 @@ class VentasproductoaccionesController extends Controller
         return response()->download(storage_path($csvFileName))->deleteFileAfterSend(true);
     }
 
-    // Método para obtener las ventas desde la base de datos -------------------------------------------
-    public function obtenerDatosVentas(Request $request)
-    {
-        // Obtener las ventas con los detalles y productos relacionados
-        $ventas = Ventasproducto::with('detalles.producto')->get();
-    
-        // Preparar los datos para ser enviados a la API
-        $resultados = [];
-    
-        foreach ($ventas as $venta) {
-            foreach ($venta->detalles as $detalle) {
-                $resultados[] = [
-                    'producto_nombre' => $detalle->producto->nombre,  // Nombre del producto
-                    'cantidad_vendida' => $detalle->cantidad,
-                    'año' => $venta->created_at->year,   // Año de la venta
-                    'mes' => $venta->created_at->month,  // Mes de la venta
-                    'dia' => $venta->created_at->day,    // Día de la venta
-                    'producto_id' => $detalle->producto_id, // ID del producto
-                ];
-            }
-        }
-    
-        // Retornar los resultados en formato JSON
-        return response()->json($resultados);
-    }
-
     // Generar reporte pdf -----------------------------------------------------------------
     public function generarReportePdf()
     {
@@ -91,7 +62,7 @@ class VentasproductoaccionesController extends Controller
         return $pdf->download('reporte_ventas.pdf');
     } 
 
-    // FACTURA ------------------------------------------------
+    // Mostrar la factura ------------------------------------------------
     public function mostrarFactura($ventaId)
     {
         $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos

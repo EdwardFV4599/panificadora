@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VentaTiempo extends Model
+class Ventastiempos extends Model
 {
     use HasFactory;
 
     // Nombre de la tabla en la base de datos
-    protected $table = 'venta_tiempos';
+    protected $table = 'ventastiempos';
 
     // Los atributos que se pueden asignar de manera masiva
     protected $fillable = [

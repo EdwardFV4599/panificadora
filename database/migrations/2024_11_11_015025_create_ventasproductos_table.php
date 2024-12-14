@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('ventasproductos', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
-            $table->decimal('total', 8, 2);
             $table->string('cliente');
+            $table->decimal('total', 8, 2);
             $table->integer('estado');
             $table->timestamps();
         });

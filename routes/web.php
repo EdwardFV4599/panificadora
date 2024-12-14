@@ -150,5 +150,5 @@ Route::get('/ayuda', [AyudaController::class, 'index'])->name('ayuda.index');
 Route::get('/prediccion', [PrediccionController::class, 'index'])->name('prediccion.index');
 
 // Timer
-Route::post('/timer/ventas/iniciar', [VentastiempoController::class, 'iniciarTemporizador'])->name('timer.iniciar');
+Route::get('/timer/ventas/iniciar', [VentastiempoController::class, 'iniciarTemporizador'])->name('timer.iniciar');
 Route::post('/timer/ventas/finalizar', [VentastiempoController::class, 'finalizarTemporizador'])->name('timer.finalizar');

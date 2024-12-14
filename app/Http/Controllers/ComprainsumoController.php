@@ -7,7 +7,7 @@ use App\Models\Comprasinsumo;
 use App\Models\Insumo;
 use App\Models\Proveedor;
 
-class ComprasinsumoController extends Controller
+class ComprainsumoController extends Controller
 {
     // Mostrar la lista
     public function index(Request $request)
@@ -21,6 +21,8 @@ class ComprasinsumoController extends Controller
     // Mostrar el formulario para crear
     public function create()
     {
+        // Iniciar temporizador al acceder a la vista
+        session(['compra_inicio' => now()]); // Guardamos el tiempo actual en la sesión
         $comprasinsumos = Comprasinsumo::all();
         $insumos = Insumo::all();
         $proveedores = Proveedor::all();
@@ -52,6 +54,30 @@ class ComprasinsumoController extends Controller
         $insumo = Insumo::find($id);
         $insumo->stock_actual = $insumo->stock_actual + $request->stock_agregado;
         $insumo->save();
+
+        // --------------------------------- TIMER -------------------------------------------
+        // Recuperar el tiempo de inicio desde la sesión
+        $tiempo_inicial = session('compra_inicio');
+        $tiempo_final = now();
+
+        // Calcular la duración en segundos
+        $duracion = $tiempo_inicial->diffInSeconds($tiempo_final);
+
+        // Convertir los tiempos creado con now() a formato solo hora
+        $hora_inicial = $tiempo_inicial->format('H:i:s');
+        $hora_final = $tiempo_final->format('H:i:s');
+
+        // Registrar en la base de datos
+        \DB::table('inventariostiempos')->insert([
+            'codigo_compra' => $comprasinsumo->id,
+            'fecha' => $comprasinsumo->fecha,
+            'hora_inicial' => $hora_inicial,
+            'hora_final' => $hora_final,
+            'duracion' => $duracion,
+            'error' => 0
+        ]);
+        // ------------------------------------------------------------------------------------
+
         return redirect()->route('comprasinsumos.index')->with('success', '');
     }
 

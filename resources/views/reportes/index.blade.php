@@ -3,7 +3,7 @@
 @section('contenido')
 <div class="container-fluid">
     <h3><strong>Generar reporte de ventas</strong></h3>
-    <form action="/reportes/generar" method="POST">
+    <form action="{{ route('reportes.generar') }}" method="POST">
         @csrf
         <div class="form-group ">
             <label for="producto_id" class="mr-2">Seleccionar producto:</label>
@@ -30,7 +30,6 @@
             <select name="tipo_grafico" id="tipo_grafico" class="form-control">
                 <option value="bar">Barra</option>
                 <option value="line">Línea</option>
-                {{-- <option value="pie">Pastel</option> --}}
             </select>
         </div>
 

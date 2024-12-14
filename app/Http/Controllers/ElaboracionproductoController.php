@@ -169,7 +169,6 @@ class ElaboracionproductoController extends Controller
         // Actualizar stock del producto
         $producto->stock_actual += $cantidadElaborada;
         $producto->save();
-
         return redirect()->route('elaboracionproductos.index')->with('success', 'Elaboración registrada exitosamente.');
     }
 
@@ -180,7 +179,6 @@ class ElaboracionproductoController extends Controller
         $registro = ElaboracionProducto::findOrFail($id);
         $registro->estado = 0; // Cambiar el estado a 0 para indicar cancelado
         $registro->save();
-
         return redirect()->back()->with('success', 'Elaboración cancelada correctamente.');
     }
 }

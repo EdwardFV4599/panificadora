@@ -7,7 +7,7 @@ use App\Models\Ventasproductodetalle;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class GraficaController extends Controller
+class GraficoController extends Controller
 {
     public function mostrarGraficos()
     {

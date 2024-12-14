@@ -12,6 +12,8 @@ class ReporteController extends Controller
 {
     public function index(Request $request)
     {
+        // Iniciar temporizador al acceder a la vista
+        session(['reporte_inicio' => now()]); // Guardamos el tiempo actual en la sesión
         $productos = Producto::where('estado', 1)->get();
         return view('reportes.index', compact('productos'));
     }
@@ -109,9 +111,32 @@ class ReporteController extends Controller
             'graficoCantidadPath' => $graficoCantidadPath,
         ];
 
+        // --------------------------------- TIMER --------------------------------------------
+        // Recuperar el tiempo de inicio desde la sesión
+        $tiempo_inicial = session('reporte_inicio');
+        $tiempo_final = now();
+
+        // Calcular la duración en segundos
+        $duracion = $tiempo_inicial->diffInSeconds($tiempo_final);
+
+        // Crear la fecha del dia actual
+        $fecha_actual = now()->toDateString();
+
+        // Convertir los tiempos creado con now() a formato solo hora
+        $hora_inicial = $tiempo_inicial->format('H:i:s');
+        $hora_final = $tiempo_final->format('H:i:s');
+
+        // Registrar en la base de datos
+        \DB::table('reportestiempos')->insert([
+            'fecha' => $fecha_actual,
+            'hora_inicial' => $hora_inicial,
+            'hora_final' => $hora_final,
+            'duracion' => $duracion
+        ]);
+        // ------------------------------------------------------------------------------------
+
         // Crear el PDF con los datos y los gráficos
         $pdf = PDF::loadView('reportes.reporte_tactico', $pdfData);
-
         return $pdf->download("reporte_tactico_{$productoNombre}.pdf");
     }
 }

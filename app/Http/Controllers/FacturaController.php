@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Ventasproducto;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-class VentasproductoaccionesController extends Controller
+class FacturaController extends Controller
 {
     // Exportar ventas -------------------------------------------------------------------
     public function exportarVentasCsv()
@@ -48,26 +48,11 @@ class VentasproductoaccionesController extends Controller
         return response()->download(storage_path($csvFileName))->deleteFileAfterSend(true);
     }
 
-    // Generar reporte pdf -----------------------------------------------------------------
-    public function generarReportePdf()
-    {
-        // Datos de prueba (en lugar de obtener datos de la base de datos)
-        $ventas = collect(Ventasproducto::with('detalles.producto')->where('estado', 1)->get());
-
-
-        // Generar el PDF con la vista 'ventasproductos.reporte'
-        $pdf = Pdf::loadView('ventasproductos.reporte', compact('ventas'))->setPaper('a4', 'landscape');
-
-        // Descargar el archivo PDF
-        return $pdf->download('reporte_ventas.pdf');
-    } 
-
     // Mostrar la factura ------------------------------------------------
     public function mostrarFactura($ventaId)
     {
         $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos
         $detalles = $venta->detalles;    // Obtén los detalles de la venta
-
         return view('facturas.index', compact('venta', 'detalles'));
     }
 
@@ -76,7 +61,7 @@ class VentasproductoaccionesController extends Controller
     {
         $venta = VentasProducto::find($ventaId);  // Obtén la venta desde la base de datos
         $detalles = $venta->detalles;    // Obtén los detalles de la venta
-
+        
         $pdf = PDF::loadView('facturas.ventas', compact('venta', 'detalles'));
         return $pdf->download('factura_'.$venta->id.'.pdf');
     }

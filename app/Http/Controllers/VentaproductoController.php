@@ -8,7 +8,7 @@ use App\Models\Producto;
 use App\Models\Ventasproductodetalle;
 use Illuminate\Support\Facades\DB;
 
-class VentasproductoController extends Controller
+class VentaproductoController extends Controller
 {
     // Mostrar lista
     public function index(Request $request)
@@ -20,6 +20,8 @@ class VentasproductoController extends Controller
     // Mostrar el formulario para crear
     public function create()
     {
+        // Iniciar temporizador al acceder a la vista
+        session(['venta_inicio' => now()]); // Guardamos el tiempo actual en la sesión
         $productos = Producto::where('estado', 1)->get();  // Solo productos activos
         return view('ventasproductos.create', compact('productos'));
     }
@@ -53,6 +55,28 @@ class VentasproductoController extends Controller
                     'total' => $totalVenta,
                     'estado' => 1,
                 ]);
+
+                // --------------------------------- TIMER -------------------------------------------
+                // Recuperar el tiempo de inicio desde la sesión
+                $tiempo_inicial = session('venta_inicio');
+                $tiempo_final = now();
+
+                // Calcular la duración en segundos
+                $duracion = $tiempo_inicial->diffInSeconds($tiempo_final);
+
+                // Convertir los tiempos creado con now() a formato solo hora
+                $hora_inicial = $tiempo_inicial->format('H:i:s');
+                $hora_final = $tiempo_final->format('H:i:s');
+
+                // Registrar en la base de datos
+                \DB::table('ventastiempos')->insert([
+                    'codigo_venta' => $venta->id,
+                    'fecha' => $venta->fecha,
+                    'hora_inicial' => $hora_inicial,
+                    'hora_final' => $hora_final,
+                    'duracion' => $duracion
+                ]);
+                // ------------------------------------------------------------------------------------
 
                 // Validar stock y guardar los detalles
                 foreach ($request->detalles as $detalle) {

@@ -7,14 +7,13 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\ComprasinsumoController;
+use App\Http\Controllers\ComprainsumoController;
 use App\Http\Controllers\ElaboracionproductoController;
-use App\Http\Controllers\VentasproductoController;
-use App\Http\Controllers\VentasproductoaccionesController;
-use App\Http\Controllers\GraficaController;
+use App\Http\Controllers\VentaproductoController;
+use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\PrediccionController;
-use App\Http\Controllers\VentastiempoController;
 use App\Http\Controllers\AyudaController;
 
 // Rutas
@@ -95,12 +94,12 @@ Route::middleware([
     'verified',
     'can:controlar-compras-insumos', // Verifica que el usuario tenga el permiso
 ])->group(function () {
-    Route::get('/comprasinsumos', [ComprasinsumoController::class, 'index'])->name('comprasinsumos.index');
-    Route::get('/comprasinsumos/crear', [ComprasinsumoController::class, 'create'])->name('comprasinsumos.create');
-    Route::post('/comprasinsumos/guardar', [ComprasinsumoController::class, 'store'])->name('comprasinsumos.store');
-    Route::get('/comprasinsumos/editar/{id}', [ComprasinsumoController::class, 'edit'])->name('comprasinsumos.edit');
-    Route::post('/comprasinsumos/actualizar/{id}', [ComprasinsumoController::class, 'update'])->name('comprasinsumos.update');
-    Route::post('/comprasinsumos/eliminar/{id}', [ComprasinsumoController::class, 'destroy'])->name('comprasinsumos.destroy');
+    Route::get('/comprasinsumos', [ComprainsumoController::class, 'index'])->name('comprasinsumos.index');
+    Route::get('/comprasinsumos/crear', [ComprainsumoController::class, 'create'])->name('comprasinsumos.create');
+    Route::post('/comprasinsumos/guardar', [ComprainsumoController::class, 'store'])->name('comprasinsumos.store');
+    Route::get('/comprasinsumos/editar/{id}', [ComprainsumoController::class, 'edit'])->name('comprasinsumos.edit');
+    Route::post('/comprasinsumos/actualizar/{id}', [ComprainsumoController::class, 'update'])->name('comprasinsumos.update');
+    Route::post('/comprasinsumos/eliminar/{id}', [ComprainsumoController::class, 'destroy'])->name('comprasinsumos.destroy');
 });
 
 Route::middleware([
@@ -122,22 +121,22 @@ Route::middleware([
     'verified',
     'can:controlar-ventas-productos', // Verifica que el usuario tenga el permiso
 ])->group(function () {
-    Route::get('/ventasproductos', [VentasproductoController::class, 'index'])->name('ventasproductos.index');
-    Route::get('/ventasproductos/crear', [VentasproductoController::class, 'create'])->name('ventasproductos.create');
-    Route::post('/ventasproductos/guardar', [VentasproductoController::class, 'store'])->name('ventasproductos.store');
-    Route::get('/ventasproductos/editar/{id}', [VentasproductoController::class, 'edit'])->name('ventasproductos.edit');
-    Route::post('/ventasproductos/actualizar/{id}', [VentasproductoController::class, 'update'])->name('ventasproductos.update');
-    Route::post('/ventasproductos/eliminar/{id}', [VentasproductoController::class, 'destroy'])->name('ventasproductos.destroy');
+    Route::get('/ventasproductos', [VentaproductoController::class, 'index'])->name('ventasproductos.index');
+    Route::get('/ventasproductos/crear', [VentaproductoController::class, 'create'])->name('ventasproductos.create');
+    Route::post('/ventasproductos/guardar', [VentaproductoController::class, 'store'])->name('ventasproductos.store');
+    Route::get('/ventasproductos/editar/{id}', [VentaproductoController::class, 'edit'])->name('ventasproductos.edit');
+    Route::post('/ventasproductos/actualizar/{id}', [VentaproductoController::class, 'update'])->name('ventasproductos.update');
+    Route::post('/ventasproductos/eliminar/{id}', [VentaproductoController::class, 'destroy'])->name('ventasproductos.destroy');
 });
 
 // Factura
-Route::get('/exportar-ventas', [VentasproductoaccionesController::class, 'exportarVentasCsv'])->name('exportarCSV');
-Route::get('/factura/{ventaId}', [VentasproductoaccionesController::class, 'mostrarFactura'])->name('factura.mostrar');
-Route::get('/factura/descargar/{ventaId}', [VentasproductoaccionesController::class, 'descargarFactura'])->name('factura.descargar');
+Route::get('/exportar-ventas', [FacturaController::class, 'exportarVentasCsv'])->name('exportarCSV');
+Route::get('/factura/{ventaId}', [FacturaController::class, 'mostrarFactura'])->name('factura.mostrar');
+Route::get('/factura/descargar/{ventaId}', [FacturaController::class, 'descargarFactura'])->name('factura.descargar');
 
 // Graficos
-Route::get('/graficos', [GraficaController::class, 'mostrarGraficos'])->name('graficos.index');
-Route::get('/graficas/ventas', [GraficaController::class, 'obtenerVentas'])->name('graficos.ventas');
+Route::get('/graficos', [GraficoController::class, 'mostrarGraficos'])->name('graficos.index');
+Route::get('/graficas/ventas', [GraficoController::class, 'obtenerVentas'])->name('graficos.ventas');
 
 // Reportes
 Route::get('/reportes', [ReporteController::class, 'index'])->name('reportes.index');
@@ -148,7 +147,3 @@ Route::get('/ayuda', [AyudaController::class, 'index'])->name('ayuda.index');
 
 // Predicción
 Route::get('/prediccion', [PrediccionController::class, 'index'])->name('prediccion.index');
-
-// Timer
-Route::get('/timer/ventas/iniciar', [VentastiempoController::class, 'iniciarTemporizador'])->name('timer.iniciar');
-Route::post('/timer/ventas/finalizar', [VentastiempoController::class, 'finalizarTemporizador'])->name('timer.finalizar');

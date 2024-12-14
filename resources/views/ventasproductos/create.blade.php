@@ -49,7 +49,7 @@
         <input type="hidden" name="total" id="totalVenta">
 
         <button type="button" class="btn btn-primary" id="add-producto">Agregar producto</button>
-        <button type="submit" class="btn btn-success" onclick="guardarVenta()">Guardar venta</button>
+        <button type="submit" class="btn btn-success">Guardar venta</button>
     </form>
 
     <button type="button" class="btn btn-secondary" onclick="location.href='{{ route('ventasproductos.index') }}'">Volver atrás</button>
@@ -126,37 +126,5 @@
         window.onload = function() {
             calcularTotal();
         };
-    </script>
-    
-    {{-- ----------------------------------------------------------------------------------------------- --}}
-
-    <script>
-        let codigoVenta;
-    
-        window.onload = function() {
-            // Iniciar el temporizador cuando accedas a la vista
-            fetch('/ventasproductos/crear')
-                .then(response => response.json())
-                .then(data => {
-                    codigoVenta = data.codigo_venta;
-                    console.log("Código de Venta:", codigoVenta);
-                });
-        }
-    
-        function guardarVenta() {
-            // Enviar el código de venta al backend cuando se presione "Guardar"
-            fetch('/ventasproductos/guardar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({ codigo_venta: codigoVenta })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-            });
-        }
     </script>
 @endsection

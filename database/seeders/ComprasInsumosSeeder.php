@@ -22,7 +22,7 @@ class ComprasInsumosSeeder extends Seeder
 
         foreach ($insumos as $insumo) {
             // Crear 10 compras para cada insumo
-            for ($i = 0; $i < 9; $i++) {
+            for ($i = 0; $i < 5; $i++) {
                 Comprasinsumo::create([
                     'insumo' => $insumo->id,
                     'proveedor' => $proveedores->random()->id,

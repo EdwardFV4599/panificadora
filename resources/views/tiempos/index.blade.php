@@ -2,7 +2,7 @@
 @section('titulo', 'Tiempos de registros')
 @section('contenido')
     <div class="container-fluid mt-4">
-        <h3><strong>Tiempos de registro de ventas, inventarios y reportes</strong></h3>
+        <h3><strong>Tiempos de registro de ventas, compras y reportes</strong></h3>
         
         <!-- Datos de Ventas -->
         <div class="card mb-4">
@@ -37,10 +37,10 @@
             </div>
         </div>
 
-        <!-- Datos de Inventarios -->
+        <!-- Datos de compras -->
         <div class="card mb-4">
             <div class="card-header bg-success text-white">
-                <h5>Datos de inventarios</h5>
+                <h5>Datos de compras</h5>
             </div>
             <div class="card-body">
                 <div style="max-height: 400px; overflow-y: auto;">
@@ -52,18 +52,16 @@
                                 <th>Hora inicial</th>
                                 <th>Hora final</th>
                                 <th>Duración</th>
-                                <th>Error</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($inventariostiempos as $item)
+                            @foreach ($comprastiempos as $item)
                                 <tr>
                                     <td>{{ $item->codigo_compra }}</td>
                                     <td>{{ $item->fecha }}</td>
                                     <td>{{ $item->hora_inicial }}</td>
                                     <td>{{ $item->hora_final }}</td>
                                     <td>{{ $item->duracion }}</td>
-                                    <td>{{ $item->error }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

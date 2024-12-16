@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de ventas, inventarios y reportes</title>
+    <title>Reporte de ventas, compras y reportes</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,7 +31,7 @@
 </head>
 <body>
 
-    <h3>Tiempos de registros de ventas, inventarios y reportes</h3>
+    <h3>Tiempos de registros de ventas, compras y reportes</h3>
 
     <!-- Datos de Ventas -->
     <h4>Datos de ventas</h4>
@@ -58,8 +58,8 @@
         </tbody>
     </table>
 
-    <!-- Datos de Inventarios -->
-    <h4>Datos de inventarios</h4>
+    <!-- Datos de compras -->
+    <h4>Datos de compras</h4>
     <table>
         <thead>
             <tr>
@@ -71,7 +71,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($inventariostiempos as $item)
+            @foreach ($comprastiempos as $item)
                 <tr>
                     <td>{{ $item->codigo_compra }}</td>
                     <td>{{ $item->fecha }}</td>

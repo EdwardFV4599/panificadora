@@ -68,13 +68,12 @@ class ComprainsumoController extends Controller
         $hora_final = $tiempo_final->format('H:i:s');
 
         // Registrar en la base de datos
-        \DB::table('inventariostiempos')->insert([
+        \DB::table('comprastiempos')->insert([
             'codigo_compra' => $comprasinsumo->id,
             'fecha' => $comprasinsumo->fecha,
             'hora_inicial' => $hora_inicial,
             'hora_final' => $hora_final,
             'duracion' => $duracion,
-            'error' => 0
         ]);
         // ------------------------------------------------------------------------------------
 

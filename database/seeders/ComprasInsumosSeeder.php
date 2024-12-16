@@ -22,12 +22,12 @@ class ComprasInsumosSeeder extends Seeder
 
         foreach ($insumos as $insumo) {
             // Crear 10 compras para cada insumo
-            for ($i = 0; $i < 10; $i++) {
+            for ($i = 0; $i < 9; $i++) {
                 Comprasinsumo::create([
                     'insumo' => $insumo->id,
                     'proveedor' => $proveedores->random()->id,
-                    'stock_agregado' => rand(20, 100),  // Varía entre 20 y 100 para agregar diversidad
-                    'precio' => rand(5, 50),            // Precio aleatorio entre 5 y 50
+                    'stock_agregado' => rand(80, 100),  // Varía entre 80 y 100 para agregar diversidad
+                    'precio' => rand(76, 510),            // Precio aleatorio entre 76 y 510
                     'encargado' => $encargado,
                     'fecha' => Carbon::now()->subMonths(rand(0, 3))->subDays(rand(0, 30)),
                     'descripcion' => 'Compra de ' . $insumo->nombre,

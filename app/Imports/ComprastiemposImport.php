@@ -2,13 +2,13 @@
 
 namespace App\Imports;
 
-use App\Models\Inventariostiempos;
+use App\Models\Comprastiempos;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class InventariostiemposImport implements ToCollection, WithHeadingRow
+class ComprastiemposImport implements ToCollection, WithHeadingRow
 {
     /**
      * Transform the row into a model.
@@ -32,13 +32,12 @@ class InventariostiemposImport implements ToCollection, WithHeadingRow
             $hora_final = $this->convertFractionToTime($row['hora_final']);
 
             // Crear el registro en la base de datos
-            Inventariostiempos::create([
+            Comprastiempos::create([
                 'codigo_compra' => $row['codigo_compra'],
                 'fecha' => $fecha,  // Fecha convertida a 'Y-m-d'
                 'hora_inicial' => $hora_inicial,
                 'hora_final' => $hora_final,
                 'duracion' => $row['duracion'],
-                'error' => $row['error'],
             ]);
         }
     }

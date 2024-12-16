@@ -3,7 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Ventastiempos;
-use App\Models\Inventariostiempos;
+use App\Models\Comprastiempos;
 use App\Models\Reportestiempos;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
@@ -20,7 +20,7 @@ class TiemposExport implements WithMultipleSheets, ShouldAutoSize
     {
         return [
             new VentasSheet(),
-            new InventariosSheet(),
+            new ComprasSheet(),
             new ReportesSheet(),
         ];
     }

@@ -26,10 +26,8 @@ class DatabaseSeeder extends Seeder
             ComprasInsumosSeeder::class,
             VentasproductoSeeder::class,
             VentastiemposSeeder::class,
-            InventariostiemposSeeder::class,
+            ComprastiemposSeeder::class,
             ReportestiemposSeeder::class,
-
-            // Agrega aquí más seeders que quieras ejecutar
         ]);
     }
 }

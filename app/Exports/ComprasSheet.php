@@ -2,20 +2,20 @@
 
 namespace App\Exports;
 
-use App\Models\Inventariostiempos;
+use App\Models\Comprastiempos;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class InventariosSheet implements FromCollection, WithTitle
+class ComprasSheet implements FromCollection, WithTitle
 {
     /**
-     * Devuelve la colección de datos de Inventariostiempos.
+     * Devuelve la colección de datos de Comprastiempos.
      *
      * @return \Illuminate\Support\Collection
      */
     public function collection()
     {
-        return Inventariostiempos::all();
+        return Comprastiempos::all();
     }
 
     /**
@@ -25,6 +25,6 @@ class InventariosSheet implements FromCollection, WithTitle
      */
     public function title(): string
     {
-        return 'Inventarios'; // Nombre personalizado de la hoja
+        return 'Compras'; // Nombre personalizado de la hoja
     }
 }
